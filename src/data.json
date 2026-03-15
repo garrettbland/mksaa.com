@@ -1,0 +1,16 @@
+{
+  "navlinks": [
+    {
+      "name": "Home",
+      "href": "/"
+    },
+    {
+      "name": "About",
+      "href": "/about"
+    },
+    {
+      "name": "Our Team",
+      "href": "/team"
+    }
+  ]
+}
