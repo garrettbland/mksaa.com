@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Nunito Sans", sans-serif;
+  --font-cursive: "Caveat", cursive;
+}
+
+.brand-text-primary {
+  color: #8a2025;
+}
+
+.brand-text-gray {
+  color: #242323;
+}
+
+.brand-bg-primary {
+  background-color: #8a2025;
+}
+
+.brand-bg-gray {
+  background-color: #242323;
+}
