@@ -13,13 +13,13 @@ const Navbar = () => {
         <div className="px-5 py-3 flex justify-end max-w-6xl mx-auto gap-6">
           <a
             href={DEALER_LOGIN_URL}
-            className="rounded-lg text-white brand-bg-primary px-8 py-2 hover:brightness-120 transition text-sm font-semibold"
+            className="rounded-lg text-white bg-brand-primary px-8 py-2 hover:brightness-120 transition text-sm font-semibold"
           >
             Dealer Login
           </a>
           <a
             href={ARBITRATION_REQUEST_URL}
-            className="rounded-lg text-white brand-bg-primary px-8 py-2 hover:brightness-120 transition text-sm font-semibold"
+            className="rounded-lg text-white bg-brand-primary px-8 py-2 hover:brightness-120 transition text-sm font-semibold"
           >
             Arbitration Request
           </a>
@@ -27,7 +27,7 @@ const Navbar = () => {
       </div>
 
       {/* Navbar */}
-      <nav className="brand-bg-gray">
+      <nav className="bg-brand-gray">
         <div className="max-w-6xl mx-auto px-5 py-10 flex items-center justify-between">
           <div>
             <img src={logo.src} alt="MKSAA Logo" className="max-w-[10rem]" />
