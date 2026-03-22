@@ -1,22 +1,11 @@
 @import "tailwindcss";
 
-@theme inline {
+@theme {
+  /* Colors usage: bg-brand-primary, text-brand-gray, etc */
+  --color-brand-primary: #8a2025;
+  --color-brand-gray: #242323;
+
+  /* Changes default fonts. Usage: font-sans, font-cursive, etc */
   --font-sans: "Nunito Sans", sans-serif;
   --font-cursive: "Caveat", cursive;
-}
-
-.brand-text-primary {
-  color: #8a2025;
-}
-
-.brand-text-gray {
-  color: #242323;
-}
-
-.brand-bg-primary {
-  background-color: #8a2025;
-}
-
-.brand-bg-gray {
-  background-color: #242323;
 }

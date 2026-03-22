@@ -1,0 +1,53 @@
+---
+// interface Props {
+//   title: string;
+//   description?: string;
+// }
+
+// const { title = "", description = "" } = Astro.props;
+import { Image } from "astro:assets";
+import logo from "../assets/images/mid-kansas-auto-auction-logo.png";
+import backgroundVideo from "../assets/videos/mksaa-header-video.mp4";
+---
+
+<div
+  class="h-[75vh] brand-bg-primary flex flex-col items-center justify-center gap-8 relative"
+>
+  <div class="relateive z-[10]">
+    <Image src={logo} alt="MKSAA Logo" class="w-64 h-auto" />
+  </div>
+  <h1
+    class="text-5xl md:text-6xl lg:text-7xl text-white font-thin text-center relative z-[10]"
+  >
+    The <span class="font-bold">Fastest-Growing</span>
+    <br />Auction in the Midwest
+  </h1>
+  <div class="relative z-[10]">
+    <a
+      href="/about"
+      class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+    >
+      Learn More
+    </a>
+  </div>
+
+  <!-- video and overlay -->
+  <div class="absolute z-[9] w-full h-full">
+    <!-- overlay -->
+    <div
+      class="absolute z-[8] w-full h-full bg-brand-primary opacity-60 [background-image:radial-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)]
+  [background-size:3px_3px]"
+    >
+    </div>
+
+    <!-- background video  -->
+    <video
+      autoplay
+      muted
+      loop
+      class="w-full h-full object-cover relative z-[7]"
+      src={backgroundVideo}
+    >
+    </video>
+  </div>
+</div>
