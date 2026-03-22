@@ -1,8 +1,149 @@
 ---
 import Base from "../layouts/Base.astro";
 import HeaderVideo from "../components/HeaderVideo.astro";
+import diamondBackground from "../assets/images/diamond-background.avif";
+import GalleryImage1 from "../assets/images/about-gallery-1.avif";
+import GalleryImage2 from "../assets/images/about-gallery-2.avif";
+import GalleryImage3 from "../assets/images/about-gallery-3.avif";
+import GalleryImage4 from "../assets/images/about-gallery-4.avif";
+import GalleryImage5 from "../assets/images/about-gallery-5.avif";
 ---
 
 <Base title="title" description="wee">
   <HeaderVideo />
+
+  <!-- Sale Scedule -->
+  <section class="bg-brand-gray relative overflow-hidden flex justify-center">
+    <!-- background image -->
+    <div class="absolute z-[1] overflow-hidden">
+      <img
+        src={diamondBackground.src}
+        alt="Decorative Background"
+        class="w-full h-full object-cover opacity-20"
+      />
+    </div>
+
+    <!-- content -->
+    <div
+      class="relative z-[2] my-36 container max-w-3xl flex flex-col items-center justify-center gap-4"
+    >
+      <h2 class="text-center leading-loose">
+        <span class="text-4xl text-red-300 font-semibold">Sales Every</span><br
+        />
+        <span class="text-5xl font-semibold text-white">Wednesday</span>
+      </h2>
+
+      <!-- horizontal line -->
+      <div class="h-px bg-white w-full"></div>
+
+      <p class="text-center text-3xl font-semibold text-white">
+        Sale Starts at 9:00 AM
+      </p>
+      <address class="text-center text-red-300 text-brand-primary italic">
+        4716 South Santa Fe St, Wichita, KS
+      </address>
+
+      <!-- Schedule -->
+      <div class="bg-white rounded-lg p-8 text-center text-lg">
+        <span class="text-brand-primary font-semibold">Office Hours:</span>
+        <ul class="font-thin">
+          <li>Mon: 9:00 AM - 5:00 PM</li>
+          <li>Tues: 9:00 AM - 5:00 PM</li>
+          <li>Wed: 7:00 AM - 5:00 PM</li>
+          <li>Thurs: 9:00 AM - 5:00 PM</li>
+          <li>Fri: 9:00 AM - 1:00 PM</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section
+    class="bg-brand-primary relative overflow-hidden flex justify-center"
+  >
+    <div
+      class="relative z-[2] my-24 container max-w-3xl flex flex-col items-center justify-center gap-4"
+    >
+      <h2 class="text-center leading-tight text-5xl font-semibold text-white">
+        About Us
+      </h2>
+
+      <!-- horizontal line -->
+      <div class="h-px bg-white w-full"></div>
+
+      <p
+        class="text-center text-3xl md:text-4xl lg:text-5xl text-white font-cursive"
+      >
+        Conveniently Located and Fully Equipped
+      </p>
+
+      <p class="font-thin text-white text-lg text-center leading-loose">
+        We are a full-service, dealers-only auto auction located in the heart of
+        the Midwest. With our central location in the U.S., a modern facility,
+        and ample space in our secure lot, we are committed to investing in the
+        technology and amenities that provide the very best experience for our
+        dealers. We also offer in-house FastBack Title Service, detailing,
+        repair services, transportation, online access to weekly sales, and
+        more. Vehicles are available for purchase 24/7; with Pipeline, OVE, and
+        Smart Auction – we have vehicles for sale every day. Our dealers have
+        individual representatives who work with them to make the process easy
+        and personalized for your buying and selling needs.
+      </p>
+
+      <!-- images -->
+      <div class="grid grid-cols-5 w-full h-64 gap-5">
+        <div class="translate -skew-x-6 overflow-hidden">
+          <img
+            src={GalleryImage1.src}
+            alt="Logo"
+            class="w-full h-full object-cover bg-blue-100"
+          />
+        </div>
+        <div class="translate -skew-x-6 overflow-hidden">
+          <img
+            src={GalleryImage2.src}
+            alt="Logo"
+            class="w-full h-full object-cover bg-blue-100"
+          />
+        </div>
+        <div class="translate -skew-x-6 overflow-hidden">
+          <img
+            src={GalleryImage3.src}
+            alt="Logo"
+            class="w-full h-full object-cover bg-blue-100"
+          />
+        </div>
+        <div class="translate -skew-x-6 overflow-hidden">
+          <img
+            src={GalleryImage4.src}
+            alt="Logo"
+            class="w-full h-full object-cover bg-blue-100"
+          />
+        </div>
+        <div class="translate -skew-x-6 overflow-hidden">
+          <img
+            src={GalleryImage5.src}
+            alt="Logo"
+            class="w-full h-full object-cover bg-blue-100"
+          />
+        </div>
+      </div>
+
+      <!-- buttons -->
+      <div class="flex flex-row gap-8 mt-8">
+        <a
+          href="/services"
+          class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+        >
+          See Our Services
+        </a>
+        <a
+          href="/experience"
+          class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+        >
+          Sell Here
+        </a>
+      </div>
+    </div>
+  </section>
 </Base>
