@@ -7,6 +7,7 @@ import GalleryImage2 from "../assets/images/about-gallery-2.avif";
 import GalleryImage3 from "../assets/images/about-gallery-3.avif";
 import GalleryImage4 from "../assets/images/about-gallery-4.avif";
 import GalleryImage5 from "../assets/images/about-gallery-5.avif";
+import AuctionBackground from "../assets/images/auction-background.avif";
 ---
 
 <Base title="title" description="wee">
@@ -30,7 +31,9 @@ import GalleryImage5 from "../assets/images/about-gallery-5.avif";
       <h2 class="text-center leading-loose">
         <span class="text-4xl text-red-300 font-semibold">Sales Every</span><br
         />
-        <span class="text-5xl font-semibold text-white">Wednesday</span>
+        <span class="text-4xl font-bold leading-loose text-white"
+          >Wednesday</span
+        >
       </h2>
 
       <!-- horizontal line -->
@@ -64,7 +67,9 @@ import GalleryImage5 from "../assets/images/about-gallery-5.avif";
     <div
       class="relative z-[2] my-24 container max-w-3xl flex flex-col items-center justify-center gap-4"
     >
-      <h2 class="text-center leading-tight text-5xl font-semibold text-white">
+      <h2
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
         About Us
       </h2>
 
@@ -144,6 +149,40 @@ import GalleryImage5 from "../assets/images/about-gallery-5.avif";
           Sell Here
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section
+    class="bg-brand-gray relative overflow-hidden bg-fixed bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${AuctionBackground.src})`}
+  >
+    <!-- Gray overla -->
+    <div class="absolute z-1 w-full h-full bg-brand-gray opacity-80"></div>
+
+    <!-- content -->
+    <div class="container max-w-4xl mx-auto py-36 z-2 relative">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 divide-x-2 divide-gray-300 text-center"
+      >
+        <div class="text-center">
+          <p class="text-white text-4xl font-bold leading-loose">37</p>
+          <p class="text-white text-xl opacity-80">Acres</p>
+        </div>
+        <div class="text-center">
+          <p class="text-white text-4xl font-bold leading-loose">36K</p>
+          <p class="text-white text-xl opacity-80">Square Feet</p>
+        </div>
+        <div class="text-center">
+          <p class="text-white text-4xl font-bold leading-loose">5</p>
+          <p class="text-white text-xl opacity-80">Auction Lanes</p>
+        </div>
+        <div class="text-center">
+          <p class="text-white text-4xl font-bold leading-loose">158%</p>
+          <p class="text-white text-xl opacity-80">Growth Since 2018</p>
+        </div>
+      </div>
+      <div class="mt-12 h-px w-full bg-white"></div>
     </div>
   </section>
 </Base>
