@@ -8,6 +8,8 @@ import GalleryImage3 from "../assets/images/about-gallery-3.avif";
 import GalleryImage4 from "../assets/images/about-gallery-4.avif";
 import GalleryImage5 from "../assets/images/about-gallery-5.avif";
 import AuctionBackground from "../assets/images/auction-background.avif";
+import EdgePipelineLogo from "../assets/images/pipeline-edge-logo.avif";
+import WorkersBackground from "../assets/images/workers-background.avif";
 ---
 
 <Base title="title" description="wee">
@@ -249,6 +251,89 @@ import AuctionBackground from "../assets/images/auction-background.avif";
         >
           Dealer Login
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who we serve -->
+  <section class="bg-brand-gray relative overflow-hidden flex justify-center">
+    <div
+      class="relative z-[2] my-24 container max-w-3xl flex flex-col items-center justify-center gap-4"
+    >
+      <h2
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Who we serve
+      </h2>
+
+      <!-- horizontal line -->
+      <div class="h-px bg-white w-full"></div>
+
+      <p
+        class="text-center text-3xl md:text-4xl lg:text-5xl text-white font-cursive"
+      >
+        Serving Dealers Across the Midwest & Beyond
+      </p>
+
+      <p class="font-thin text-white text-lg text-center leading-loose">
+        We are proudly and conveniently located in Wichita, Kansas, and serve a
+        large geographic area across the United States. With the power of the
+        web and modern technology, we can serve any dealer from anywhere
+        nationwide. Our weekly sales are offered in-person and online, so you
+        can purchase from wherever you live with ease. Whether you're a
+        franchise, independent dealership, fleet, or corporate client, our
+        friendly team is here to serve you. And we work with great
+        transportation companies, making it easy to get vehicles purchased at
+        MKSAA to your lot. Come experience our modern facility with
+        old-fashioned service and values. Join us at Mid Kansas Auto Auction and
+        see the difference for yourself!
+      </p>
+    </div>
+  </section>
+
+  <!-- Edge Pipeline -->
+  <section
+    class="bg-brand-gray relative overflow-hidden bg-fixed bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${WorkersBackground.src})`}
+  >
+    <!-- Gray overla -->
+    <div class="absolute z-1 w-full h-full bg-brand-gray opacity-80"></div>
+
+    <!-- content -->
+    <div class="container max-w-4xl mx-auto py-36 z-2 relative">
+      <img
+        src={EdgePipelineLogo.src}
+        alt="Pipeline Edge Logo"
+        class="w-48 h-auto mx-auto mb-12"
+      />
+      <div class="mb-12 h-px w-full bg-white"></div>
+      <p
+        class="text-center text-3xl md:text-4xl lg:text-5xl text-white font-cursive"
+      >
+        Serving Dealers Across the Midwest & Beyond
+      </p>
+      <p class="font-thin text-white text-lg text-center leading-loose">
+        Our Dealer Portal gives you a chance to see our upcoming run lists. This
+        is also where you can log in to participate virtually and bid online.
+        Signing up is free and easy.
+      </p>
+
+      <!-- buttons -->
+      <div class="flex flex-row gap-8 mt-8 justify-center">
+        <a
+          href="https://login.mksaa.com/components/login"
+          class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+        >
+          Dealer Login
+        </a>
+      </div>
+
+      <div class="flex justify-center mt-6 font-thin">
+        <a
+          href="https://login.mksaa.com/components/login/signup"
+          class="text-white underline hover:opacity-80 transition"
+          >How to register</a
+        >
       </div>
     </div>
   </section>
