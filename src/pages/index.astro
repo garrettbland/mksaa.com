@@ -10,6 +10,9 @@ import GalleryImage5 from "../assets/images/about-gallery-5.avif";
 import AuctionBackground from "../assets/images/auction-background.avif";
 import EdgePipelineLogo from "../assets/images/pipeline-edge-logo.avif";
 import WorkersBackground from "../assets/images/workers-background.avif";
+import Quote1 from "../assets/images/quote_1.avif";
+import Quote2 from "../assets/images/quote_2.avif";
+import Quote3 from "../assets/images/quote_3.avif";
 ---
 
 <Base title="title" description="wee">
@@ -334,6 +337,30 @@ import WorkersBackground from "../assets/images/workers-background.avif";
           class="text-white underline hover:opacity-80 transition"
           >How to register</a
         >
+      </div>
+    </div>
+  </section>
+
+  <!-- What people are saying -->
+  <section
+    class="bg-brand-primary relative overflow-hidden flex justify-center"
+  >
+    <div
+      class="relative z-[2] my-24 container max-w-5xl flex flex-col items-center justify-center gap-4"
+    >
+      <h2
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        What people are saying
+      </h2>
+
+      <!-- horizontal line -->
+      <div class="h-px bg-white w-full my-8"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <img src={Quote1.src} alt="Quote 1" />
+        <img src={Quote2.src} alt="Quote 2" />
+        <img src={Quote3.src} alt="Quote 3" />
       </div>
     </div>
   </section>
