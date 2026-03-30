@@ -1,0 +1,30 @@
+---
+// Load all images from assets/images/gallery (jpg, png, webp, avif).
+// `as: 'url'` gives raw publicly deployable URL strings.
+const imageFiles = import.meta.glob(
+  "../assets/images/gallery/*.{jpg,png,webp,avif}",
+  {
+    eager: true,
+    as: "url",
+  },
+);
+
+const images = Object.entries(imageFiles)
+  .map(([filePath, url]) => ({
+    src: url,
+    name: filePath.split("/").pop(),
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+  {
+    images.map((image, index) => (
+      <img
+        src={image.src}
+        alt={image.name}
+        class="w-full h-64 object-cover rounded-lg"
+      />
+    ))
+  }
+</div>
