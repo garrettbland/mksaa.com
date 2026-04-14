@@ -1,30 +1,84 @@
 ---
-// Load all images from assets/images/gallery (jpg, png, webp, avif).
-// `as: 'url'` gives raw publicly deployable URL strings.
-const imageFiles = import.meta.glob(
-  "../assets/images/gallery/*.{jpg,png,webp,avif}",
-  {
-    eager: true,
-    as: "url",
-  },
-);
+import Image from "astro/components/Image.astro";
 
-const images = Object.entries(imageFiles)
-  .map(([filePath, url]) => ({
-    src: url,
-    name: filePath.split("/").pop(),
-  }))
-  .sort((a, b) => a.name.localeCompare(b.name));
+import Image1 from "../assets/images/gallery/auction-gathering-photo.jpg";
+import Image2 from "../assets/images/gallery/auction-in-progress-photo.jpg";
+import Image3 from "../assets/images/gallery/cadillac-car-photo.jpg";
+import Image4 from "../assets/images/gallery/cars-in-auction-2.jpg";
+import Image5 from "../assets/images/gallery/cars-in-auction.jpg";
+import Image6 from "../assets/images/gallery/dirtbike-photo.jpg";
+import Image7 from "../assets/images/gallery/donation-check-photo.jpg";
+import Image8 from "../assets/images/gallery/facebook-logo.jpg";
+import Image9 from "../assets/images/gallery/members-photo-2.jpg";
+import Image10 from "../assets/images/gallery/members-photo.jpg";
+import Image11 from "../assets/images/gallery/team-photo.jpg";
 ---
 
-<div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-  {
-    images.map((image, index) => (
-      <img
-        src={image.src}
-        alt={image.name}
-        class="w-full h-64 object-cover rounded-lg"
-      />
-    ))
-  }
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <Image
+    quality="mid"
+    src={Image1}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image2}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image3}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image4}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image5}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image6}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image7}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image8}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image9}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image10}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image11}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
 </div>

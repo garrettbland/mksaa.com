@@ -1,1 +1,72 @@
-<footer>Footer</footer>
+---
+import Image from "astro/components/Image.astro";
+import Logo from "../assets/images/mid-kansas-auto-auction-logo.png";
+import FooterLogos from "../assets/images/footer-logos.png";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-primary relative overflow-hidden flex justify-center">
+  <div
+    class="relative z-[2] my-24 container max-w-5xl flex flex-col items-center justify-center gap-4"
+  >
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 border-b border-white w-full divide-x divide-white"
+    >
+      <div class="p-8">
+        <Image src={Logo} alt="MKSAA Logo" />
+      </div>
+      <div class="p-8 text-center text-red-100 font-thin">
+        <address>4716 South Santa Fe St.<br />Wichita, KS 67216</address>
+        <p>
+          <a href="mailto:sales@mksaa.com" class="underline">sales@mksaa.com</a>
+        </p>
+      </div>
+      <div class="p-8 text-center text-red-100 font-thin">
+        <p>
+          Tel: <a href="tel:(316) 500-7700" class="underline">(316) 500-7700</a>
+        </p>
+        <p>Fax: (316) 500-7701</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-red-100 my-12">
+      <div>
+        <ul class="text-center font-thin">
+          <li class="font-semibold">Office Hours:</li>
+          <li>Mon: 9:00 AM - 5:00 PM</li>
+          <li>Tues: 9:00 AM - 5:00 PM</li>
+          <li>Wed: 7:00 AM - 5:00 PM</li>
+          <li>Thurs: 9:00 AM - 5:00 PM</li>
+          <li>Fri: 9:00 AM - 1:00 PM</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="text-center font-thin">
+          <li class="font-semibold">Gate Hours:</li>
+          <li>Mon: 8:00 AM - 5:00 PM</li>
+          <li>Tues: 8:00 AM - 7:00 PM</li>
+          <li>Wed: 7:00 AM - 6:00 PM</li>
+          <li>Thurs: 8:00 AM - 5:00 PM</li>
+          <li>Fri: 8:00 AM - 3:00 PM</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- buttons -->
+    <div class="flex flex-row gap-8 mt-8">
+      <a
+        href="https://login.mksaa.com/components/login"
+        class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+      >
+        Dealer Login
+      </a>
+    </div>
+
+    <!-- Logos -->
+    <Image src={FooterLogos} alt="Partner Logos" class="max-w-3xl mt-12" />
+
+    <!-- Copyright Text -->
+    <p class="font-thin text-white mt-8">©{year} Mid Kansas Auto Auction.</p>
+  </div>
+</footer>
