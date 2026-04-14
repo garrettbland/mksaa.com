@@ -1,4 +1,5 @@
 ---
+import Image from "astro/components/Image.astro";
 import Base from "../layouts/Base.astro";
 import HeaderVideo from "../components/HeaderVideo.astro";
 import Gallery from "../components/Gallery.astro";
@@ -23,8 +24,8 @@ import Quote3 from "../assets/images/quote_3.avif";
   <section class="bg-brand-gray relative overflow-hidden flex justify-center">
     <!-- background image -->
     <div class="absolute z-[1] overflow-hidden">
-      <img
-        src={diamondBackground.src}
+      <Image
+        src={diamondBackground}
         alt="Decorative Background"
         class="w-full h-full object-cover opacity-20"
       />
@@ -104,36 +105,36 @@ import Quote3 from "../assets/images/quote_3.avif";
       <!-- images -->
       <div class="grid grid-cols-5 w-full h-64 gap-5">
         <div class="translate -skew-x-6 overflow-hidden">
-          <img
-            src={GalleryImage1.src}
+          <Image
+            src={GalleryImage1}
             alt="Logo"
             class="w-full h-full object-cover bg-blue-100"
           />
         </div>
         <div class="translate -skew-x-6 overflow-hidden">
-          <img
-            src={GalleryImage2.src}
+          <Image
+            src={GalleryImage2}
             alt="Logo"
             class="w-full h-full object-cover bg-blue-100"
           />
         </div>
         <div class="translate -skew-x-6 overflow-hidden">
-          <img
-            src={GalleryImage3.src}
+          <Image
+            src={GalleryImage3}
             alt="Logo"
             class="w-full h-full object-cover bg-blue-100"
           />
         </div>
         <div class="translate -skew-x-6 overflow-hidden">
-          <img
-            src={GalleryImage4.src}
+          <Image
+            src={GalleryImage4}
             alt="Logo"
             class="w-full h-full object-cover bg-blue-100"
           />
         </div>
         <div class="translate -skew-x-6 overflow-hidden">
-          <img
-            src={GalleryImage5.src}
+          <Image
+            src={GalleryImage5}
             alt="Logo"
             class="w-full h-full object-cover bg-blue-100"
           />
@@ -359,9 +360,9 @@ import Quote3 from "../assets/images/quote_3.avif";
       <div class="h-px bg-white w-full my-8"></div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <img src={Quote1.src} alt="Quote 1" />
-        <img src={Quote2.src} alt="Quote 2" />
-        <img src={Quote3.src} alt="Quote 3" />
+        <Image src={Quote1} alt="Quote 1" />
+        <Image src={Quote2} alt="Quote 2" />
+        <Image src={Quote3} alt="Quote 3" />
       </div>
     </div>
   </section>
