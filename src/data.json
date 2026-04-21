@@ -6,11 +6,45 @@
     },
     {
       "name": "About",
-      "href": "/about"
+      "href": "/about",
+      "children": [
+        {
+          "name": "Careers",
+          "href": "/careers"
+        },
+        {
+          "name": "Causes we care about",
+          "href": "/causes-we-care-about"
+        }
+      ]
     },
     {
       "name": "Our Team",
       "href": "/team"
+    },
+    {
+      "name": "Services",
+      "href": "/services"
+    },
+    {
+      "name": "Auction Standards",
+      "href": "/auction-standards"
+    },
+    {
+      "name": "Experience",
+      "href": "/experience"
+    },
+    {
+      "name": "Events",
+      "href": "/events"
+    },
+    {
+      "name": "News",
+      "href": "/news"
+    },
+    {
+      "name": "Contact",
+      "href": "/contact"
     }
   ]
 }
