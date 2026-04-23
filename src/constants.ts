@@ -12,5 +12,3 @@ export const DEALER_LOGIN_URL = "https://login.mksaa.com/components/login";
 export const ENTERPRISE_DENT_REPAIR_URL =
   "https://www.enterprisedentrepair.com/";
 export const FASTBACK_TITLE_URL = "Learn More";
-
-// test
