@@ -1,0 +1,131 @@
+---
+import Image from "astro/components/Image.astro";
+import Base from "../layouts/Base.astro";
+import HeaderBGPhoto from "../assets/images/sale-floor-with-mustang.jpg";
+import OttleyFamily from "../assets/images/ottley-family.png";
+import ArmsAroundEachOther from "../assets/images/arms-around-each-other.jpg";
+import Timeline from "../components/Timeline.astro";
+---
+
+<Base
+  title="About Us | Mid Kansas Auto Auction"
+  description="Located in the heart of the Midwest, we pride ourselves on simplifying the auction process to provide our dealers with a smooth, efficient, and profitable wholesale auction experience."
+>
+  <!-- Header -->
+
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        About Us
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        Located in the heart of the Midwest, we pride ourselves on simplifying
+        the auction process to provide our dealers with a smooth, efficient, and
+        profitable wholesale auction experience.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Header Background"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Our Story -->
+  <section class="bg-brand-gray">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div>
+        <Image
+          src={OttleyFamily}
+          alt="Ottley Family"
+          class="h-full w-full object-cover"
+          quality="medium"
+        />
+      </div>
+      <div class="flex flex-col justify-center items-center p-24">
+        <h2
+          class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+        >
+          Our Story
+        </h2>
+        <p class="font-thin text-white text-center leading-loose text-sm">
+          Mid Kansas Auto Auction is a family owned and operated, dealers-only
+          auto auction located at the corner of I-35 and 47th Street in Wichita,
+          Kansas. Our founder, Mark Ottley, started the auction business in 2005
+          on I-70 in Hays, Kansas. The building was destroyed by fire in 2016,
+          but their passion for the business motivated them to rebuild.
+        </p>
+        <p class="font-thin text-white text-center leading-loose mt-4 text-sm">
+          <strong>The Next Chapter:</strong><br /> In 2018, the former Mid-America
+          Auto Auction went up for sale, and we couldn't resist. With the success
+          we'd seen in western Kansas, why not take our driven family-style auction
+          to Wichita. Mark purchased the Wichita property in 2018 and had it renovated
+          and ready for business in November of that same year. From the early beginnings
+          in 2005 to present day, we are proud of our "auction family" which includes
+          our staff and our dealers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline of Growth -->
+  <section class="bg-brand-primary py-24">
+    <div class="mx-auto max-w-4xl container">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        Timeline of Growth
+      </h2>
+      <Timeline />
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="bg-brand-gray">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div class="flex flex-col justify-center items-center p-12">
+        <h2
+          class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+        >
+          Core Values
+        </h2>
+        <p class="font-thin text-white text-center leading-loose text-sm">
+          As a family-run business, it is important for our team to know who you
+          are. Similarly, we want to be transparent about who we are. We have
+          developed and instilled in our staff a set of Core Values that start
+          and end with respect to ALL. These non-negotiable values embody the
+          experience we strive to create each and every day.
+        </p>
+      </div>
+      <div>
+        <Image
+          src={ArmsAroundEachOther}
+          alt="Arms Around Each Other"
+          class="h-full w-full object-cover"
+          quality="medium"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Special Events -->
+  <section class="bg-brand-primary py-36">
+    <div class="text-white container max-w-xl mx-auto">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        Upcoming Special Events
+      </h2>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        In addition to our weekly sales every Wednesday at 9:00 a.m., we also
+        pick one week per month to host a themed promotional sale with extra
+        opportunities for fun! Delicious food, huge prize giveaways, and
+        entertainment are all among the things we like to incorporate now and
+        then.
+      </p>
+    </div>
+  </section>
+</Base>
