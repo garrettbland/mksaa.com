@@ -10,17 +10,17 @@
       "children": [
         {
           "name": "Careers",
-          "href": "/careers"
+          "href": "/about/careers"
         },
         {
           "name": "Causes we care about",
-          "href": "/causes-we-care-about"
+          "href": "/about/causes-we-care-about"
+        },
+        {
+          "name": "Our Team",
+          "href": "/about/team"
         }
       ]
-    },
-    {
-      "name": "Our Team",
-      "href": "/team"
     },
     {
       "name": "Services",
