@@ -36,7 +36,9 @@ const Navbar = () => {
         <div className="max-w-6xl mx-auto px-5 py-10 flex flex-col lg:flex-row items-center justify-between">
           {/* Logo */}
           <div className="w-full lg:w-auto flex items-center justify-between md:justify-center ">
-            <img src={logo.src} alt="MKSAA Logo" className="max-w-[10rem]" />
+            <a href="/">
+              <img src={logo.src} alt="MKSAA Logo" className="max-w-[10rem]" />
+            </a>
 
             {/* Hamburger button */}
             <button
