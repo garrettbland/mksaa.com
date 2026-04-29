@@ -5,6 +5,7 @@ import HeaderBGPhoto from "../../assets/images/driver-in-car.jpg";
 import RoadPavement from "../../assets/images/road-pavement.jpg";
 import { getImage } from "astro:assets";
 import ModalGallery from "../../components/ModalGallery.tsx";
+import TeamMembers from "../../components/TeamMembers.astro";
 
 import AndyHansen from "../../assets/images/team/Andy-Hansen.jpg";
 import LoriSchrier from "../../assets/images/team/Lori-Schrier.jpg";
@@ -132,7 +133,7 @@ await Promise.all(
       >
         MKSAA Sales Team
       </h3>
-      <div>
+      <div class="mb-36">
         <ModalGallery
           client:load
           data={teamMembersWithOptimizedImages.filter(
@@ -146,10 +147,7 @@ await Promise.all(
         MKSAA Team Members
       </h3>
       <div>
-        <ModalGallery
-          client:load
-          data={teamMembersWithOptimizedImages.filter((i) => i.tag === "TEAM")}
-        />
+        <TeamMembers />
       </div>
     </div>
   </section>

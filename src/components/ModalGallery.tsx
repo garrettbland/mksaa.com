@@ -31,7 +31,7 @@ export default function ModalGallery({ data }: { data: Member[] }) {
   return (
     <>
       {/* GRID (unchanged) */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {data.map((person, i) => (
           <div
             key={i}
@@ -41,7 +41,7 @@ export default function ModalGallery({ data }: { data: Member[] }) {
             <img
               src={person.image_url}
               alt={person.name}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full object-cover rounded-lg h-[270px]"
             />
 
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-lg">
