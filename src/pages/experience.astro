@@ -1,7 +1,8 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
-import HeaderBGPhoto from "../assets/images/people-talking.avif";
+import HeaderBGPhoto from "../assets/images/workers-background.avif";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Base
@@ -9,25 +10,9 @@ import HeaderBGPhoto from "../assets/images/people-talking.avif";
   description="MKSAA is well-equipped to personalize the buying and selling experience to your business's exact needs. Our primary goal is to create a partnership that benefits both parties in the most enjoyable and seamless way possible. Let our team go to work for you!"
 >
   <!-- Header -->
-  <section class="bg-brand-primary py-36 relative overflow-hidden">
-    <div class="text-white container max-w-xl mx-auto relative z-10">
-      <h1
-        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
-      >
-        MKSAA Experience
-      </h1>
-      <p class="font-thin text-white text-center leading-loose text-sm">
-        MKSAA is well-equipped to personalize the buying and selling experience
-        to your business's exact needs. Our primary goal is to create a
-        partnership that benefits both parties in the most enjoyable and
-        seamless way possible. Let our team go to work for you!
-      </p>
-    </div>
-    <Image
-      src={HeaderBGPhoto}
-      alt="Employees at auction"
-      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
-      quality="low"
-    />
-  </section>
+  <PageHeader
+    title="MKSAA Experience"
+    subtitle="MKSAA is well-equipped to personalize the buying and selling experience to your business's exact needs. Our primary goal is to create a partnership that benefits both parties in the most enjoyable and seamless way possible. Let our team go to work for you!"
+    bgImage={HeaderBGPhoto}
+  />
 </Base>

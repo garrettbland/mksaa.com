@@ -6,6 +6,7 @@ import RoadPavement from "../../assets/images/road-pavement.jpg";
 import { getImage } from "astro:assets";
 import ModalGallery from "../../components/ModalGallery.tsx";
 import TeamMembers from "../../components/TeamMembers.astro";
+import PageHeader from "../../components/PageHeader.astro";
 
 import AndyHansen from "../../assets/images/team/Andy-Hansen.jpg";
 import LoriSchrier from "../../assets/images/team/Lori-Schrier.jpg";
@@ -90,27 +91,11 @@ await Promise.all(
   description="As a family-owned and operated business, it's important to us that our dealers and our team members get to know who we are and understand how integral they are to our success. Learn more about our team members below."
 >
   <!-- Header -->
-  <section class="bg-brand-primary py-36 relative overflow-hidden">
-    <div class="text-white container max-w-xl mx-auto relative z-10">
-      <h1
-        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
-      >
-        Our Team
-      </h1>
-      <p class="font-thin text-white text-center leading-loose text-sm">
-        As a family-owned and operated business, it's important to us that our
-        dealers and our team members get to know who we are and understand how
-        integral they are to our success. Learn more about our team members
-        below.
-      </p>
-    </div>
-    <Image
-      src={HeaderBGPhoto}
-      alt="Group holding check"
-      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
-      quality="low"
-    />
-  </section>
+  <PageHeader
+    title="Our Team"
+    subtitle="As a family-owned and operated business, it's important to us that our dealers and our team members get to know who we are and understand how integral they are to our success. Learn more about our team members below."
+    bgImage={HeaderBGPhoto}
+  />
 
   <!-- Team Members -->
   <section class="bg-brand-gray py-12">

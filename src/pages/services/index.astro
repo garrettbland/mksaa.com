@@ -15,6 +15,7 @@ import PipelineLogo from "../../assets/images/pipeline-edge-logo.avif";
 import AutoImsLogo from "../../assets/images/auto-ims-logo.png";
 
 import ServiceCards from "../../components/ServiceCards.astro";
+import PageHeader from "../../components/PageHeader.astro";
 ---
 
 <Base
@@ -22,32 +23,11 @@ import ServiceCards from "../../components/ServiceCards.astro";
   description="We are a full-service auto auction located in the heart of the Midwest. Our geographical location, facility, and amazing staff have allowed us the ability to make the investments necessary to provide a world-class auction experience, parallel with the best of the best in the independent auction industry."
 >
   <!-- Header -->
-  <section class="bg-brand-primary py-36 relative overflow-hidden">
-    <div class="text-white container max-w-xl mx-auto relative z-10">
-      <h1
-        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
-      >
-        Services
-      </h1>
-      <p class="font-thin text-white text-center leading-loose text-sm">
-        We are a full-service auto auction located in the heart of the Midwest.
-        Our geographical location, facility, and amazing staff have allowed us
-        the ability to make the investments necessary to provide a world-class
-        auction experience, parallel with the best of the best in the
-        independent auction industry. Mid Kansas Auto Auction features a large
-        lot, Fastback Title Service, detailing and mechanical services,
-        transportation, online bidding, and so much more. Our dealers are
-        assigned a representative who will work with them to make the process
-        easy and personalized for your buying and selling needs.
-      </p>
-    </div>
-    <Image
-      src={HeaderBGPhoto}
-      alt="Group holding check"
-      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
-      quality="low"
-    />
-  </section>
+  <PageHeader
+    title="Services"
+    subtitle="We are a full-service auto auction located in the heart of the Midwest. Our geographical location, facility, and amazing staff have allowed us the ability to make the investments necessary to provide a world-class auction experience, parallel with the best of the best in the independent auction industry. Mid Kansas Auto Auction features a large lot, Fastback Title Service, detailing and mechanical services, transportation, online bidding, and so much more. Our dealers are assigned a representative who will work with them to make the process easy and personalized for your buying and selling needs."
+    bgImage={HeaderBGPhoto}
+  />
 
   <!-- Cards -->
   <section class="bg-brand-gray py-12">

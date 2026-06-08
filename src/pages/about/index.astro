@@ -5,6 +5,7 @@ import HeaderBGPhoto from "../../assets/images/sale-floor-with-mustang.jpg";
 import OttleyFamily from "../../assets/images/Ottley-family.png";
 import ArmsAroundEachOther from "../../assets/images/arms-around-each-other.jpg";
 import Timeline from "../../components/Timeline.astro";
+import PageHeader from "../../components/PageHeader.astro";
 ---
 
 <Base
@@ -12,27 +13,11 @@ import Timeline from "../../components/Timeline.astro";
   description="Located in the heart of the Midwest, we pride ourselves on simplifying the auction process to provide our dealers with a smooth, efficient, and profitable wholesale auction experience."
 >
   <!-- Header -->
-
-  <section class="bg-brand-primary py-36 relative overflow-hidden">
-    <div class="text-white container max-w-xl mx-auto relative z-10">
-      <h1
-        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
-      >
-        About Us
-      </h1>
-      <p class="font-thin text-white text-center leading-loose text-sm">
-        Located in the heart of the Midwest, we pride ourselves on simplifying
-        the auction process to provide our dealers with a smooth, efficient, and
-        profitable wholesale auction experience.
-      </p>
-    </div>
-    <Image
-      src={HeaderBGPhoto}
-      alt="Header Background"
-      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
-      quality="low"
-    />
-  </section>
+  <PageHeader
+    title="About Us"
+    subtitle="Located in the heart of the Midwest, we pride ourselves on simplifying the auction process to provide our dealers with a smooth, efficient, and profitable wholesale auction experience."
+    bgImage={HeaderBGPhoto}
+  />
 
   <!-- Our Story -->
   <section class="bg-brand-gray">

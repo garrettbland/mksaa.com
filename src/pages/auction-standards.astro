@@ -2,6 +2,7 @@
 import Image from "astro/components/Image.astro";
 import Base from "../layouts/Base.astro";
 import HeaderBGPhoto from "../assets/images/auction-standards.avif";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
 <Base
@@ -9,27 +10,11 @@ import HeaderBGPhoto from "../assets/images/auction-standards.avif";
   description="On this page, you can download various materials about our auction standards, including an explanation of the light system and forms to be used by dealers. Resources are available in both English and Spanish."
 >
   <!-- Header -->
-
-  <section class="bg-brand-primary py-36 relative overflow-hidden">
-    <div class="text-white container max-w-xl mx-auto relative z-10">
-      <h1
-        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
-      >
-        Auction Standards
-      </h1>
-      <p class="font-thin text-white text-center leading-loose text-sm">
-        On this page, you can download various materials about our auction
-        standards, including an explanation of the light system and forms to be
-        used by dealers. Resources are available in both English and Spanish.
-      </p>
-    </div>
-    <Image
-      src={HeaderBGPhoto}
-      alt="Employees at computers"
-      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
-      quality="low"
-    />
-  </section>
+  <PageHeader
+    title="Auction Standards"
+    subtitle="On this page, you can download various materials about our auction standards, including an explanation of the light system and forms to be used by dealers. Resources are available in both English and Spanish."
+    bgImage={HeaderBGPhoto}
+  />
 
   <!-- Want to work with us -->
   <section class="bg-brand-gray">
