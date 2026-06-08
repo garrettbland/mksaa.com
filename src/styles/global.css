@@ -111,3 +111,34 @@
     @apply mx-auto;
     @apply px-5;
 }
+
+/* Custom blurry View Transitions */
+::view-transition-old(root) {
+    animation: fade-out-blur 0.3s ease-out both;
+}
+
+::view-transition-new(root) {
+    animation: fade-in-blur 0.3s ease-in both;
+}
+
+@keyframes fade-out-blur {
+    from {
+        opacity: 1;
+        filter: blur(0px);
+    }
+    to {
+        opacity: 0;
+        filter: blur(8px);
+    }
+}
+
+@keyframes fade-in-blur {
+    from {
+        opacity: 0;
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0px);
+    }
+}

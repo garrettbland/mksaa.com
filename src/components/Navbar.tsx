@@ -41,7 +41,7 @@ const Navbar = () => {
                 <div className="container py-6 flex flex-col lg:flex-row items-center justify-between">
                     {/* Logo */}
                     <div className="w-full lg:w-auto flex items-center justify-between md:justify-center ">
-                        <a href="/">
+                        <a href="/" data-astro-prefetch="true">
                             <img
                                 src={logo.src}
                                 alt="MKSAA Logo"
@@ -89,6 +89,7 @@ const Navbar = () => {
                                 <div key={index} className="relative group py-2">
                                     <a
                                         href={link.href}
+                                        data-astro-prefetch="true"
                                         className={`transition flex items-center gap-1 text-[15px] ${isActive ? "text-red-500 font-medium" : "text-white font-light hover:text-red-500"}`}
                                     >
                                         {link.name}
@@ -117,6 +118,7 @@ const Navbar = () => {
                                                         <a
                                                             key={childIndex}
                                                             href={child.href}
+                                                            data-astro-prefetch="true"
                                                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-500 transition whitespace-nowrap"
                                                         >
                                                             {child.name}
@@ -149,6 +151,7 @@ const Navbar = () => {
                                 <div className="flex items-center justify-between">
                                     <a
                                         href={link.href}
+                                        data-astro-prefetch="true"
                                         className={`font-light py-3 flex-1 transition ${currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? "text-red-500 font-medium" : "text-white hover:text-red-500"}`}
                                     >
                                         {link.name}
@@ -196,6 +199,7 @@ const Navbar = () => {
                                                     <a
                                                         key={childIndex}
                                                         href={child.href}
+                                                        data-astro-prefetch="true"
                                                         className="text-gray-300 hover:text-white py-2 text-sm transition"
                                                     >
                                                         {child.name}
