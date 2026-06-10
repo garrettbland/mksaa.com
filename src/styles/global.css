@@ -96,18 +96,27 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Dark Twenty";
+    src: url("../assets/fonts/Dark Twenty.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
     /* Colors usage: bg-brand-primary, text-brand-gray, etc */
     --color-brand-primary: #8a2025;
     --color-brand-gray: #242323;
 
-    /* Changes default fonts. Usage: font-sans, font-cursive, etc */
+    /* Changes default fonts. Usage: font-sans, font-cursive, font-display, etc */
     --font-sans: "Avenir", "Nunito Sans", sans-serif;
     --font-cursive: "Caveat", cursive;
+    --font-display: "Dark Twenty", sans-serif;
 }
 
 @utility container {
-    @apply max-w-[clamp(60rem,calc(100%-4rem),112rem)];
+    @apply max-w-[clamp(60rem,calc(100%-4rem),110rem)];
     @apply mx-auto;
     @apply px-5;
 }

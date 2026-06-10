@@ -1,0 +1,68 @@
+---
+interface Props {
+  /** Main section heading */
+  title: string;
+  /** Optional subtitle / description paragraph */
+  subtitle?: string;
+  /**
+   * Text alignment for the header block.
+   * @default "center"
+   */
+  align?: "left" | "center";
+  /**
+   * Heading color variant.
+   * "white"   → text-white (default, for dark/colored backgrounds)
+   * "primary" → text-brand-primary (for light backgrounds)
+   * "dark"    → text-brand-gray (for white backgrounds)
+   */
+  color?: "white" | "primary" | "dark";
+  /** Extra classes applied to the outer wrapper div */
+  class?: string;
+  /** Extra classes merged onto the <h2> title element */
+  titleClass?: string;
+  /** Extra classes merged onto the <p> subtitle element */
+  subtitleClass?: string;
+}
+
+const {
+  title,
+  subtitle,
+  align = "center",
+  color = "white",
+  class: extraClass = "",
+  titleClass = "",
+  subtitleClass = "",
+} = Astro.props;
+
+const alignClass = align === "left" ? "text-left" : "text-center";
+
+const headingColor =
+  color === "primary"
+    ? "text-brand-primary"
+    : color === "dark"
+      ? "text-brand-gray"
+      : "text-white";
+
+const subtitleColor = color === "dark" ? "text-gray-600" : "text-white/80";
+---
+
+<div class={`grid gap-3 ${alignClass} ${extraClass}`}>
+  <h2
+    class={`text-3xl md:text-4xl font-bold leading-snug ${headingColor} ${titleClass}`}
+  >
+    {title}
+  </h2>
+
+  {
+    subtitle && (
+      <p
+        class={`text-sm md:text-base leading-relaxed ${subtitleColor} ${subtitleClass}`}
+      >
+        {subtitle}
+      </p>
+    )
+  }
+
+  <!-- Slot for custom subtitle content (e.g. with <br>, links, etc.) -->
+  <slot />
+</div>

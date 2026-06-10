@@ -1,0 +1,20 @@
+---
+import Image from "astro/components/Image.astro";
+import EdgePipelineLogo from "../../assets/images/pipeline-edge-logo.avif";
+import Button from "../Button.astro";
+import SectionHeader from "../SectionHeader.astro";
+---
+
+<section class="bg-brand-gray py-20 text-white border-t border-white/5">
+  <div class="container max-w-4xl mx-auto text-center px-4 flex flex-col items-center">
+    <SectionHeader
+      title="Online Bidding With"
+      subtitle="We are proud to offer online bidding through Edge Pipeline. This service allows dealers to view presale listings, bid remotely over the internet, place proxy bids, and track the progress of vehicles moving through lanes."
+      class="mb-6"
+    >
+      <Image src={EdgePipelineLogo} alt="Edge Pipeline Logo" class="h-10 md:h-12 w-auto object-contain inline-block align-middle mx-auto" />
+    </SectionHeader>
+    
+    <Button href="https://login.mksaa.com/components/login" external>View Listings</Button>
+  </div>
+</section>
