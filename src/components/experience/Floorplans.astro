@@ -4,16 +4,21 @@ import SectionHeader from "../SectionHeader.astro";
 ---
 
 <section class="bg-brand-primary py-20 text-white">
-  <div class="container max-w-4xl mx-auto text-center px-4 flex flex-col items-center">
+  <div
+    class="container max-w-4xl mx-auto text-center px-4 flex flex-col items-center"
+  >
     <SectionHeader
       title="Floorplan Companies"
       subtitle="We work with a variety of floorplan companies to give our dealers as many options as possible as they seek to beef up their fleet. We accept:"
       class="mb-6"
+      subtitleClass="max-w-[70ch]"
     />
-    
+
     <!-- Floorplan list bullets -->
-    <div class="text-left inline-block mb-10 text-sm md:text-base font-thin leading-loose">
-      <ul class="list-disc list-inside space-y-1">
+    <div
+      class="text-left inline-block mb-10 text-sm md:text-base font-thin leading-7.5 text-white"
+    >
+      <ul class="list-disc list-inside">
         <li>Axle Funding</li>
         <li>Automotive Finance Corporation (AFC)</li>
         <li>Bank of America</li>
@@ -31,12 +36,15 @@ import SectionHeader from "../SectionHeader.astro";
         <li>Westlake Flooring (WTL)</li>
       </ul>
     </div>
-    
-    <p class="font-thin text-xs md:text-sm text-gray-200 mb-6 max-w-lg">
-      Have a Floorplan provider you'd like us to partner with that isn't already listed here?<br />
+
+    <p
+      class="font-thin text-xs md:text-sm lg:text-base text-white mb-6 max-w-2xl"
+    >
+      Have a Floorplan provider you'd like us to partner with that isn't already
+      listed here?<br />
       Contact Us to let us know!
     </p>
-    
+
     <Button href="/contact">Contact Us</Button>
   </div>
 </section>

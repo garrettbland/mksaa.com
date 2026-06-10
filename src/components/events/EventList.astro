@@ -1,0 +1,37 @@
+---
+import SectionHeader from "../SectionHeader.astro";
+import EventItem from "./EventItem.astro";
+import eventsData from "../../data/events.json";
+---
+
+<section class="bg-white py-20">
+  <div class="container max-w-4xl mx-auto px-4">
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <SectionHeader
+        title="Upcoming Events"
+        subtitle="You Won't Want to Miss These!"
+        subtitleClass="font-display italic text-3xl md:!text-4xl mt-2 !text-[#8a2025] "
+        titleClass="!text-[#8a2025]"
+        class="gap-2"
+      />
+    </div>
+
+    <!-- Events List -->
+    <div class="flex flex-col gap-10">
+      {
+        eventsData.map((event) => (
+          <EventItem
+            title={event.title}
+            date={event.date}
+            time={event.time}
+            location={event.location}
+            description={event.description}
+            imagePath={event.image}
+            detailsLink={event.detailsLink}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

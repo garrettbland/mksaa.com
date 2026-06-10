@@ -1,21 +1,22 @@
 ---
-import { Image } from "astro:assets";
 import Base from "../../layouts/Base.astro";
-import HeaderBGPhoto from "../../assets/images/workers-background.avif";
 import PageHeader from "../../components/PageHeader.astro";
+import EventIntro from "../../components/events/EventIntro.astro";
+import EventList from "../../components/events/EventList.astro";
+
+// Import the header background image (matching the Wix page)
+// Using experience-register-bg.jpg as a placeholder for the red header background
+// Alternatively, we can use workers-background.avif
+import HeaderBGPhoto from "../../assets/images/events/image.png";
 ---
 
 <Base
   title="Upcoming Events | Mid Kansas Auto Auction"
-  description="GET FROM CURRENT SITE TO DO"
+  description="Browse upcoming events at Mid Kansas Auto Auction, and see why we are famous for fun!"
 >
-  <PageHeader
-    title="News & Announcements"
-    subtitle="Read the latest news and announcements from Mid Kansas Auto Auction for our dealers, the community, and the automotive industry"
-    bgImage={HeaderBGPhoto}
-  />
-  
-  <div class="container py-12">
-    to do
-  </div>
+  <PageHeader title="Upcoming Events" bgImage={HeaderBGPhoto} />
+
+  <EventIntro />
+
+  <EventList />
 </Base>

@@ -1,0 +1,22 @@
+---
+import NewsItem from "./NewsItem.astro";
+import newsData from "../../data/news.json";
+---
+
+<section class="bg-brand-gray py-20">
+  <div class="container mx-auto px-4 w-full max-w-[980px]">
+    <div class="flex flex-col gap-6">
+      {
+        newsData.map((news) => (
+          <NewsItem
+            title={news.title}
+            date={news.date}
+            description={news.description}
+            imagePath={news.image}
+            detailsLink={news.detailsLink}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

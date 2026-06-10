@@ -1,89 +1,137 @@
 ---
 import ShowcaseVideo from "../../assets/videos/experience-video.mp4";
+import MapImage from "../../assets/images/mapwhite-2.png";
+import Image from "astro/components/Image.astro";
 import Button from "../Button.astro";
+import SectionHeader from "../SectionHeader.astro";
+
+const features = [
+  {
+    title: "Fast & Easy",
+    desc: "Prime location for hassle-free shipping and receiving vehicles at the intersection of I-35 and 47th St. in South Wichita.",
+  },
+  {
+    title: "Online Bidding",
+    desc: "All five lanes are equipped for Internet bidding. Online and mobile bidding currently accounts for 30% of sales.",
+  },
+  {
+    title: "Detailing & Repair",
+    desc: "Full service, two-lane detail shop and three-bay mechanical area featured in reconditioning facility. Offering presale and 7-day or 14-day post-sale inspections.",
+  },
+];
+
+const perksLeft = [
+  "Free donuts, fruit, and coffee at every sale",
+  "Special events and dealer dinners",
+  "Games to compete for cash every week",
+];
+
+const perksRight = [
+  "12 huge promotional sales each year",
+  "Prompt and professional communication",
+  "Personal relationships with our team",
+];
 ---
 
 <section class="bg-brand-gray py-20 text-white">
-  <div class="container max-w-6xl">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Text details -->
-      <div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-brand-primary">Doing Business at MKSAA</h2>
-        <p class="font-thin leading-relaxed text-gray-300 mb-8">
-          As our family-owned auction continues to grow, we work with buyers and sellers from all over the country. We specialize in a regional area in the Central U.S. but would welcome your business, regardless of where you are located.
-        </p>
-        
-        <!-- Key Points Cards -->
-        <div class="space-y-6">
-          <div class="flex items-start gap-4">
-            <div class="bg-brand-primary/20 p-3 rounded-lg text-brand-primary mt-1 animate-pulse">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-lg">Serving the Central U.S.</h4>
-              <p class="font-thin text-sm text-gray-400">With Nationwide Attendance In-Lane and Online Each Week!</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-4">
-            <div class="bg-brand-primary/20 p-3 rounded-lg text-brand-primary mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-lg">Fast & Easy</h4>
-              <p class="font-thin text-sm text-gray-400">Prime location for hassle-free shipping and receiving vehicles at the intersection of I-35 and 47th St. in South Wichita.</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-4">
-            <div class="bg-brand-primary/20 p-3 rounded-lg text-brand-primary mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-lg">Online Bidding</h4>
-              <p class="font-thin text-sm text-gray-400">All five lanes are equipped for Internet bidding. Online and mobile bidding currently accounts for 30% of sales.</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-4">
-            <div class="bg-brand-primary/20 p-3 rounded-lg text-brand-primary mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-lg">Detailing & Repair</h4>
-              <p class="font-thin text-sm text-gray-400">Full service, two-lane detail shop and three-bay mechanical area featured in reconditioning facility. Offering presale and 7-day or 14-day post-sale inspections.</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="flex flex-row gap-6 mt-8">
-          <Button href="https://login.mksaa.com/components/login" variant="primary" external>Dealer Login</Button>
-          <Button href="/contact">How to Register</Button>
-        </div>
-      </div>
-      
-      <!-- Video side -->
-      <div class="relative flex justify-center">
-        <div class="absolute inset-0 bg-brand-primary rounded-xl translate-x-3 translate-y-3 opacity-30"></div>
+  <div class="container max-w-6xl flex flex-col gap-16">
+
+    <!-- ── Top: Heading + Video ── -->
+    <div class="flex flex-col items-center text-center gap-8">
+      <SectionHeader
+        title="Doing Business at MKSAA"
+        subtitle="As our family-owned auction continues to grow, we work with buyers and sellers from all over the country. We specialize in a regional area in the Central U.S. but would welcome your business, regardless of where you are located."
+        subtitleClass="max-w-2xl"
+      />
+
+      <!-- Video showcase -->
+      <div class="w-full max-w-3xl">
         <video
-          controls
+          autoplay
+          muted
+          loop
+          playsinline
           preload="metadata"
-          class="relative z-10 w-full h-auto rounded-xl shadow-2xl border-4 border-brand-gray bg-black"
+          class="w-full h-auto rounded-xl shadow-2xl bg-black"
           src={ShowcaseVideo}
         >
           Your browser does not support the video tag.
         </video>
       </div>
     </div>
+
+    <!-- ── Middle: Map + Features ── -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Map column -->
+      <div class="flex flex-col items-start gap-5">
+        <Image
+          src={MapImage}
+          alt="MKSAA Central US Service Area Map"
+          class="w-full max-w-sm h-auto object-contain opacity-90"
+        />
+        <div>
+          <p class="font-display italic text-2xl text-white leading-tight">
+            Serving the Central U.S.
+          </p>
+          <div class="w-16 h-0.5 bg-brand-primary my-2"></div>
+          <p class="text-xs italic text-white/70 leading-relaxed">
+            With Nationwide Attendance<br />
+            In-Lane and Online Each Week!<br />
+            Our service area will continue to grow!
+          </p>
+        </div>
+      </div>
+
+      <!-- Features + Buttons column -->
+      <div class="flex flex-col gap-6">
+        {features.map((f) => (
+          <div>
+            <h4 class="font-display italic text-lg text-white mb-1">{f.title}</h4>
+            <p class="text-sm text-white/70 leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+
+        <div class="flex flex-col items-start gap-3 mt-2">
+          <Button href="https://login.mksaa.com/components/login" external>
+            Dealer Login
+          </Button>
+          <a
+            href="/contact"
+            class="text-sm text-white/70 hover:text-white underline underline-offset-4 transition-colors"
+          >
+            How to Register
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Bottom: Dealer Perks Card ── -->
+    <div class="bg-white rounded-2xl px-10 py-10 text-brand-gray shadow-xl">
+      <h3 class="text-2xl md:text-3xl font-bold text-center text-brand-gray mb-8">
+        Dealer Perks
+      </h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-3">
+        <!-- Left perks -->
+        <ul class="flex flex-col gap-3">
+          {perksLeft.map((perk) => (
+            <li class="flex items-center gap-3 text-sm text-gray-700">
+              <span class="text-brand-primary text-base shrink-0">★</span>
+              {perk}
+            </li>
+          ))}
+        </ul>
+        <!-- Right perks -->
+        <ul class="flex flex-col gap-3">
+          {perksRight.map((perk) => (
+            <li class="flex items-center gap-3 text-sm text-gray-700">
+              <span class="text-brand-primary text-base shrink-0">★</span>
+              {perk}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "helping-hands-benefit-sale",
+    "title": "Helping Hands Benefit Sale",
+    "date": "Wednesday, June 17, 2026",
+    "time": "9AM",
+    "location": "Wichita",
+    "description": "Big sale energy, bigger impact! For every unit sold, we're donating to Wichita's Littlest Heroes! Free breakfast starts early and a food truck will be serving lunch.",
+    "image": "helping-hands.png",
+    "detailsLink": "https://www.mksaa.com/events/helping-hands-benefit-sale"
+  },
+  {
+    "id": "big-annual-event",
+    "title": "Big Annual Event Sale",
+    "date": "Wednesday, July 15, 2026",
+    "time": "9AM",
+    "location": "Wichita",
+    "description": "Our biggest sale of the whole year is a complete blowout! $15,000+ in cash & prizes including high quality Yeti coolers, Bose Speakers, Pit Boss and Traeger smokers, and the grand prize... a fully rigged golf cart! Free lunch and more fun!",
+    "image": "big-annual.png",
+    "detailsLink": "https://www.mksaa.com/events/big-annual-event"
+  },
+  {
+    "id": "bag-sale",
+    "title": "Bag Sale",
+    "date": "Wednesday, August 12, 2026",
+    "time": "9AM",
+    "location": "Wichita",
+    "description": "The bag sale is back! On top of the usual amazing sale day running, every dealer can grab an MKSAA bag and load it full of swag at the checkout! We have over $5,000+ cash prizes... so come ready to win and bring the bag!",
+    "image": "bag-sale.png",
+    "detailsLink": "https://www.mksaa.com/events/bag-sale"
+  },
+  {
+    "id": "corn-roast-sale",
+    "title": "Corn Roast Sale",
+    "date": "Wednesday, September 16, 2026",
+    "time": "9AM",
+    "location": "Wichita",
+    "description": "Nothing says fall like roasting corn on the cob... This is a fan favorite! Grab some fresh roasted corn before you head out into the lanes. Then come inside for a chance to win cash prizes! See you there!",
+    "image": "corn-roast.png",
+    "detailsLink": "https://www.mksaa.com/events/corn-roast-sale"
+  },
+  {
+    "id": "oktoberfest-sale",
+    "title": "Oktoberfest Sale",
+    "date": "Wednesday, October 7, 2026",
+    "time": "9AM",
+    "location": "Wichita",
+    "description": "It's time for Oktoberfest! Bratwurst, pretzels... $2,000+ in prizes! Come join us in dressing up right out of a bierhall! Prost!",
+    "image": "oktoberfest.png",
+    "detailsLink": "https://www.mksaa.com/events/oktoberfest-sale"
+  },
+  {
+    "id": "the-time-is-right-anniversary-sale",
+    "title": "The Time is Right Anniversary Sale",
+    "date": "Wednesday, November 11, 2026",
+    "time": "9AM",
+    "location": "Wichita",
+    "description": "Come on down... it's our anniversary! So the deals are the best around. We'll be bringing all the fun games of The Price is Right to MKSAA where you get to guess the prices for a chance to win $10,000+! So come on down!",
+    "image": "time-is-right.png",
+    "detailsLink": "https://www.mksaa.com/events/the-time-is-right-anniversary-sale"
+  }
+]
