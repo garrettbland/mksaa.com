@@ -4,10 +4,15 @@ import Logo from "../assets/images/mid-kansas-auto-auction-logo.png";
 import FooterLogos from "../assets/images/footer-logos.png";
 import ButtonBanner from "../components/ButtonBanner.astro";
 
+export interface Props {
+  hideButtonBanner?: boolean;
+}
+
+const { hideButtonBanner = false } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
-<ButtonBanner />
+{!hideButtonBanner && <ButtonBanner />}
 <footer class="bg-brand-primary relative overflow-hidden flex justify-center">
   <div
     class="relative z-[2] my-24 container max-w-5xl flex flex-col items-center justify-center gap-4"

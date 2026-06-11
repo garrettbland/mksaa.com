@@ -29,21 +29,21 @@ const sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
   <!-- Left Arrow -->
   <button 
     type="button"
-    class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
+    class="absolute left-0 top-0 bottom-0 w-16 bg-white/70 hover:bg-white/90 text-gray-800 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
     aria-label="Previous image"
     data-slider-prev
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
   </button>
 
   <!-- Right Arrow -->
   <button 
     type="button"
-    class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
+    class="absolute right-0 top-0 bottom-0 w-16 bg-white/70 hover:bg-white/90 text-gray-800 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
     aria-label="Next image"
     data-slider-next
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
   </button>
 </div>
 
@@ -58,52 +58,43 @@ const sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
 </style>
 
 <script>
-  class NewsSlider {
-    constructor(element: HTMLElement) {
-      this.container = element.querySelector('[data-slider-container]') as HTMLElement;
-      this.prevBtn = element.querySelector('[data-slider-prev]') as HTMLButtonElement;
-      this.nextBtn = element.querySelector('[data-slider-next]') as HTMLButtonElement;
-      
-      if (!this.container) return;
-
-      this.init();
-    }
-
-    init() {
-      this.prevBtn?.addEventListener('click', () => this.scroll(-1));
-      this.nextBtn?.addEventListener('click', () => this.scroll(1));
-
-      // Update button states on scroll
-      this.container.addEventListener('scroll', () => this.updateButtons(), { passive: true });
-      
-      // Initial state
-      this.updateButtons();
-    }
-
-    scroll(direction: number) {
-      const width = this.container.clientWidth;
-      this.container.scrollBy({ left: width * direction, behavior: 'smooth' });
-    }
-
-    updateButtons() {
-      if (!this.prevBtn || !this.nextBtn) return;
-      
-      const { scrollLeft, scrollWidth, clientWidth } = this.container;
-      
-      this.prevBtn.disabled = scrollLeft <= 10;
-      this.nextBtn.disabled = scrollLeft >= scrollWidth - clientWidth - 10;
-    }
-  }
-
   // Initialize all sliders on the page
-  document.addEventListener('astro:page-load', () => {
-    document.querySelectorAll('[id^="slider-"]').forEach(el => {
-      new NewsSlider(el as HTMLElement);
+  const initSliders = () => {
+    document.querySelectorAll('[id^="slider-"]').forEach(slider => {
+      const container = slider.querySelector('[data-slider-container]') as HTMLElement;
+      const prevBtn = slider.querySelector('[data-slider-prev]') as HTMLButtonElement;
+      const nextBtn = slider.querySelector('[data-slider-next]') as HTMLButtonElement;
+      
+      if (!container || !prevBtn || !nextBtn) return;
+      
+      const updateButtons = () => {
+        const { scrollLeft, scrollWidth, clientWidth } = container;
+        prevBtn.disabled = scrollLeft <= 0;
+        nextBtn.disabled = scrollLeft >= scrollWidth - clientWidth - 5; // 5px buffer
+        
+        if (prevBtn.disabled) prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        else prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        
+        if (nextBtn.disabled) nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        else nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      };
+      
+      container.addEventListener('scroll', updateButtons, { passive: true });
+      window.addEventListener('resize', updateButtons);
+      
+      prevBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+      });
+      
+      // Initialize
+      setTimeout(updateButtons, 100);
     });
-  });
+  };
 
-  // Fallback for non-view-transitions
-  document.querySelectorAll('[id^="slider-"]').forEach(el => {
-    new NewsSlider(el as HTMLElement);
-  });
+  document.addEventListener('astro:page-load', initSliders);
+  initSliders();
 </script>
