@@ -1,0 +1,131 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import EventAccordion from "../../components/events/EventAccordion.astro";
+import EventGallery from "../../components/events/EventGallery.astro";
+import Button from "../../components/Button.astro";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import HeaderBGPhoto from "../../assets/images/events/image.png";
+
+export async function getStaticPaths() {
+  const eventsEntries = await getCollection("events");
+  // Sort by date (mock sorting since they are strings, but sufficient for navigation)
+  eventsEntries.sort((a: CollectionEntry<"events">, b: CollectionEntry<"events">) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+  const paths = eventsEntries.map((entry: CollectionEntry<"events">, index: number) => {
+    const prev = index > 0 ? eventsEntries[index - 1] : null;
+    const next = index < eventsEntries.length - 1 ? eventsEntries[index + 1] : null;
+
+    return {
+      params: { slug: entry.id },
+      props: { entry, prev, next },
+    };
+  });
+  console.log("Generated Event Paths:", paths.map((p: any) => p.params.slug));
+  return paths;
+}
+
+interface Props {
+  entry: CollectionEntry<"events">;
+  prev: CollectionEntry<"events"> | null;
+  next: CollectionEntry<"events"> | null;
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/events/*.png");
+const imageSrc = images[`/src/assets/images/events/${entry.data.image}`] 
+  ? images[`/src/assets/images/events/${entry.data.image}`]() 
+  : null;
+---
+
+<Base
+  title={`${entry.data.title} | Mid Kansas Auto Auction`}
+  description={entry.data.description}
+>
+  <PageHeader title="Sale Event Details" bgImage={HeaderBGPhoto} />
+
+  <article class="bg-white py-16">
+    <div class="container max-w-4xl mx-auto px-4">
+      <!-- Back Link -->
+      <a href="/events" class="text-sm text-gray-500 hover:text-brand-primary transition-colors flex items-center gap-1 mb-10">
+        &lt; Back
+      </a>
+
+      <!-- Event Header -->
+      <div class="text-center flex flex-col items-center mb-10">
+        {
+          imageSrc ? (
+            <Image
+              src={imageSrc}
+              alt={entry.data.title}
+              class="h-40 w-auto object-contain mb-8"
+              height={160}
+            />
+          ) : (
+            <div class="h-40 w-64 bg-gray-100 flex items-center justify-center text-gray-400 mb-8">
+              Logo
+            </div>
+          )
+        }
+        
+        <h3 class="text-xl md:text-2xl font-medium text-gray-600 mb-2">
+          {entry.data.title}
+        </h3>
+        <h1 class="text-3xl md:text-[40px] font-bold text-brand-primary leading-tight mb-3">
+          {entry.data.date}
+        </h1>
+        <p class="text-sm text-gray-500">
+          {entry.data.time} | {entry.data.location}
+        </p>
+      </div>
+
+      <!-- Accordion & Content -->
+      <div class="max-w-3xl mx-auto">
+        <EventAccordion title={`${entry.data.title} Event Details`}>
+          <Content />
+        </EventAccordion>
+      </div>
+
+      <!-- Event Gallery -->
+      <div class="max-w-4xl mx-auto">
+        <EventGallery images={entry.data.galleryImages && entry.data.galleryImages.length > 0 ? entry.data.galleryImages : [
+          "/images/events/gallery/helping-hands-1.jpg",
+          "/images/events/gallery/helping-hands-2.jpg",
+          "/images/events/gallery/helping-hands-3.jpg",
+          "/images/events/gallery/helping-hands-4.jpg",
+          "/images/events/gallery/helping-hands-5.jpg",
+          "/images/events/gallery/helping-hands-6.jpg",
+          "/images/events/gallery/helping-hands-7.jpg",
+          "/images/events/gallery/helping-hands-8.jpg"
+        ]} />
+      </div>
+
+      <!-- Pagination Footer -->
+      <div class="mt-16 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-medium max-w-4xl mx-auto">
+        {prev ? (
+          <a href={`/events/${prev.id}`} class="text-gray-600 hover:text-black transition">
+            Previous
+          </a>
+        ) : (
+          <span class="text-gray-300">Previous</span>
+        )}
+
+        <a href="https://62471f53-f133-44dd-90f4-e704fd3f0168.filesusr.com/ugd/866064_dd46533969594ba98e9ca82dd1809f7d.pdf" target="_blank" class="inline-block text-center w-full sm:w-auto px-10 py-3.5 bg-[#2c2c2c] hover:bg-black text-white font-bold border-none rounded transition-colors shadow-md">
+          Calendar of Our Biggest Sales!
+        </a>
+
+        {next ? (
+          <a href={`/events/${next.id}`} class="text-gray-600 hover:text-black transition">
+            Next
+          </a>
+        ) : (
+          <span class="text-gray-300">Next</span>
+        )}
+      </div>
+    </div>
+  </article>
+</Base>
