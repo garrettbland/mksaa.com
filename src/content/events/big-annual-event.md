@@ -5,6 +5,15 @@ time: "9AM"
 location: "Wichita"
 description: "Our biggest sale of the whole year is a complete blowout! $15,000+ in cash & prizes including high quality Yeti coolers, Bose Speakers, Pit Boss and Traeger smokers, and the grand prize... a fully rigged golf cart! Free lunch and more fun!"
 image: "big-annual.png"
+galleryImages:
+  - "/images/events/gallery/big-annual-event-2.jpg"
+  - "/images/events/gallery/big-annual-event-3.jpg"
+  - "/images/events/gallery/big-annual-event-4.jpg"
+  - "/images/events/gallery/big-annual-event-5.jpg"
+  - "/images/events/gallery/big-annual-event-6.jpg"
+  - "/images/events/gallery/big-annual-event-7.jpg"
+  - "/images/events/gallery/big-annual-event-8.jpg"
+  - "/images/events/gallery/big-annual-event-9.jpg"
 ---
 
 ### Big Annual Event Sale Details

@@ -5,6 +5,15 @@ time: "9AM"
 location: "Wichita"
 description: "It's time for Oktoberfest! Bratwurst, pretzels... $2,000+ in prizes! Come join us in dressing up right out of a bierhall! Prost!"
 image: "oktoberfest.png"
+galleryImages:
+  - "/images/events/gallery/oktoberfest-sale-2.jpg"
+  - "/images/events/gallery/oktoberfest-sale-3.jpg"
+  - "/images/events/gallery/oktoberfest-sale-4.jpg"
+  - "/images/events/gallery/oktoberfest-sale-5.jpg"
+  - "/images/events/gallery/oktoberfest-sale-6.jpg"
+  - "/images/events/gallery/oktoberfest-sale-7.jpg"
+  - "/images/events/gallery/oktoberfest-sale-8.jpg"
+  - "/images/events/gallery/oktoberfest-sale-9.jpg"
 ---
 
 ### Oktoberfest Sale Event Details

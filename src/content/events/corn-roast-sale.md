@@ -5,6 +5,15 @@ time: "9AM"
 location: "Wichita"
 description: "Nothing says fall like roasting corn on the cob... This is a fan favorite! Grab some fresh roasted corn before you head out into the lanes. Then come inside for a chance to win cash prizes! See you there!"
 image: "corn-roast.png"
+galleryImages:
+  - "/images/events/gallery/corn-roast-sale-2.jpg"
+  - "/images/events/gallery/corn-roast-sale-3.jpg"
+  - "/images/events/gallery/corn-roast-sale-4.jpg"
+  - "/images/events/gallery/corn-roast-sale-5.jpg"
+  - "/images/events/gallery/corn-roast-sale-6.jpg"
+  - "/images/events/gallery/corn-roast-sale-7.jpg"
+  - "/images/events/gallery/corn-roast-sale-8.jpg"
+  - "/images/events/gallery/corn-roast-sale-9.jpg"
 ---
 
 ### Corn Roast Sale Event Details

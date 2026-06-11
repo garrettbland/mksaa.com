@@ -5,6 +5,15 @@ time: "9AM"
 location: "Wichita"
 description: "Come on down... it's our anniversary! So the deals are the best around. We'll be bringing all the fun games of The Price is Right to MKSAA where you get to guess the prices for a chance to win $10,000+! So come on down!"
 image: "time-is-right.png"
+galleryImages:
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-2.jpg"
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-3.jpg"
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-4.jpg"
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-5.jpg"
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-6.jpg"
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-7.jpg"
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-8.jpg"
+  - "/images/events/gallery/the-time-is-right-anniversary-sale-9.jpg"
 ---
 
 ### The Time is Right Anniversary Sale Event Details

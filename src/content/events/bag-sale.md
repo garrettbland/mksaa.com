@@ -5,6 +5,15 @@ time: "9AM"
 location: "Wichita"
 description: "The bag sale is back! On top of the usual amazing sale day running, every dealer can grab an MKSAA bag and load it full of swag at the checkout! We have over $5,000+ cash prizes... so come ready to win and bring the bag!"
 image: "bag-sale.png"
+galleryImages:
+  - "/images/events/gallery/bag-sale-2.jpg"
+  - "/images/events/gallery/bag-sale-3.jpg"
+  - "/images/events/gallery/bag-sale-4.jpg"
+  - "/images/events/gallery/bag-sale-5.jpg"
+  - "/images/events/gallery/bag-sale-6.jpg"
+  - "/images/events/gallery/bag-sale-7.jpg"
+  - "/images/events/gallery/bag-sale-8.jpg"
+  - "/images/events/gallery/bag-sale-9.jpg"
 ---
 
 ### Bag Sale Event Details

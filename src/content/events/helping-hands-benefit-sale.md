@@ -6,14 +6,14 @@ location: "Wichita"
 description: "Big sale energy, bigger impact! For every unit sold, we're donating to Wichita's Littlest Heroes! Free breakfast starts early and a food truck will be serving lunch."
 image: "helping-hands.png"
 galleryImages:
-  - "/images/events/gallery/helping-hands-1.jpg"
-  - "/images/events/gallery/helping-hands-2.jpg"
-  - "/images/events/gallery/helping-hands-3.jpg"
-  - "/images/events/gallery/helping-hands-4.jpg"
-  - "/images/events/gallery/helping-hands-5.jpg"
-  - "/images/events/gallery/helping-hands-6.jpg"
-  - "/images/events/gallery/helping-hands-7.jpg"
-  - "/images/events/gallery/helping-hands-8.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-2.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-3.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-4.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-5.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-6.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-7.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-8.jpg"
+  - "/images/events/gallery/helping-hands-benefit-sale-9.jpg"
 ---
 
 ### Helping Hands Benefit Sale Event Details
