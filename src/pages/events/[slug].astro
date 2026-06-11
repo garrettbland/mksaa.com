@@ -4,7 +4,6 @@ import Base from "../../layouts/Base.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import EventAccordion from "../../components/events/EventAccordion.astro";
 import EventGallery from "../../components/events/EventGallery.astro";
-import Button from "../../components/Button.astro";
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 // Use the red tinted background image for event details
@@ -81,10 +80,6 @@ const imagePromise = imageKey ? images[imageKey]() : null;
         <p class="text-sm text-gray-500 mb-6">
           {entry.data.time} | {entry.data.location}
         </p>
-        
-        <Button href="https://62471f53-f133-44dd-90f4-e704fd3f0168.filesusr.com/ugd/866064_dd46533969594ba98e9ca82dd1809f7d.pdf" variant="primary" external>
-          Printable Calendar of Our Biggest Sales
-        </Button>
       </div>
 
       <!-- Accordion & Content -->
