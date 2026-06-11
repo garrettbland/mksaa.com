@@ -12,10 +12,6 @@ export interface Props {
 
 const { title, date, description, imagePath, detailsLink } = Astro.props;
 
-// Dynamically import images from the news directory
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/news/*.{png,jpg,jpeg,avif}");
-const imageKey = Object.keys(images).find(key => key.endsWith(imagePath));
-const imageSrc = imageKey ? images[imageKey]() : null;
 ---
 
 <a 
@@ -25,21 +21,13 @@ const imageSrc = imageKey ? images[imageKey]() : null;
   class="flex flex-col md:flex-row items-stretch bg-white transition-all duration-300 hover:opacity-95 group max-w-[980px] mx-auto w-full"
 >
   <!-- News Image (Left side, exactly 360px width on desktop) -->
-  <div class="w-full md:w-[360px] md:min-w-[360px] shrink-0 overflow-hidden relative bg-gray-100 min-h-[234px]">
-    {
-      imageSrc ? (
-        <Image
-          src={imageSrc}
-          alt={title}
-          class="absolute inset-0 w-full h-full object-cover"
-          width={600}
-        />
-      ) : (
-        <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-          Image not found
-        </div>
-      )
-    }
+  <div class="w-full md:w-[360px] md:min-w-[360px] shrink-0 overflow-hidden relative bg-gray-100 min-h-[234px]"> 
+    <img src={`/images/news/${imagePath}`} 
+      alt={title} 
+      class="absolute inset-0 w-full h-full object-cover" 
+      loading="lazy" 
+      width="600" 
+    />
   </div>
 
   <!-- News Details -->

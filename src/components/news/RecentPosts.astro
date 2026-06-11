@@ -1,0 +1,51 @@
+---
+export interface Props {
+  currentPostId: string;
+}
+
+const { currentPostId } = Astro.props;
+
+const rawFiles = import.meta.glob("../../content/news/*.md", { eager: true });
+const allNews = Object.entries(rawFiles).map(([path, file]: [string, any]) => {
+  const slug = path.split('/').pop()?.replace('.md', '');
+  return {
+    id: slug,
+    data: file.frontmatter,
+  };
+});
+
+// Filter out current post and take top 3
+const recentPosts = allNews
+  .filter(post => post.id !== currentPostId)
+  .slice(0, 3);
+---
+
+<section class="py-16 bg-brand-gray border-t border-gray-200">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="flex justify-between items-end mb-8">
+      <h2 class="text-3xl font-bold text-brand-primary">Recent Posts</h2>
+      <a href="/news" class="text-brand-primary hover:underline font-medium">See All</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {recentPosts.map((post) => (
+        <a href={`/news/${post.id}`} class="bg-white flex flex-col group hover:shadow-lg transition-shadow">
+          <div class="relative w-full h-48 overflow-hidden bg-gray-100">
+            {post.data.image && (
+              <img 
+                src={`/images/news/${post.data.image}`} 
+                alt={post.data.title}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            )}
+          </div>
+          <div class="p-6 flex flex-col grow text-center">
+            <h3 class="font-bold text-lg text-gray-800 mb-2 line-clamp-2 min-h-[56px]">
+              {post.data.title}
+            </h3>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

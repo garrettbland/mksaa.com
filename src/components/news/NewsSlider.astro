@@ -1,0 +1,109 @@
+---
+export interface Props {
+  images: string[];
+}
+
+const { images } = Astro.props;
+// create unique id for this slider instance
+const sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="relative w-full overflow-hidden bg-gray-100 group" id={sliderId}>
+  <!-- Slider Container -->
+  <div 
+    class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar scroll-smooth w-full"
+    data-slider-container
+  >
+    {images.map((img, index) => (
+      <div class="w-full shrink-0 snap-center relative aspect-video flex items-center justify-center bg-black/5">
+        <img 
+          src={img} 
+          alt={`Gallery image ${index + 1}`} 
+          class="max-w-full max-h-[600px] object-contain w-auto h-full"
+          loading="lazy"
+        />
+      </div>
+    ))}
+  </div>
+
+  <!-- Left Arrow -->
+  <button 
+    type="button"
+    class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
+    aria-label="Previous image"
+    data-slider-prev
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+
+  <!-- Right Arrow -->
+  <button 
+    type="button"
+    class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 shadow-md transition-all opacity-0 group-hover:opacity-100 focus:outline-none disabled:opacity-0"
+    aria-label="Next image"
+    data-slider-next
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+</div>
+
+<style>
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  class NewsSlider {
+    constructor(element: HTMLElement) {
+      this.container = element.querySelector('[data-slider-container]') as HTMLElement;
+      this.prevBtn = element.querySelector('[data-slider-prev]') as HTMLButtonElement;
+      this.nextBtn = element.querySelector('[data-slider-next]') as HTMLButtonElement;
+      
+      if (!this.container) return;
+
+      this.init();
+    }
+
+    init() {
+      this.prevBtn?.addEventListener('click', () => this.scroll(-1));
+      this.nextBtn?.addEventListener('click', () => this.scroll(1));
+
+      // Update button states on scroll
+      this.container.addEventListener('scroll', () => this.updateButtons(), { passive: true });
+      
+      // Initial state
+      this.updateButtons();
+    }
+
+    scroll(direction: number) {
+      const width = this.container.clientWidth;
+      this.container.scrollBy({ left: width * direction, behavior: 'smooth' });
+    }
+
+    updateButtons() {
+      if (!this.prevBtn || !this.nextBtn) return;
+      
+      const { scrollLeft, scrollWidth, clientWidth } = this.container;
+      
+      this.prevBtn.disabled = scrollLeft <= 10;
+      this.nextBtn.disabled = scrollLeft >= scrollWidth - clientWidth - 10;
+    }
+  }
+
+  // Initialize all sliders on the page
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('[id^="slider-"]').forEach(el => {
+      new NewsSlider(el as HTMLElement);
+    });
+  });
+
+  // Fallback for non-view-transitions
+  document.querySelectorAll('[id^="slider-"]').forEach(el => {
+    new NewsSlider(el as HTMLElement);
+  });
+</script>

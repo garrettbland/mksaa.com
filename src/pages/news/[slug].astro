@@ -1,0 +1,100 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import NewsSlider from "../../components/news/NewsSlider.astro";
+import RecentPosts from "../../components/news/RecentPosts.astro";
+import HeaderBGPhoto from "../../assets/images/news/news-bg.png"; // Fallback bg if needed, or use the news header image
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const rawFiles = import.meta.glob("../../content/news/*.md", { eager: true });
+  console.log(`[slug].astro getStaticPaths: Found ${Object.keys(rawFiles).length} raw files`);
+  const newsEntries = Object.entries(rawFiles).map(([path, file]: [string, any]) => {
+    const slug = path.split('/').pop()?.replace('.md', '') || '';
+    return {
+      id: slug,
+      data: file.frontmatter,
+      Content: file.default
+    };
+  });
+  
+  return newsEntries.map((entry) => {
+    return {
+      params: { slug: entry.id },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = entry;
+
+// Format date nicely if possible, or just use string
+const dateString = entry.data.date;
+
+const currentUrl = new URL(Astro.url.pathname, Astro.site || 'https://www.mksaa.com').href;
+---
+
+<Base
+  title={`${entry.data.title} | Mid Kansas Auto Auction`}
+  description={entry.data.description}
+>
+  <PageHeader
+    title="News & Announcements"
+    bgImage={HeaderBGPhoto}
+  />
+
+  <section class="py-12 md:py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <!-- Article Header -->
+      <header class="mb-10 text-center">
+        <h1 class="text-3xl md:text-[40px] font-bold text-brand-primary leading-tight mb-4">
+          {entry.data.title}
+        </h1>
+        
+        <div class="flex items-center justify-center gap-4 text-gray-500 font-medium">
+          <span>{dateString}</span>
+          <span>•</span>
+          <!-- Social Share Icons -->
+          <div class="flex items-center gap-3">
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`} target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(entry.data.title)}`} target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+            </a>
+            <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(entry.data.title)}`} target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" class="hover:text-brand-primary transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Image -->
+      {entry.data.image && (
+        <div class="mb-10 w-full overflow-hidden flex justify-center group">
+           <img src={`/images/news/${entry.data.image}`} alt={entry.data.title} class="max-w-full h-auto object-cover max-h-[600px] w-full transition-transform duration-700 ease-in-out group-hover:scale-105" />
+        </div>
+      )}
+
+      <!-- Prose Content -->
+      <article class="prose prose-lg max-w-none text-gray-700 font-light prose-headings:text-brand-primary prose-a:text-brand-primary mb-16">
+        <Content />
+      </article>
+
+      <!-- Gallery Slider -->
+      {entry.data.galleryImages && entry.data.galleryImages.length > 0 && (
+        <div class="mb-16">
+          <NewsSlider images={entry.data.galleryImages} />
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Recent Posts -->
+  <RecentPosts currentPostId={entry.id} />
+</Base>

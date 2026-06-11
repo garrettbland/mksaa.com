@@ -38,9 +38,8 @@ const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 
 const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/events/*.png");
-const imageSrc = images[`/src/assets/images/events/${entry.data.image}`] 
-  ? images[`/src/assets/images/events/${entry.data.image}`]() 
-  : null;
+const imageKey = Object.keys(images).find(key => key.endsWith(entry.data.image || ''));
+const imagePromise = imageKey ? images[imageKey]() : null;
 ---
 
 <Base
@@ -59,9 +58,9 @@ const imageSrc = images[`/src/assets/images/events/${entry.data.image}`]
       <!-- Event Header -->
       <div class="text-center flex flex-col items-center mb-10">
         {
-          imageSrc ? (
+          imagePromise ? (
             <Image
-              src={imageSrc}
+              src={imagePromise}
               alt={entry.data.title}
               class="h-40 w-auto object-contain mb-8"
               height={160}
@@ -79,9 +78,13 @@ const imageSrc = images[`/src/assets/images/events/${entry.data.image}`]
         <h1 class="text-3xl md:text-[40px] font-bold text-brand-primary leading-tight mb-3">
           {entry.data.date}
         </h1>
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-gray-500 mb-6">
           {entry.data.time} | {entry.data.location}
         </p>
+        
+        <Button href="https://62471f53-f133-44dd-90f4-e704fd3f0168.filesusr.com/ugd/866064_dd46533969594ba98e9ca82dd1809f7d.pdf" variant="primary" external>
+          Printable Calendar of Our Biggest Sales
+        </Button>
       </div>
 
       <!-- Accordion & Content -->
