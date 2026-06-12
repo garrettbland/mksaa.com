@@ -15,6 +15,7 @@ import WorkersBackground from "../assets/images/workers-background.avif";
 import Quote1 from "../assets/images/quote_1.avif";
 import Quote2 from "../assets/images/quote_2.avif";
 import Quote3 from "../assets/images/quote_3.avif";
+import GalleryBackground from "../assets/images/gallery/gsllery-back.png";
 ---
 
 <Base
@@ -371,9 +372,15 @@ import Quote3 from "../assets/images/quote_3.avif";
   </section>
 
   <!-- Gallery and buttons -->
-  <section class="bg-brand-gray relative overflow-hidden flex justify-center">
+  <section 
+    class="bg-brand-gray relative overflow-hidden flex justify-center bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${GalleryBackground.src})`}
+  >
+    <!-- Overlay -->
+    <div class="absolute z-1 w-full h-full bg-black opacity-[0.89]"></div>
+
     <div
-      class="relative z-[2] my-24 container flex flex-col items-center justify-center gap-4"
+      class="relative z-[2] my-4 w-full flex flex-col items-center justify-center gap-4"
     >
       <!-- Photo Gallery -->
       <div class="w-full">

@@ -19,24 +19,42 @@ const images = [
 ];
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-  {images.map((img, index) => (
-    <div 
-      class="relative w-full h-64 rounded-lg overflow-hidden bg-white/10 animate-pulse shadow-sm hover:shadow-md transition-shadow duration-300"
-    >
-      <Image
-        src={img}
-        alt={`Mid Kansas Auto Auction gallery photo ${index + 1}`}
-        widths={[400, 800]}
-        sizes="(max-width: 768px) 100vw, 33vw"
-        format="avif"
-        quality={80}
-        loading="lazy"
-        decoding="async"
-        class="relative z-10 w-full h-full object-cover transition-opacity duration-700"
-        onload="this.parentElement.classList.remove('animate-pulse'); this.style.opacity=1;"
-        style="opacity: 0;"
-      />
-    </div>
-  ))}
+<div class="relative w-full overflow-hidden py-4 group">
+  <!-- Marquee Track -->
+  <div class="flex gap-4 w-max animate-marquee group-hover:[animation-play-state:paused]">
+    {[...images, ...images].map((img, index) => (
+      <div 
+        class="relative w-56 h-56 md:w-72 md:h-72 overflow-hidden shrink-0 bg-white/10 animate-pulse transition-shadow duration-300"
+      >
+        <Image
+          src={img}
+          alt={`Mid Kansas Auto Auction gallery photo ${index + 1}`}
+          widths={[400, 800]}
+          sizes="(max-width: 768px) 100vw, 33vw"
+          format="avif"
+          quality={80}
+          loading="lazy"
+          decoding="async"
+          class="relative z-10 w-full h-full object-cover transition-opacity duration-700"
+          onload="this.parentElement.classList.remove('animate-pulse'); this.style.opacity=1;"
+          style="opacity: 0;"
+        />
+      </div>
+    ))}
+  </div>
 </div>
+
+<style>
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - 0.5rem)); /* gap-4 is 1rem, half is 0.5rem */
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 80s linear infinite;
+  }
+</style>
