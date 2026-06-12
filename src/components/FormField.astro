@@ -3,9 +3,10 @@ interface Props {
   label: string;
   id: string;
   name?: string;
-  type?: "text" | "email" | "tel" | "password" | "number" | "url";
+  type?: "text" | "email" | "tel" | "password" | "number" | "url" | "textarea";
   required?: boolean;
   placeholder?: string;
+  rows?: number;
   /** Extra classes for the wrapping div */
   class?: string;
 }
@@ -17,20 +18,34 @@ const {
   type = "text",
   required = false,
   placeholder = "",
+  rows = 5,
   class: extraClass = "",
 } = Astro.props;
+
+const inputClass = "w-full bg-transparent border-0 border-b border-white rounded-none text-white text-sm font-light py-2 px-0 outline-none caret-white transition-colors duration-200 focus:border-b-brand-primary autofill:bg-transparent";
 ---
 
 <div class={`flex flex-col gap-1 ${extraClass}`}>
   <label for={id} class="text-xs text-white font-bold tracking-wide">
     {label}{required && " *"}
   </label>
-  <input
-    type={type}
-    id={id}
-    name={name ?? id}
-    required={required}
-    placeholder={placeholder}
-    class="w-full bg-transparent border-0 border-b border-white rounded-none text-white text-sm font-light py-2 px-0 outline-none caret-white transition-colors duration-200 focus:border-b-[#ff4040] autofill:bg-transparent"
-  />
+  {type === "textarea" ? (
+    <textarea
+      id={id}
+      name={name ?? id}
+      required={required}
+      placeholder={placeholder}
+      rows={rows}
+      class={inputClass + " resize-y"}
+    ></textarea>
+  ) : (
+    <input
+      type={type as any}
+      id={id}
+      name={name ?? id}
+      required={required}
+      placeholder={placeholder}
+      class={inputClass}
+    />
+  )}
 </div>
