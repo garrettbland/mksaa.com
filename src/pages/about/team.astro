@@ -3,7 +3,6 @@ import Image from "astro/components/Image.astro";
 import Base from "../../layouts/Base.astro";
 import HeaderBGPhoto from "../../assets/images/driver-in-car.jpg";
 import RoadPavement from "../../assets/images/road-pavement.jpg";
-import { getImage } from "astro:assets";
 import ModalGallery from "../../components/ModalGallery.tsx";
 import TeamMembers from "../../components/TeamMembers.astro";
 import PageHeader from "../../components/PageHeader.astro";
@@ -66,24 +65,10 @@ const teamMembers = [
   },
 ];
 
-let teamMembersWithOptimizedImages = [];
-
-// Optimize all images at build time
-await Promise.all(
-  teamMembers.map(async (member) => {
-    console.log("optimizing image for", member.name);
-    const optimized = await getImage({
-      src: member.image_url,
-      width: 800,
-      format: "webp",
-    });
-
-    teamMembersWithOptimizedImages.push({
-      ...member,
-      image_url: optimized.src,
-    });
-  }),
-);
+const teamMembersWithOptimizedImages = teamMembers.map(member => ({
+  ...member,
+  image_url: member.image_url.src
+}));
 ---
 
 <Base
