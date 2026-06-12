@@ -3,7 +3,7 @@ import { render } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import NewsSlider from "../../components/news/NewsSlider.astro";
 import RecentPosts from "../../components/news/RecentPosts.astro";
-import { Image } from "astro:assets";
+import Image from "astro/components/Image.astro";
 
 export async function getStaticPaths() {
   const rawFiles = import.meta.glob("../../content/news/*.md", { eager: true });
