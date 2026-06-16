@@ -1,0 +1,209 @@
+---
+import Image from "astro/components/Image.astro";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/driver-in-car.jpg";
+import RoadPavement from "../../assets/images/road-pavement.jpg";
+import { getImage } from "astro:assets";
+import ModalGallery from "../../components/ModalGallery.tsx";
+import TeamMembers from "../../components/TeamMembers.astro";
+
+import AndyHansen from "../../assets/images/team/Andy-Hansen.jpg";
+import LoriSchrier from "../../assets/images/team/Lori-Schrier.jpg";
+import CodyDale from "../../assets/images/team/Cody-Dale.png";
+import ShandiVanDolah from "../../assets/images/team/Shandi-Van-Dolah.jpg";
+import BrendaNayelyMacias from "../../assets/images/team/Brenda-Nayely-Macias.jpg";
+import CourtneyBushong from "../../assets/images/team/Courtney-Bushong.jpg";
+
+const teamMembers = [
+  {
+    name: "Andy Hansen",
+    position: "Sales Representative",
+    bio: "Andy’s desk is located in the Sales Office of the main building but he is often out and about mingling and creating relationships with new dealers and checking in on his regulars to make sure they are seeing their best personal results.",
+    email: "andyh@mksaa.com",
+    image_url: AndyHansen,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Lori Schrier",
+    position: "Fleet Lease Representative",
+    bio: "Lori works directly with our fleet leasing customers. She is located upstairs but can often be found out on the lot checking the fleet vehicles in and out.",
+    email: "loris@mksaa.com",
+    image_url: LoriSchrier,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Cody Dale",
+    position: "Sales Representative",
+    bio: "We are excited to have Cody Dale rejoin our MKSAA team as a Sales Representative in early 2025. Her role will focus on consigning and selling wholesale vehicles. Cody is particularly eager to dive back into the lively atmosphere of a physical auction.",
+    email: "codyd@mksaa.com",
+    image_url: CodyDale,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Shandi Van Dolah",
+    position: "Fleet Lease Representative",
+    bio: "Shandi joined our MKSAA team in May 2025 as a Fleet Lease Representative. In this role, she will work closely with both digital sales and fleet customers to streamline the buying, selling, and transportation processes, ensuring a positive experience for everyone involved.",
+    email: "shandiv@mksaa.com",
+    image_url: ShandiVanDolah,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Brenda Nayely Macías",
+    position: "Sales Representative",
+    bio: "Brenda is thrilled to return to the MKSAA team, she brings a passion for sales, relationship-building, and customer service. She always knew the automotive world was where she belonged. With over a decade of experience across the automotive and finance industries. Known for her ability to build genuine connections, Brenda takes a customer-first approach in everything she does. ",
+    email: "brendac@mksaa.com",
+    image_url: BrendaNayelyMacias,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Courtney Bushong",
+    position: "Sales Representative",
+    bio: "Courtney brings over 15 years of experience in sales and the automotive industry. She is highly motivated by ensuring every customer has a positive experience and takes pride in meeting their needs with professionalism and care. Courtney is excited to begin this next chapter of her career and looks forward to contributing her energy, and dedication to the Mid Kansas Auto Auction community. ",
+    email: "courtneyb@mksaa.com",
+    image_url: CourtneyBushong,
+    tag: "SALES_TEAM",
+  },
+];
+
+let teamMembersWithOptimizedImages = [];
+
+// Optimize all images at build time
+await Promise.all(
+  teamMembers.map(async (member) => {
+    console.log("optimizing image for", member.name);
+    const optimized = await getImage({
+      src: member.image_url,
+      width: 800,
+      format: "webp",
+    });
+
+    teamMembersWithOptimizedImages.push({
+      ...member,
+      image_url: optimized.src,
+    });
+  }),
+);
+---
+
+<Base
+  title="Our Team | Mid Kansas Auto Auction"
+  description="As a family-owned and operated business, it's important to us that our dealers and our team members get to know who we are and understand how integral they are to our success. Learn more about our team members below."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Our Team
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        As a family-owned and operated business, it's important to us that our
+        dealers and our team members get to know who we are and understand how
+        integral they are to our success. Learn more about our team members
+        below.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Group holding check"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Team Members -->
+  <section class="bg-brand-gray py-12">
+    <div class="text-white container max-w-4xl mx-auto">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        Meet the Team
+      </h2>
+      <p class="font-cursive text-white text-4xl text-center mb-4 mt-6">
+        How can we best serve you?
+      </p>
+      <p class="font-thin text-white text-center leading-loose text-sm mb-12">
+        Our goal is to best serve you, and make your life as easy as possible.
+        Not sure you who need to talk to? Find out more about our professional
+        auction team by clicking below!
+      </p>
+      <h3
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white mb-4"
+      >
+        MKSAA Sales Team
+      </h3>
+      <div class="mb-36">
+        <ModalGallery
+          client:load
+          data={teamMembersWithOptimizedImages.filter(
+            (i) => i.tag === "SALES_TEAM",
+          )}
+        />
+      </div>
+      <h3
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white mb-4"
+      >
+        MKSAA Team Members
+      </h3>
+      <div>
+        <TeamMembers />
+      </div>
+    </div>
+  </section>
+
+  <!-- Employee of the month -->
+  <!-- Header -->
+  <section class="bg-brand-gray py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h2
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Employee of the Month Award Winners
+      </h2>
+      <p class="font-cursive text-white text-4xl text-center mb-4 mt-6">
+        Thank You for All You Do!
+      </p>
+      <p class="font-thin text-white text-center mb-8 text-sm">
+        Our team works so hard, and each month we try to recognize at least one
+        person who has gone above and beyond to serve our dealers or their
+        colleagues.
+      </p>
+      <p class="text-center">
+        <span class="uppercase font-bold">Recent Winners</span><br />
+        <ul class="text-center">
+          <li>November 2025 - Tim Miller</li>
+          <li>October 2025 - Dustin Baughn</li>
+          <li>September 2025 - Robert Shepard</li>
+          <li>August 2025 - Eric Atkins</li>
+          <li>July 2025 - Shane Fitzhugh</li>
+          <li>June 2025 - Jim Baker</li>
+          <li>May 2025 - Nicole Garcia</li>
+          <li>April 2025 - Wendy Lynch</li>
+          <li>March 2025 - Joseph Cruz</li>
+          <li>February 2025 - Jossy Cabrera-Aceytuno</li>
+          <li>January 2025 - Karissa Smith</li>
+          <li>Employee of the Year 2024 - Samuel Jones</li>
+          <li>December 2024 - Samuel Jones</li>
+          <li>November 2024 - Brandi Barnes</li>
+          <li>October 2024 - Michelle Goff-Shepard</li>
+          <li>September 2024 - Lori Schrier</li>
+          <li>August 2024 - Tommy Lamm</li>
+          <li>July 2024 - Elise Wartick</li>
+          <li>June 2024 - Jessica Kelley</li>
+          <li>May 2024 - Robert Shepard</li>
+          <li>April 2024 - Dan Leach</li>
+          <li>March 2024 - Patti Kane</li>
+          <li>February 2024 - Kyle Smith</li>
+          <li>January 2024 - Jennifer Jones</li>
+        </ul>
+      </p>
+    </div>
+    <Image
+      src={RoadPavement}
+      alt="Group holding check"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+</Base>

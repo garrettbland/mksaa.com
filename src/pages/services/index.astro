@@ -1,0 +1,224 @@
+---
+import Image from "astro/components/Image.astro";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/car-lot.avif";
+import EDRLogo from "../../assets/images/enterprise-dent-repair-logo.png";
+import FastBackLogo from "../../assets/images/fastback-title-service-logo.png";
+import EnterpriseDentRepair from "../../assets/images/enterprise-dent-repair-bg.avif";
+import CarlotArial from "../../assets/images/carlot-arial.jpg";
+import EdgeLogo from "../../assets/images/edge-logo.avif";
+import PinsOnMap from "../../assets/images/pins-on-map.avif";
+
+import SmartAuctionLogo from "../../assets/images/smart-auction-logo.png";
+import OveLogo from "../../assets/images/ove-logo.png";
+import PipelineLogo from "../../assets/images/pipeline-edge-logo.avif";
+import AutoImsLogo from "../../assets/images/auto-ims-logo.png";
+
+import ServiceCards from "../../components/ServiceCards.astro";
+---
+
+<Base
+  title="Services | Mid Kansas Auto Auction"
+  description="We are a full-service auto auction located in the heart of the Midwest. Our geographical location, facility, and amazing staff have allowed us the ability to make the investments necessary to provide a world-class auction experience, parallel with the best of the best in the independent auction industry."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Services
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        We are a full-service auto auction located in the heart of the Midwest.
+        Our geographical location, facility, and amazing staff have allowed us
+        the ability to make the investments necessary to provide a world-class
+        auction experience, parallel with the best of the best in the
+        independent auction industry. Mid Kansas Auto Auction features a large
+        lot, Fastback Title Service, detailing and mechanical services,
+        transportation, online bidding, and so much more. Our dealers are
+        assigned a representative who will work with them to make the process
+        easy and personalized for your buying and selling needs.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Group holding check"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Cards -->
+  <section class="bg-brand-gray py-12">
+    <ServiceCards />
+  </section>
+
+  <!-- Services -->
+  <section class="bg-brand-primary py-24">
+    <div
+      class="max-w-2xl w-full mx-auto rounded-xl bg-brand-gray text-white p-8 border border-white border-2px"
+    >
+      <h2
+        class="text-center leading-tight text-2xl font-bold leading-loose text-white"
+      >
+        Multi List Services
+      </h2>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        We work to sell your cars 24/7 with these online services:
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <a href="https://www.smartauctionlogin.com/ui/home">
+          <Image
+            src={PipelineLogo}
+            alt="Pipeline Logo"
+            class="h-16 w-auto object-contain"
+            quality="medium"
+          />
+        </a>
+
+        <a href="https://site.autoims.com/">
+          <Image
+            src={AutoImsLogo}
+            alt="Auto IMS Logo"
+            class="h-16 w-auto object-contain"
+            quality="medium"
+          />
+        </a>
+
+        <a href="https://www.ove.com/login">
+          <Image
+            src={OveLogo}
+            alt="Ove Logo"
+            class="h-16 w-auto object-contain"
+            quality="medium"
+          />
+        </a>
+
+        <Image
+          src={SmartAuctionLogo}
+          alt="Smart Auction Logo"
+          class="h-16 w-auto object-contain"
+          quality="medium"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Enterprise Dent Repair -->
+  <section class="bg-brand-gray">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div class="flex flex-col justify-center items-center p-24">
+        <Image
+          src={EDRLogo}
+          alt="Enterprise Dent Repair Logo"
+          class="h-24 w-auto object-contain mb-6"
+          quality="medium"
+        />
+
+        <h2
+          class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+        >
+          Enterprise Dent Repair
+        </h2>
+        <p class="font-thin text-white text-center leading-loose text-sm">
+          We are pleased to have Enterprise Dent Repair call MKSAA home. They
+          offer their services out of our main building. You can contact Heath
+          for more information using the link below.
+        </p>
+        <a
+          href="https://www.enterprisedentrepair.com/"
+          class="mt-6 rounded-lg text-brand-primary bg-white px-12 py-3 hover:bg-brand-primary hover:text-white transition font-semibold"
+        >
+          Learn More
+        </a>
+      </div>
+      <div>
+        <Image
+          src={EnterpriseDentRepair}
+          alt="Enterprise Dent Repair"
+          class="h-full w-full object-cover"
+          quality="medium"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Fastback Title Service -->
+  <section class="bg-brand-gray">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div>
+        <Image
+          src={CarlotArial}
+          alt="Fastback Title Service"
+          class="h-full w-full object-cover"
+          quality="medium"
+        />
+      </div>
+      <div class="flex flex-col justify-center items-center p-24">
+        <Image
+          src={FastBackLogo}
+          alt="Fastback Title Service Logo"
+          class="h-24 w-auto object-contain mb-6"
+          quality="medium"
+        />
+
+        <h2
+          class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+        >
+          Fastback Title Service
+        </h2>
+        <p class="font-thin text-white text-center leading-loose text-sm">
+          Fast and affordable service. Fastback Title Service moved from
+          Broadway to inside of MKSAA in late 2020. Fastback can send and
+          process titles efficiently for any of our valued dealers. Hours are
+          Monday, Tuesday, and Thursday from 9 AM to 5 PM, as well as Wednesdays
+          from 12-5 PM and Fridays from 9 AM to 1 PM (Central Time).
+        </p>
+        <a
+          href="http://www.fastbacktitlesks.com/"
+          class="mt-6 rounded-lg text-brand-primary bg-white px-12 py-3 hover:bg-brand-primary hover:text-white transition font-semibold"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Edge Simulcast -->
+  <section class="bg-brand-gray">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div class="flex flex-col justify-center items-center p-24">
+        <Image
+          src={EdgeLogo}
+          alt="Edge Simulcast Logo"
+          class="h-24 w-auto object-contain mb-6"
+          quality="medium"
+        />
+
+        <h2
+          class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+        >
+          Edge Simulcast
+        </h2>
+        <p class="font-thin text-white text-center leading-loose text-sm">
+          We are proud to offer online bidding through Edge Simulcast. This
+          service allows dealers to view presale listings, bid remotely from any
+          device, remove and track the progress of vehicles moving through
+          lanes, and view all purchases after the sale. You can also login to
+          make proxy bids on cars before the sale begins and make an offer on
+          “no sales” after the sale. Just ask one of our sales reps for the “no
+          sale” list! You can bid on vehicles 24/7 through MKSAA.
+        </p>
+      </div>
+      <div>
+        <Image
+          src={PinsOnMap}
+          alt="Pins on Map"
+          class="h-full w-full object-cover"
+          quality="medium"
+        />
+      </div>
+    </div>
+  </section>
+</Base>

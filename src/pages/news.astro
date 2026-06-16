@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import HeaderBGPhoto from "../assets/images/news/news-bg.png";
+import PageHeader from "../components/PageHeader.astro";
+import NewsList from "../components/news/NewsList.astro";
+---
+
+<Base
+  title="News | Mid Kansas Auto Auction"
+  description="GET FROM CURRENT SITE TO DO"
+  hideButtonBanner={true}
+>
+  <PageHeader
+    title="News & Announcements"
+    subtitle="Read the latest news and announcements from Mid Kansas Auto Auction for our dealers, the community, and the automotive industry"
+    bgImage={HeaderBGPhoto}
+  />
+  <NewsList />
+</Base>

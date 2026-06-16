@@ -1,0 +1,37 @@
+---
+import RegisterBG from "../../assets/images/experience-register-bg.jpg";
+import Button from "../Button.astro";
+import FormField from "../FormField.astro";
+import SectionHeader from "../SectionHeader.astro";
+import BgSection from "../BgSection.astro";
+---
+
+<BgSection
+  image={RegisterBG}
+  class="py-20"
+  childrenClass="mx-auto px-8 text-center max-w-[40rem] grid gap-10"
+>
+  <SectionHeader
+    title="Get Registered with Us"
+    subtitle="We have paperwork we'd love to send you so you can get registered to do business here. Let us know where to send it!"
+  />
+
+  <!-- Form -->
+  <form class="text-left grid gap-8 max-w-[27rem] w-full mx-auto">
+    <!-- Row: First + Last Name -->
+    <div class="grid grid-cols-2 gap-8">
+      <FormField label="First Name" id="firstName" required />
+      <FormField label="Last Name" id="lastName" required />
+    </div>
+
+    <FormField label="Email" id="email" type="email" required />
+    <FormField label="Phone" id="phone" type="tel" required />
+    <FormField label="Company" id="company" required />
+    <FormField label="Auction Access Number" id="auctionAccess" />
+
+    <!-- Submit -->
+    <div class="pt-1">
+      <Button type="submit">Submit</Button>
+    </div>
+  </form>
+</BgSection>

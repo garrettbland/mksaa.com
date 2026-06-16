@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+
+// Gallery imports
+import Gallery1 from "../../assets/images/gallery/experience/gallery-1.jpg";
+import Gallery2 from "../../assets/images/gallery/experience/gallery-2.jpg";
+import Gallery3 from "../../assets/images/gallery/experience/gallery-3.jpg";
+import Gallery4 from "../../assets/images/gallery/experience/gallery-4.jpg";
+import Gallery5 from "../../assets/images/gallery/experience/gallery-5.jpg";
+import Gallery6 from "../../assets/images/gallery/experience/gallery-6.jpg";
+import Gallery7 from "../../assets/images/gallery/experience/gallery-7.jpg";
+import Gallery8 from "../../assets/images/gallery/experience/gallery-8.jpg";
+import Gallery9 from "../../assets/images/gallery/experience/gallery-9.jpg";
+import Gallery10 from "../../assets/images/gallery/experience/gallery-10.jpg";
+
+const galleryImages = [
+  Gallery1,
+  Gallery2,
+  Gallery3,
+  Gallery4,
+  Gallery5,
+  Gallery6,
+  Gallery7,
+  Gallery8,
+  Gallery9,
+  Gallery10,
+];
+---
+
+<div
+  class="bg-brand-gray border-y-8 border-brand-primary w-full overflow-hidden py-3"
+>
+  <div
+    class="flex w-full max-w-[110rem] mx-auto flex-row gap-2 px-2 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+  >
+    {
+      galleryImages.map((img, idx) => (
+        <div class="relative shrink-0 w-[280px] h-[280px] overflow-hidden group cursor-pointer">
+          <Image
+            src={img}
+            alt={`MKSAA Gallery Image ${idx + 1}`}
+            class="w-full h-full object-cover"
+            quality="mid"
+          />
+          <div class="absolute inset-0 bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        </div>
+      ))
+    }
+  </div>
+</div>

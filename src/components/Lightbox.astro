@@ -1,0 +1,217 @@
+---
+---
+
+<!-- Lightbox Modal -->
+<dialog
+  id="lightbox"
+  class="fixed inset-0 z-50 m-0 h-full w-full max-w-none max-h-none bg-transparent p-0 opacity-0 transition-opacity duration-300 backdrop:hidden"
+>
+  <div id="lightbox-content" class="flex flex-col items-center justify-center h-full w-full relative bg-[#1c1c1c]">
+    <!-- Top Left Expand Button -->
+    <button
+      id="lightbox-expand"
+      class="absolute top-6 left-6 text-white hover:text-gray-300 transition p-2 focus:outline-none cursor-pointer z-60"
+      aria-label="Toggle fullscreen"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+      </svg>
+    </button>
+
+    <!-- Close button -->
+    <button
+      id="lightbox-close"
+      class="absolute top-6 right-6 text-white hover:text-gray-300 transition p-2 focus:outline-none cursor-pointer z-60"
+      aria-label="Close fullscreen"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Main Image -->
+    <div class="relative w-full px-12 flex items-center justify-center h-full">
+      <img
+        id="lightbox-img"
+        src=""
+        alt="Fullscreen view"
+        class="max-h-[85vh] max-w-full object-contain transition-transform duration-300 scale-95"
+      />
+
+      <!-- Prev Button -->
+      <button
+        id="lightbox-prev"
+        class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition p-2 focus:outline-none cursor-pointer z-60"
+        aria-label="Previous image"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10 h-10">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+
+      <!-- Next Button -->
+      <button
+        id="lightbox-next"
+        class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition p-2 focus:outline-none cursor-pointer z-60"
+        aria-label="Next image"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-10 h-10">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  class GalleryLightbox {
+    private buttons: NodeListOf<HTMLButtonElement>;
+    private lightbox: HTMLElement | null;
+    private lightboxContent: HTMLElement | null;
+    private img: HTMLImageElement | null;
+    private closeBtn: HTMLButtonElement | null;
+    private prevBtn: HTMLButtonElement | null;
+    private nextBtn: HTMLButtonElement | null;
+    private expandBtn: HTMLButtonElement | null;
+    
+    private images: string[] = [];
+    private currentIndex: number = 0;
+
+    constructor() {
+      this.buttons = document.querySelectorAll('#gallery-grid button');
+      this.lightbox = document.getElementById('lightbox') as HTMLDialogElement;
+      this.lightboxContent = document.getElementById('lightbox-content');
+      this.img = document.getElementById('lightbox-img') as HTMLImageElement;
+      this.closeBtn = document.getElementById('lightbox-close') as HTMLButtonElement;
+      this.prevBtn = document.getElementById('lightbox-prev') as HTMLButtonElement;
+      this.nextBtn = document.getElementById('lightbox-next') as HTMLButtonElement;
+      this.expandBtn = document.getElementById('lightbox-expand') as HTMLButtonElement;
+
+      if (!this.lightbox || this.buttons.length === 0) return;
+
+      // Extract image URLs
+      this.buttons.forEach((btn, index) => {
+        const src = btn.dataset.src;
+        if (src) this.images.push(src);
+
+        btn.addEventListener('click', () => this.open(index));
+      });
+
+      // Bind events
+      this.closeBtn?.addEventListener('click', (e) => { e.stopPropagation(); this.close(); });
+      this.prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); this.prev(); });
+      this.nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); this.next(); });
+      this.expandBtn?.addEventListener('click', (e) => { e.stopPropagation(); this.toggleFullScreen(); });
+      
+      // Close on background click
+      this.lightbox.addEventListener('click', (e) => {
+        // Only close if we clicked directly on the dialog background wrapper, not on the image or buttons
+        if ((e.target as HTMLElement).tagName !== 'IMG' && !(e.target as HTMLElement).closest('button')) {
+           this.close();
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (!(this.lightbox as HTMLDialogElement).open) return;
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          this.close();
+        }
+        if (e.key === 'ArrowLeft') this.prev();
+        if (e.key === 'ArrowRight') this.next();
+      });
+    }
+
+    private open(index: number) {
+      if (!this.lightbox || !this.img) return;
+      
+      this.currentIndex = index;
+      this.updateImage();
+      
+      // Show lightbox via native dialog API
+      (this.lightbox as HTMLDialogElement).showModal();
+      
+      // Trigger animation
+      setTimeout(() => {
+        this.lightbox!.classList.remove('opacity-0');
+        this.img!.classList.remove('scale-95');
+        this.img!.classList.add('scale-100');
+      }, 10);
+      
+      document.body.style.overflow = 'hidden';
+    }
+
+    private close() {
+      if (!this.lightbox || !this.img) return;
+      
+      this.lightbox.classList.add('opacity-0');
+      this.img.classList.remove('scale-100');
+      this.img.classList.add('scale-95');
+      
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
+      
+      setTimeout(() => {
+        (this.lightbox as HTMLDialogElement).close();
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    private toggleFullScreen() {
+      if (!document.fullscreenElement && !(document as any).webkitFullscreenElement) {
+        // Request fullscreen directly on the div wrapper so the browser doesn't close the dialog
+        const elem = this.lightboxContent as any;
+        if (!elem) return;
+
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen().catch((err: Error) => {
+            console.log(`Error attempting to enable fullscreen: ${err.message}`);
+          });
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+          elem.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        } else if ((document as any).webkitExitFullscreen) {
+          (document as any).webkitExitFullscreen();
+        }
+      }
+    }
+
+    private prev() {
+      this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+      this.updateImage();
+    }
+
+    private next() {
+      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      this.updateImage();
+    }
+
+    private updateImage() {
+      if (!this.img) return;
+      
+      // Small fade effect during image swap
+      this.img.style.opacity = '0.5';
+      setTimeout(() => {
+        this.img!.src = this.images[this.currentIndex];
+        this.img!.style.opacity = '1';
+      }, 150);
+    }
+  }
+
+  // Initialize on page load and Astro view transitions
+  document.addEventListener('astro:page-load', () => {
+    new GalleryLightbox();
+  });
+  
+  // Also run initially if not using view transitions
+  if (!document.documentElement.hasAttribute('data-astro-transition-persist')) {
+    new GalleryLightbox();
+  }
+</script>
