@@ -1,6 +1,6 @@
 ---
 import ModalGallery from "../components/ModalGallery.tsx";
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 
 import KevinHouse from "../assets/images/team/Kevin-House.jpg";
 import StevenAkers from "../assets/images/team/Steven-Akers.jpg";
@@ -94,10 +94,24 @@ const teamMembers = [
   },
 ];
 
-const teamMembersWithOptimizedImages = teamMembers.map(member => ({
-  ...member,
-  image_url: member.image_url.src
-}));
+let teamMembersWithOptimizedImages = [];
+
+// Optimize all images at build time
+await Promise.all(
+  teamMembers.map(async (member) => {
+    console.log("optimizing image for", member.name);
+    const optimized = await getImage({
+      src: member.image_url,
+      width: 800,
+      format: "webp",
+    });
+
+    teamMembersWithOptimizedImages.push({
+      ...member,
+      image_url: optimized.src,
+    });
+  }),
+);
 ---
 
 <ModalGallery client:load data={teamMembersWithOptimizedImages} />

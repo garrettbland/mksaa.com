@@ -1,56 +1,41 @@
 ---
-import { Image } from "astro:assets";
+import Image from "astro/components/Image.astro";
 import Logo from "../assets/images/mid-kansas-auto-auction-logo.png";
 import FooterLogos from "../assets/images/footer-logos.png";
 import ButtonBanner from "../components/ButtonBanner.astro";
-import Button from "./Button.astro";
-import FacebookIcon from "../assets/images/facebook-logo.png";
-import InstagramIcon from "../assets/images/instagram-logo.png";
-import LinkedInIcon from "../assets/images/linked-in-logo.png";
 
-export interface Props {
-  hideButtonBanner?: boolean;
-}
-
-const { hideButtonBanner = false } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
-{!hideButtonBanner && <ButtonBanner />}
-<footer class="bg-brand-primary relative overflow-hidden flex justify-center pb-12">
-  <div class="relative z-[2] mt-16 mb-4 container max-w-5xl flex flex-col items-center justify-center px-4">
-    
-    {/* Top Row */}
-    <div class="grid grid-cols-1 md:grid-cols-3 border-b border-white/70 w-full divide-y md:divide-y-0 md:divide-x divide-white/70 mb-16">
-      <div class="px-4 py-8 md:py-10 flex items-center justify-center">
-        <Image src={Logo} alt="MKSAA Logo" class="max-w-[200px] md:max-w-[240px]" />
+<ButtonBanner />
+<footer class="bg-brand-primary relative overflow-hidden flex justify-center">
+  <div
+    class="relative z-[2] my-24 container max-w-5xl flex flex-col items-center justify-center gap-4"
+  >
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 border-b border-white w-full divide-x divide-white"
+    >
+      <div class="p-8">
+        <Image src={Logo} alt="MKSAA Logo" />
       </div>
-      <div class="px-4 py-8 md:py-10 flex flex-col items-center justify-center text-white text-sm md:text-base font-light">
-        <address class="not-italic text-center mb-1">4716 South Santa Fe St.<br />Wichita, KS 67216</address>
-        <a href="mailto:sales@mksaa.com" class="hover:underline">sales@mksaa.com</a>
+      <div class="p-8 text-center text-red-100 font-thin">
+        <address>4716 South Santa Fe St.<br />Wichita, KS 67216</address>
+        <p>
+          <a href="mailto:sales@mksaa.com" class="underline">sales@mksaa.com</a>
+        </p>
       </div>
-      <div class="px-4 py-8 md:py-10 flex flex-col items-center justify-center text-white text-sm md:text-base font-light">
-        <p class="mb-1">Tel: <a href="tel:(316) 500-7700" class="hover:underline">(316) 500-7700</a></p>
-        <p class="mb-3">Fax: (316) 500-7701</p>
-        <div class="flex items-center gap-5">
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
-            <Image src={FacebookIcon} alt="Facebook" class="w-5 h-5 object-contain brightness-0 invert" />
-          </a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
-            <Image src={InstagramIcon} alt="Instagram" class="w-5 h-5 object-contain brightness-0 invert" />
-          </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition">
-            <Image src={LinkedInIcon} alt="LinkedIn" class="w-5 h-5 object-contain brightness-0 invert" />
-          </a>
-        </div>
+      <div class="p-8 text-center text-red-100 font-thin">
+        <p>
+          Tel: <a href="tel:(316) 500-7700" class="underline">(316) 500-7700</a>
+        </p>
+        <p>Fax: (316) 500-7701</p>
       </div>
     </div>
 
-    {/* Hours Row */}
-    <div class="flex flex-row justify-center gap-16 md:gap-32 text-white text-xs md:text-sm font-light mb-10 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-red-100 my-12">
       <div>
-        <ul class="text-center space-y-1">
-          <li class="font-bold mb-2">Office Hours:</li>
+        <ul class="text-center font-thin">
+          <li class="font-semibold">Office Hours:</li>
           <li>Mon: 9:00 AM - 5:00 PM</li>
           <li>Tues: 9:00 AM - 5:00 PM</li>
           <li>Wed: 7:00 AM - 5:00 PM</li>
@@ -59,8 +44,8 @@ const year = new Date().getFullYear();
         </ul>
       </div>
       <div>
-        <ul class="text-center space-y-1">
-          <li class="font-bold mb-2">Gate Hours:</li>
+        <ul class="text-center font-thin">
+          <li class="font-semibold">Gate Hours:</li>
           <li>Mon: 8:00 AM - 5:00 PM</li>
           <li>Tues: 8:00 AM - 7:00 PM</li>
           <li>Wed: 7:00 AM - 6:00 PM</li>
@@ -70,22 +55,20 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    {/* Actions Row */}
-    <div class="flex flex-col items-center gap-4 mb-12">
-      <Button href="https://login.mksaa.com/components/login" variant="white" class="hover:bg-[#A15456]! hover:border-[#A15456]! hover:text-white!">
+    <!-- buttons -->
+    <div class="flex flex-row gap-8 mt-8">
+      <a
+        href="https://login.mksaa.com/components/login"
+        class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+      >
         Dealer Login
-      </Button>
-      <a href="/contact" class="text-white text-xs font-light hover:text-white/80 transition underline decoration-1 underline-offset-4">
-        Let us know how we're doing.
       </a>
     </div>
 
-    {/* Logos Row */}
-    <Image src={FooterLogos} alt="Partner Logos" class="max-w-full md:max-w-3xl mb-10 px-4" />
+    <!-- Logos -->
+    <Image src={FooterLogos} alt="Partner Logos" class="max-w-3xl mt-12" />
 
-    {/* Copyright Text */}
-    <p class="font-light text-xs text-white text-center">
-      ©{year} by Mid Kansas Auto Auction. Site created by <a href="#" class="underline hover:text-white/80">Marketing Maven</a>
-    </p>
+    <!-- Copyright Text -->
+    <p class="font-thin text-white mt-8">©{year} Mid Kansas Auto Auction.</p>
   </div>
 </footer>

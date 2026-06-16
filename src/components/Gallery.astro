@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import Image from "astro/components/Image.astro";
 
 import Image1 from "../assets/images/gallery/auction-gathering-photo.jpg";
 import Image2 from "../assets/images/gallery/auction-in-progress-photo.jpg";
@@ -12,49 +12,73 @@ import Image8 from "../assets/images/gallery/facebook-logo.jpg";
 import Image9 from "../assets/images/gallery/members-photo-2.jpg";
 import Image10 from "../assets/images/gallery/members-photo.jpg";
 import Image11 from "../assets/images/gallery/team-photo.jpg";
-
-const images = [
-  Image1, Image2, Image3, Image4, Image5, Image6,
-  Image7, Image8, Image9, Image10, Image11
-];
 ---
 
-<div class="relative w-full overflow-hidden py-4 group">
-  <!-- Marquee Track -->
-  <div class="flex gap-4 w-max animate-marquee group-hover:[animation-play-state:paused]">
-    {[...images, ...images].map((img, index) => (
-      <div 
-        class="relative w-56 h-56 md:w-72 md:h-72 overflow-hidden shrink-0 bg-white/10 animate-pulse transition-shadow duration-300"
-      >
-        <Image
-          src={img}
-          alt={`Mid Kansas Auto Auction gallery photo ${index + 1}`}
-          widths={[400, 800]}
-          sizes="(max-width: 768px) 100vw, 33vw"
-          format="avif"
-          quality={80}
-          loading="lazy"
-          decoding="async"
-          class="relative z-10 w-full h-full object-cover transition-opacity duration-700"
-          onload="this.parentElement.classList.remove('animate-pulse'); this.style.opacity=1;"
-          style="opacity: 0;"
-        />
-      </div>
-    ))}
-  </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <Image
+    quality="mid"
+    src={Image1}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image2}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image3}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image4}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image5}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image6}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image7}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image8}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image9}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image10}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
+  <Image
+    quality="mid"
+    src={Image11}
+    alt="gallery photo"
+    class="w-full h-64 object-cover rounded-lg"
+  />
 </div>
-
-<style>
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-50% - 0.5rem)); /* gap-4 is 1rem, half is 0.5rem */
-    }
-  }
-
-  .animate-marquee {
-    animation: marquee 80s linear infinite;
-  }
-</style>

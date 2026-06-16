@@ -1,6 +1,6 @@
 ---
 import ModalGallery from "../components/ModalGallery.tsx";
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 
 import PreSaleInspection from "../assets/images/pre-sale-inspection.jpg";
 import PostSaleInspections from "../assets/images/post-sale-inspection.jpg";
@@ -55,17 +55,33 @@ const services = [
   },
 ];
 
-const optimizedServices = services;
+let optimizedServices = [];
+
+// Optimize all images at build time
+await Promise.all(
+  services.map(async (service) => {
+    console.log("optimizing image for", service.title);
+    const optimized = await getImage({
+      src: service.image,
+      width: 800,
+      format: "webp",
+    });
+
+    optimizedServices.push({
+      ...service,
+      image: optimized.src,
+    });
+  }),
+);
 ---
 
 <div class="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-6">
   {
     optimizedServices.map((service) => (
       <div class="rounded-lg shadow-md text-white border border-solid border-gray-400 border-2px">
-        <Image
+        <img
           src={service.image}
           alt={service.title}
-          width={800}
           class="w-full h-48 object-cover mb-4"
         />
         <div class="p-4">
