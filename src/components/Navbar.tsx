@@ -20,7 +20,7 @@ const Navbar = () => {
         <>
             {/* Banner with links */}
             <div className="bg-white">
-                <div className="px-4 py-3.5 flex container justify-end gap-6">
+                <div className="px-4 py-3.5 flex w-full max-w-[110rem] mx-auto justify-end gap-6">
                     <a
                         href={DEALER_LOGIN_URL}
                         className="rounded-lg text-white bg-brand-primary px-8 py-2 hover:brightness-120 transition text-sm font-semibold"
@@ -38,7 +38,7 @@ const Navbar = () => {
 
             {/* Navbar */}
             <nav className="bg-brand-gray">
-                <div className="container py-6 flex flex-col lg:flex-row items-center justify-between">
+                <div className="w-full max-w-[110rem] mx-auto px-4 py-6 flex flex-col lg:flex-row items-center justify-between">
                     {/* Logo */}
                     <div className="w-full lg:w-auto flex items-center justify-between md:justify-center ">
                         <a href="/" data-astro-prefetch="true">
