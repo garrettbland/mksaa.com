@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+import SectionHeader from "../SectionHeader.astro";
+import EventItem from "./EventItem.astro";
+
+// Fetch events from the content collection
+const eventsData = await getCollection("events");
+
+// Sort events chronologically
+eventsData.sort((a: any, b: any) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+---
+
+<section class="bg-white py-20">
+  <div class="container max-w-4xl mx-auto px-4">
+    <!-- Section Title -->
+    <div class="text-center mb-16">
+      <SectionHeader
+        title="Upcoming Events"
+        subtitle="You Won't Want to Miss These!"
+        subtitleClass="font-display italic text-3xl md:text-4xl mt-2 !text-[#8a2025]"
+        titleClass="!text-[#8a2025]"
+      />
+    </div>
+
+    <!-- Events List -->
+    <div class="flex flex-col gap-10">
+      {
+        eventsData.map((event) => (
+          <EventItem
+            title={event.data.title}
+            date={event.data.date}
+            time={event.data.time}
+            location={event.data.location}
+            description={event.data.description}
+            imagePath={event.data.image}
+            detailsLink={`/events/${event.id}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import OurPromiseBg from "../../assets/images/our-promise.png";
+import TeamPhoto from "../../assets/images/promised-users.png";
+import SectionHeader from "../SectionHeader.astro";
+import BgSection from "../BgSection.astro";
+---
+
+<BgSection
+  image={OurPromiseBg}
+  class="py-24"
+  childrenClass="container max-w-4xl mx-auto text-center px-4 flex flex-col items-center gap-4"
+>
+  <SectionHeader
+    title="Our Promise To You"
+    subtitle="MKSAA is well equipped to personalize the buying and selling experience to your business's exact needs. Our primary goal is to create a partnership that benefits both parties in the most enjoyable and seamless way possible. We keep growing, improving, and pushing the boundaries of what is possible in our industry. With consistent growth in popularity, sale attendance, and community reputation, we are proud to be the fastest-growing auction in the region. And, as an independently owned and family-operated auction, we have the flexibility to adapt to our dealers' specific needs. At MKSAA, we're a family, not a corporate entity. Let us work for you!"
+    class="mb-4"
+    subtitleClass="max-w-[88ch]"
+  />
+
+  <div class="relative overflow-hidden shadow-2xl max-w-2xl w-full">
+    <Image
+      src={TeamPhoto}
+      alt="MKSAA Team Photo"
+      class="w-full h-auto object-cover"
+    />
+  </div>
+</BgSection>
