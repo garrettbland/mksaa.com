@@ -30,24 +30,38 @@ export default function ModalGallery({ data }: { data: Member[] }) {
 
   return (
     <>
-      {/* GRID (unchanged) */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* GRID */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {data.map((person, i) => (
           <div
             key={i}
-            className="relative group cursor-pointer"
+            className="cursor-pointer group"
             onClick={() => setSelected(person)}
           >
-            <img
-              src={person.image_url}
-              alt={person.name}
-              className="w-full object-cover rounded-lg h-[270px]"
-            />
+            <div className="relative overflow-hidden rounded-lg">
+              <img
+                src={person.image_url}
+                alt={person.name}
+                className="w-full object-cover rounded-lg h-[270px] transition group-hover:brightness-90"
+              />
+            </div>
 
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center rounded-lg">
-              <p className="text-white text-lg font-semibold text-center px-2">
+            <div className="mt-3 text-center">
+              <p className="text-white font-semibold leading-snug">
                 {person.name}
               </p>
+              <p className="text-gray-300 text-sm leading-snug">
+                {person.position}
+              </p>
+              {person.email && (
+                <a
+                  href={`mailto:${person.email}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-gray-300 text-sm underline hover:text-white break-words"
+                >
+                  {person.email}
+                </a>
+              )}
             </div>
           </div>
         ))}
@@ -85,12 +99,14 @@ export default function ModalGallery({ data }: { data: Member[] }) {
                 <p className="text-lg text-gray-700">{selected.position}</p>
                 <p className="text-gray-600">{selected.bio}</p>
 
-                <a
-                  href={`mailto:${selected.email}`}
-                  className="text-blue-600 underline mt-auto"
-                >
-                  {selected.email}
-                </a>
+                {selected.email && (
+                  <a
+                    href={`mailto:${selected.email}`}
+                    className="text-blue-600 underline mt-auto"
+                  >
+                    {selected.email}
+                  </a>
+                )}
               </div>
             </div>
           </div>
