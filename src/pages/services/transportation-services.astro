@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/transportation.jpg";
+---
+
+<Base
+  title="Transportation Services | Mid Kansas Auto Auction"
+  description="Simplify the process of moving vehicles with our reliable transportation services. We coordinate safe and timely delivery, whether across town or across the country."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Transportation Services
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        Simplify the process of moving vehicles with our reliable
+        transportation services. We coordinate safe and timely delivery,
+        whether across town or across the country. Trust us to handle the
+        logistics so your vehicles arrive ready for sale.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Car transport truck loaded with vehicles"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Content -->
+  <section class="bg-brand-gray py-24">
+    <div class="container max-w-xl mx-auto flex flex-col items-center gap-6 text-center">
+      <p class="font-thin text-white text-sm leading-loose">
+        To find out the details for your region, call us at{" "}
+        <a href="tel:+13165007700" class="underline">316-500-7700</a>, email{" "}
+        <a href="mailto:salesteam@mksaa.com" class="underline"
+          >salesteam@mksaa.com</a
+        >, or ask your sales rep for more details!
+      </p>
+      <a
+        href="/uploads/transportation-services.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+      >
+        More Details
+      </a>
+      <a
+        href="/services"
+        class="text-white underline font-thin text-sm hover:text-gray-200 transition"
+      >
+        See All Services
+      </a>
+    </div>
+  </section>
+</Base>

@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer.astro";
+import { getImage } from "astro:assets";
+import defaultOgSource from "../assets/images/carlot-arial.jpg";
 
 interface Props {
   title: string;
@@ -9,6 +11,43 @@ interface Props {
 }
 
 const { title = "", description = "" } = Astro.props;
+
+const optimizedOgImage = await getImage({
+  src: defaultOgSource,
+  width: 1200,
+  height: 630,
+  format: "webp",
+});
+const ogImageUrl = new URL(optimizedOgImage.src, Astro.url).href;
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  name: "Mid Kansas Auto Auction",
+  alternateName: "MKSAA",
+  url: "https://mksaa.com",
+  image: ogImageUrl,
+  telephone: "+1-316-500-7700",
+  email: "sales@mksaa.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "4716 South Santa Fe St.",
+    addressLocality: "Wichita",
+    addressRegion: "KS",
+    postalCode: "67216",
+    addressCountry: "US",
+  },
+  sameAs: [
+    "https://www.facebook.com/MKSAAWichita/",
+    "https://www.instagram.com/midksautoauction/",
+    "https://www.linkedin.com/company/mksaa/",
+  ],
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Thursday"], opens: "09:00", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "07:00", closes: "17:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "09:00", closes: "13:00" },
+  ],
+};
 ---
 
 <!doctype html>
@@ -21,22 +60,21 @@ const { title = "", description = "" } = Astro.props;
     <!-- Title and Description -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <!-- !!!!!!! To Do: Add og image-->
-    <meta property="og:image" content="/" />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="mksaa.com" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <!-- !!!!!!! To Do: Add twitter image-->
-    <meta name="twitter:image" content="/" />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,10 +85,17 @@ const { title = "", description = "" } = Astro.props;
     />
 
     <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
   </head>
   <body>
     <Navbar client:load />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

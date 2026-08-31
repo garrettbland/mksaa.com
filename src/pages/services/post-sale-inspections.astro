@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/post-sale-inspection.jpg";
+---
+
+<Base
+  title="Post-Sale Inspections | Mid Kansas Auto Auction"
+  description="Confirm vehicle condition after the auction with our post-sale inspections. Buyers can feel comfortable with their purchase knowing it has been inspected by one of our in-house mechanics."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Post-Sale Inspections
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        Confirm vehicle condition after the auction with our post-sale
+        inspections. Buyers can feel comfortable with their purchase knowing
+        it has been inspected by one of our in-house mechanics, providing
+        accuracy and confidence in every transaction.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Mechanic performing a post-sale vehicle inspection"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Content -->
+  <section class="bg-brand-gray py-24">
+    <div class="container max-w-xl mx-auto flex flex-col items-center gap-6">
+      <a
+        href="/uploads/post-sale-inspection.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+      >
+        Post-Sale Options
+      </a>
+      <a
+        href="https://fs3.formsite.com/yKCdxg/cvhbo9w5lm/index"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white underline font-thin text-sm hover:text-gray-200 transition"
+      >
+        Click Here to Sign Up For Automatic PSI's
+      </a>
+      <a
+        href="https://fs3.formsite.com/yKCdxg/azdmlv0lfe/index"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white underline font-thin text-sm hover:text-gray-200 transition"
+      >
+        Click Here to Change/Opt Out of Automatic PSI's
+      </a>
+      <a
+        href="/services"
+        class="text-white underline font-thin text-sm hover:text-gray-200 transition mt-4"
+      >
+        See All Services
+      </a>
+    </div>
+  </section>
+</Base>

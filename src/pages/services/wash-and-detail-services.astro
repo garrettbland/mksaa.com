@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/wash-and-detail.jpg";
+---
+
+<Base
+  title="Wash & Detail Services | Mid Kansas Auto Auction"
+  description="Keep vehicles looking their best with our professional wash and detail services. From a basic wash to full interior and exterior detailing, we help present every vehicle in top condition."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Wash & Detail Services
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        Keep vehicles looking their best with our professional wash and
+        detail services. From a basic wash to full interior and exterior
+        detailing, we help present every vehicle in top condition. Make sure
+        that your unit is in the best condition possible so it will be sure
+        to bring top dollar.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Vehicle being washed and detailed"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Content -->
+  <section class="bg-brand-gray py-24">
+    <div class="container max-w-xl mx-auto flex flex-col items-center gap-8">
+      <a
+        href="/uploads/detail-menu.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+      >
+        View Detail Menu
+      </a>
+      <a
+        href="/services"
+        class="text-white underline font-thin text-sm hover:text-gray-200 transition"
+      >
+        See All Services
+      </a>
+    </div>
+  </section>
+</Base>
