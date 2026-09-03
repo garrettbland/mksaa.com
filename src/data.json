@@ -15,12 +15,12 @@
         {
           "name": "Causes we care about",
           "href": "/about/causes-we-care-about"
-        },
-        {
-          "name": "Our Team",
-          "href": "/about/team"
         }
       ]
+    },
+    {
+      "name": "Our Team",
+      "href": "/about/team"
     },
     {
       "name": "Services",
@@ -65,7 +65,7 @@
       "tag": "TEAM"
     },
     {
-      "name": "Lisa Bahruth",
+      "name": "Lisa Talbott",
       "position": "Title Clerk",
       "bio": "Lisa is our longest-employed title clerk at our front desk processing paperwork and titles for our dealers daily. She can name almost every dealer from the time they walk in the door and greets everyone with a smile. ",
       "email": "",

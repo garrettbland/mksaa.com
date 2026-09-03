@@ -5,6 +5,7 @@ interface Member {
   position: string;
   bio: string;
   email: string;
+  phone?: string;
   image_url: string;
 }
 
@@ -57,9 +58,18 @@ export default function ModalGallery({ data }: { data: Member[] }) {
                 <a
                   href={`mailto:${person.email}`}
                   onClick={(e) => e.stopPropagation()}
-                  className="text-gray-300 text-sm underline hover:text-white break-words"
+                  className="text-gray-300 text-sm underline hover:text-white break-words block"
                 >
                   {person.email}
+                </a>
+              )}
+              {person.phone && (
+                <a
+                  href={`tel:${person.phone.replace(/[^\d+]/g, "")}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-gray-300 text-sm hover:text-white block"
+                >
+                  {person.phone}
                 </a>
               )}
             </div>
@@ -102,9 +112,17 @@ export default function ModalGallery({ data }: { data: Member[] }) {
                 {selected.email && (
                   <a
                     href={`mailto:${selected.email}`}
-                    className="text-blue-600 underline mt-auto"
+                    className="text-blue-600 underline"
                   >
                     {selected.email}
+                  </a>
+                )}
+                {selected.phone && (
+                  <a
+                    href={`tel:${selected.phone.replace(/[^\d+]/g, "")}`}
+                    className="text-blue-600 underline mt-auto"
+                  >
+                    {selected.phone}
                   </a>
                 )}
               </div>

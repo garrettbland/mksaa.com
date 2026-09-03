@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Base from "../../layouts/Base.astro";
 import HeaderBGPhoto from "../../assets/images/sale-floor-with-mustang.jpg";
 import OttleyFamily from "../../assets/images/Ottley-family.png";
-import ArmsAroundEachOther from "../../assets/images/arms-around-each-other.jpg";
+import ArmsAroundEachOther from "../../assets/images/two-men-shaking-hands.jpg";
 import Timeline from "../../components/Timeline.astro";
 ---
 
@@ -99,11 +99,17 @@ import Timeline from "../../components/Timeline.astro";
           and end with respect to ALL. These non-negotiable values embody the
           experience we strive to create each and every day.
         </p>
+        <ul class="flex flex-wrap justify-center gap-x-8 gap-y-2 mt-6 text-white font-semibold uppercase tracking-wide text-sm">
+          <li>Culture</li>
+          <li>Ownership</li>
+          <li>Relationships</li>
+          <li>Excellence</li>
+        </ul>
       </div>
       <div>
         <Image
           src={ArmsAroundEachOther}
-          alt="Arms Around Each Other"
+          alt="Two men shaking hands at the auction"
           class="h-full w-full object-cover"
           quality="medium"
         />
