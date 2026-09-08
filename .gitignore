@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Ignore large video file to avoid GitHub size limits
+src/assets/videos/experience-video.mp4

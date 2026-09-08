@@ -1,0 +1,194 @@
+---
+import ShowcaseVideo from "../../assets/videos/experience-video.mp4";
+import MapImage from "../../assets/images/mapwhite-2.png";
+import { Image } from "astro:assets";
+import Button from "../Button.astro";
+import SectionHeader from "../SectionHeader.astro";
+
+const features = [
+  {
+    title: "Fast & Easy",
+    desc: "Prime location for hassle-free shipping and receiving vehicles at the intersection of I-35 and 47th St. in South Wichita.",
+  },
+  {
+    title: "Online Bidding",
+    desc: "All five lanes are equipped for Internet bidding. Online and mobile bidding currently accounts for 30% of sales.",
+  },
+  {
+    title: "Detailing & Repair",
+    desc: "Full service, two-lane detail shop and three-bay mechanical area featured in reconditioning facility. Offering presale and 7-day or 14-day post-sale inspections.",
+  },
+];
+
+const perksLeft = [
+  "Free donuts, fruit, and coffee at every sale",
+  "12 huge promotional sales each year",
+];
+
+const perksRight = [
+  "Prompt and professional communication",
+  "Personal relationships with our team",
+];
+---
+
+<section class="bg-[#2a2a2a] py-20 text-white">
+  <div class="w-full max-w-6xl mx-auto px-5 flex flex-col gap-16">
+    <!-- ── Top: Heading + Video ── -->
+    <div class="flex flex-col items-center text-center gap-8">
+      <SectionHeader
+        title="Doing Business at MKSAA"
+        subtitle="As our family-owned auction continues to grow, we work with buyers and sellers from all over the country. We specialize in a regional area in the Central U.S. but would welcome your business, regardless of where you are located."
+        subtitleClass="max-w-4xl text-sm font-light leading-relaxed"
+      />
+
+      <!-- Video showcase -->
+      <div class="w-full max-w-2xl mt-4">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          class="w-full h-auto"
+          src="https://video.wixstatic.com/video/091105_d62cd029551443ec918fbdfdbc772208/1080p/mp4/file.mp4"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- ── Middle: Map + Features ── -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mt-8">
+      <!-- Map column -->
+      <div class="flex flex-col items-center lg:items-end">
+        <!-- Map image with SVG circle overlay matching live site exactly -->
+        <div class="relative" style="width:425px; max-width:100%;">
+          <!-- SVG circle: 318x318, left:94px over 425px map (exact from live site) -->
+          <svg
+            preserveAspectRatio="none"
+            data-bbox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 200 200"
+            role="img"
+            aria-label="Mid Kansas Auto Auction in Wichita, Kansas"
+            class="absolute"
+            style="width:318px; height:318px; left:94px; top:7px; fill:#a15456; z-index:0; fill-opacity:0.23;"
+          >
+            <g>
+              <path
+                d="M200 100c0 55.228-44.772 100-100 100S0 155.228 0 100 44.772 0 100 0s100 44.772 100 100z"
+              ></path>
+            </g>
+          </svg>
+          <Image
+            src={MapImage}
+            alt="MKSAA Central US Service Area Map"
+            class="relative w-full h-auto object-contain"
+            style="z-index:1; margin-top:7px;"
+          />
+        </div>
+        <!-- Text block: 289px wide, centered, matching live site -->
+        <div
+          class="mt-2 lg:mr-auto"
+          style="width:289px; max-width:100%; text-align:center;"
+        >
+          <p
+            class="font-display text-white"
+            style="font-size:32px; line-height:1.8em; text-align:center;"
+          >
+            Serving the Central U.S.
+          </p>
+          <div class="w-full h-[4px] bg-[#a93b42] mb-2"></div>
+          <p
+            class="text-white font-light"
+            style="font-size:16px; line-height:1.2em; text-align:center;"
+          >
+            With Nationwide Attendance<br />
+            In-Lane and Online Each Week!
+          </p>
+          <p
+            class="text-white font-light italic mt-2"
+            style="font-size:13px; line-height:1.2em; text-align:center;"
+          >
+            Our service area will continue to grow!
+          </p>
+        </div>
+      </div>
+
+      <!-- Features + Buttons column -->
+      <div class="flex flex-col gap-6 pt-4">
+        {
+          features.map((f) => (
+            <div class="mb-2">
+              <h4
+                class="font-display text-white mb-1"
+                style="font-size:25px; line-height:1.8em; letter-spacing:0.05em;"
+              >
+                {f.title}
+              </h4>
+              <p
+                class="text-white leading-relaxed font-light"
+                style="font-size:16px;"
+              >
+                {f.desc}
+              </p>
+            </div>
+          ))
+        }
+
+        <div class="flex flex-col items-center w-max mt-4">
+          <Button
+            href="https://login.mksaa.com/components/login"
+            variant="white"
+            external
+            class="hover:bg-[#A15456]! hover:border-[#A15456]! hover:text-white!"
+          >
+            Dealer Login
+          </Button>
+          <a
+            href="/contact"
+            class="text-xs md:text-sm text-white mt-3 hover:text-white/80 underline underline-offset-4 transition-colors font-light"
+          >
+            How to Register
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Bottom: Dealer Perks Card ── -->
+    <div
+      class="mx-auto w-full max-w-4xl bg-white rounded-xl px-6 py-10 text-brand-gray mt-12 mb-8"
+    >
+      <h3
+        class="text-2xl md:text-3xl font-bold text-center text-brand-gray mb-8"
+      >
+        Dealer Perks
+      </h3>
+
+      <div class="flex flex-col md:flex-row justify-center gap-x-12 gap-y-3">
+        <!-- Left perks -->
+        <ul class="flex flex-col gap-2 md:gap-3">
+          {
+            perksLeft.map((perk) => (
+              <li class="flex items-center gap-3 text-sm md:text-base font-light text-gray-700">
+                <span class="text-[#a93b42] text-xl shrink-0">★</span>
+                {perk}
+              </li>
+            ))
+          }
+        </ul>
+        <!-- Right perks -->
+        <ul class="flex flex-col gap-2 md:gap-3">
+          {
+            perksRight.map((perk) => (
+              <li class="flex items-center gap-3 text-sm md:text-base font-light text-gray-700">
+                <span class="text-[#a93b42] text-xl shrink-0">★</span>
+                {perk}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

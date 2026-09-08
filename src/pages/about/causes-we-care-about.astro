@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/group-holding-check.jpg";
+import WichitaLittleHeroes from "../../assets/images/wichita-little-heroes-logo.png";
+---
+
+<Base
+  title="Causes We Care About | Mid Kansas Auto Auction"
+  description="At Mid Kansas Auto Auction, we are passionate about community impact. We are always striving to support causes that make the city of Wichita a better place to live. Browse this page to see information about our current partners."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Causes We Care About
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        At Mid Kansas Auto Auction, we are passionate about community impact. We
+        are always striving to support causes that make the city of Wichita a
+        better place to live. Browse this page to see information about our
+        current partners.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Group holding check"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Wichita little heroes -->
+  <section class="bg-brand-gray">
+    <div class="grid grid-cols-1">
+      <div
+        class="flex flex-col justify-center items-center p-24 max-w-4xl mx-auto"
+      >
+        <Image
+          src={WichitaLittleHeroes}
+          alt="Wichita Littlest Heroes Logo"
+          class="w-64 h-auto"
+          quality="medium"
+        />
+        <h2
+          class="text-center leading-tight text-3xl font-bold leading-loose text-white my-12"
+        >
+          Wichita's Littlest Heroes
+        </h2>
+        <p class="font-thin text-white text-center leading-loose text-sm">
+          Our primary partner in philanthropy right now is an organization
+          called Wichita’s Littlest Heros. Their mission is: “Wichita's Littlest
+          Heroes is here to provide hope, help, and happiness to medically
+          fragile children ages 0-18 in the Kansas area who are battling
+          different life-threatening medical conditions through free fun events,
+          financial assistance, art therapy, online support and so much more.
+          Because no one fights alone!” We chose them as our first designated
+          partnership because family plays such a big part in the business we
+          run. When developing MKSAA’s core values we identified three
+          categories that generally make up the people who work here, one of
+          those being family. It is important to us to support causes that
+          support those who are there for our work family. Wichita’s Littlest
+          Heroes does just that, and we are very proud to contribute to their
+          efforts with the Helping Hands promotional sale every June. You can
+          learn more about them on their website: <br /><a
+            href="https://www.wichitaslittlestheroes.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white underline">www.wichitaslittlestheroes.com</a
+          >
+        </p>
+        <Image
+          src={HeaderBGPhoto}
+          alt="Group holding check"
+          class="w-full h-auto mt-12"
+        />
+      </div>
+    </div>
+  </section>
+</Base>

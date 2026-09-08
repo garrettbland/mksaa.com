@@ -1,0 +1,135 @@
+import { useState, useEffect } from "react";
+
+interface Member {
+  name: string;
+  position: string;
+  bio: string;
+  email: string;
+  phone?: string;
+  image_url: string;
+}
+
+export default function ModalGallery({ data }: { data: Member[] }) {
+  const [selected, setSelected] = useState(null);
+
+  // ESC KEY HANDLER
+  useEffect(() => {
+    function handleKey(e) {
+      if (e.key === "Escape") {
+        setSelected(null);
+      }
+    }
+
+    if (selected) {
+      window.addEventListener("keydown", handleKey);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [selected]);
+
+  return (
+    <>
+      {/* GRID */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {data.map((person, i) => (
+          <div
+            key={i}
+            className="cursor-pointer group"
+            onClick={() => setSelected(person)}
+          >
+            <div className="relative overflow-hidden rounded-lg">
+              <img
+                src={person.image_url}
+                alt={person.name}
+                className="w-full object-cover rounded-lg h-[270px] transition group-hover:brightness-90"
+              />
+            </div>
+
+            <div className="mt-3 text-center">
+              <p className="text-white font-semibold leading-snug">
+                {person.name}
+              </p>
+              <p className="text-gray-300 text-sm leading-snug">
+                {person.position}
+              </p>
+              {person.email && (
+                <a
+                  href={`mailto:${person.email}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-gray-300 text-sm underline hover:text-white break-words block"
+                >
+                  {person.email}
+                </a>
+              )}
+              {person.phone && (
+                <a
+                  href={`tel:${person.phone.replace(/[^\d+]/g, "")}`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="text-gray-300 text-sm hover:text-white block"
+                >
+                  {person.phone}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* MODAL */}
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
+          onClick={() => setSelected(null)} // 👈 BACKDROP CLICK
+        >
+          <div
+            className="bg-white rounded-xl max-w-4xl w-full relative overflow-hidden"
+            onClick={(e) => e.stopPropagation()} // 👈 PREVENT CLOSE WHEN CLICKING INSIDE
+          >
+            {/* CLOSE BUTTON */}
+            <button
+              onClick={() => setSelected(null)}
+              className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl"
+            >
+              ×
+            </button>
+
+            <div className="grid md:grid-cols-2">
+              <img
+                src={selected.image_url}
+                alt={selected.name}
+                className="w-full h-full object-cover"
+              />
+
+              <div className="p-6 flex flex-col gap-4">
+                <h2 className="text-2xl font-bold text-brand-primary">
+                  {selected.name}
+                </h2>
+                <p className="text-lg text-gray-700">{selected.position}</p>
+                <p className="text-gray-600">{selected.bio}</p>
+
+                {selected.email && (
+                  <a
+                    href={`mailto:${selected.email}`}
+                    className="text-blue-600 underline"
+                  >
+                    {selected.email}
+                  </a>
+                )}
+                {selected.phone && (
+                  <a
+                    href={`tel:${selected.phone.replace(/[^\d+]/g, "")}`}
+                    className="text-blue-600 underline mt-auto"
+                  >
+                    {selected.phone}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

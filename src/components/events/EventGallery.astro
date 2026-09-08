@@ -1,0 +1,39 @@
+---
+import { cn } from "../../utils/cn";
+import Lightbox from "../Lightbox.astro";
+
+export interface Props {
+  images?: string[];
+  class?: string;
+}
+
+const { images = [], class: extraClass } = Astro.props;
+---
+
+{
+  images.length > 0 && (
+    <div class={cn("mt-12", extraClass)}>
+      <!-- Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="gallery-grid">
+        {images.map((img, index) => (
+          <button
+            type="button"
+            class="aspect-4/3 bg-gray-100 overflow-hidden relative group block w-full focus:outline-none cursor-pointer"
+            data-index={index}
+            data-src={img}
+            aria-label={`View image ${index + 1}`}
+          >
+            <img
+              src={img}
+              alt={`Event gallery image ${index + 1}`}
+              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-50"
+              loading="lazy"
+            />
+          </button>
+        ))}
+      </div>
+
+      <Lightbox />
+    </div>
+  )
+}

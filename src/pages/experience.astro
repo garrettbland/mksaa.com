@@ -1,0 +1,45 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+// Component imports
+import DoingBusiness from "../components/experience/DoingBusiness.astro";
+import RegisterForm from "../components/experience/RegisterForm.astro";
+import OurPromise from "../components/experience/OurPromise.astro";
+import ExperienceGallery from "../components/experience/ExperienceGallery.astro";
+import EdgePipelineBanner from "../components/experience/EdgePipelineBanner.astro";
+import Floorplans from "../components/experience/Floorplans.astro";
+
+// Assets imports
+import ExperienceHero from "../assets/images/experience-hero.jpg";
+---
+
+<Base
+  title="MKSAA Experience | Mid Kansas Auto Auction"
+  description="MKSAA is well-equipped to personalize the buying and selling experience to your business's exact needs. Our primary goal is to create a partnership that benefits both parties in the most enjoyable and seamless way possible. Let our team go to work for you!"
+>
+  <!-- Header -->
+  <PageHeader
+    title="MKSAA Experience"
+    subtitle="MKSAA is well-equipped to personalize the buying and selling experience to your business's exact needs. Our primary goal is to create a partnership that benefits both parties in the most enjoyable and seamless way possible. Let our team go to work for you!"
+    bgImage={ExperienceHero}
+  />
+
+  <!-- Doing Business, Map, Features & Dealer Perks Section -->
+  <DoingBusiness />
+
+  <!-- Registration Form Section -->
+  <RegisterForm />
+
+  <!-- Photo Gallery Horizontal Strip -->
+  <ExperienceGallery />
+
+  <!-- Our Promise Section -->
+  <OurPromise />
+
+  <!-- Edge Pipeline Banner -->
+  <EdgePipelineBanner />
+
+  <!-- Floorplan Companies Section -->
+  <Floorplans />
+</Base>
