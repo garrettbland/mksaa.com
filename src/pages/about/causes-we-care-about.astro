@@ -1,8 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import Base from "../../layouts/Base.astro";
-import HeaderBGPhoto from "../../assets/images/group-holding-check.jpg";
+import HeaderBGPhoto from "../../assets/images/annual-group-photo.jpg";
 import WichitaLittleHeroes from "../../assets/images/wichita-little-heroes-logo.png";
+import WLH1 from "../../assets/images/wlh-1.jpg";
+import WLH2 from "../../assets/images/wlh-2.jpg";
+import WLH3 from "../../assets/images/wlh-3.jpg";
 ---
 
 <Base
@@ -26,7 +29,7 @@ import WichitaLittleHeroes from "../../assets/images/wichita-little-heroes-logo.
     </div>
     <Image
       src={HeaderBGPhoto}
-      alt="Group holding check"
+      alt="Mid Kansas Auto Auction annual group photo"
       class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
       quality="low"
     />
@@ -71,11 +74,23 @@ import WichitaLittleHeroes from "../../assets/images/wichita-little-heroes-logo.
             class="text-white underline">www.wichitaslittlestheroes.com</a
           >
         </p>
-        <Image
-          src={HeaderBGPhoto}
-          alt="Group holding check"
-          class="w-full h-auto mt-12"
-        />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mt-12">
+          <Image
+            src={WLH1}
+            alt="Wichita's Littlest Heroes event photo 1"
+            class="w-full h-64 object-cover rounded-lg"
+          />
+          <Image
+            src={WLH2}
+            alt="Wichita's Littlest Heroes event photo 2"
+            class="w-full h-64 object-cover rounded-lg"
+          />
+          <Image
+            src={WLH3}
+            alt="Wichita's Littlest Heroes event photo 3"
+            class="w-full h-64 object-cover rounded-lg"
+          />
+        </div>
       </div>
     </div>
   </section>
