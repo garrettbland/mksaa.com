@@ -1,0 +1,215 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/driver-in-car.jpg";
+import RoadPavement from "../../assets/images/road-pavement.jpg";
+import { getImage } from "astro:assets";
+import ModalGallery from "../../components/ModalGallery.tsx";
+import TeamMembers from "../../components/TeamMembers.astro";
+
+import AndyHansen from "../../assets/images/team/Andy-Hansen.jpg";
+import CodyDale from "../../assets/images/team/Cody-Dale-new.png";
+import BrendaNayelyMacias from "../../assets/images/team/Brenda-Nayely-Macias.jpg";
+import KendallDuvall from "../../assets/images/team/Kendall-Duvall.png";
+import BillDoll from "../../assets/images/team/Bill-Doll.png";
+import CarmenBaeza from "../../assets/images/team/Carmen-Baeza.png";
+
+const teamMembers = [
+  {
+    name: "Andy Hansen",
+    position: "Sales Representative",
+    bio: "Andy’s desk is located in the Sales Office of the main building but he is often out and about mingling and creating relationships with new dealers and checking in on his regulars to make sure they are seeing their best personal results.",
+    email: "andyh@mksaa.com",
+    phone: "316-866-9009",
+    image_url: AndyHansen,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Cody Dale",
+    position: "Fleet Lease/Commercial Sales Representative",
+    bio: "We are excited to have Cody Dale rejoin our MKSAA team as a Sales Representative in early 2025. Her role will focus on consigning and selling wholesale vehicles. Cody is particularly eager to dive back into the lively atmosphere of a physical auction.",
+    email: "codyd@mksaa.com",
+    phone: "316-866-9203",
+    image_url: CodyDale,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Brenda Nayely Macías",
+    position: "Sales Representative",
+    bio: "Brenda is thrilled to return to the MKSAA team, she brings a passion for sales, relationship-building, and customer service. She always knew the automotive world was where she belonged. With over a decade of experience across the automotive and finance industries. Known for her ability to build genuine connections, Brenda takes a customer-first approach in everything she does. ",
+    email: "brendac@mksaa.com",
+    phone: "316-866-9041",
+    image_url: BrendaNayelyMacias,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Kendall Duvall",
+    position: "Inside Sales Coordinator",
+    bio: "",
+    email: "kendalld@mksaa.com",
+    phone: "520-345-4411",
+    image_url: KendallDuvall,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Bill Doll",
+    position: "Sales Representative",
+    bio: "",
+    email: "billd@mksaa.com",
+    phone: "316-866-9156",
+    image_url: BillDoll,
+    tag: "SALES_TEAM",
+  },
+  {
+    name: "Carmen Baeza",
+    position: "Inside Sales Representative",
+    bio: "",
+    email: "carmenb@mksaa.com",
+    phone: "316-866-9266",
+    image_url: CarmenBaeza,
+    tag: "SALES_TEAM",
+  },
+];
+
+let teamMembersWithOptimizedImages = [];
+
+// Optimize all images at build time
+await Promise.all(
+  teamMembers.map(async (member) => {
+    console.log("optimizing image for", member.name);
+    const optimized = await getImage({
+      src: member.image_url,
+      width: 800,
+      format: "webp",
+    });
+
+    teamMembersWithOptimizedImages.push({
+      ...member,
+      image_url: optimized.src,
+    });
+  }),
+);
+---
+
+<Base
+  title="Our Team | Mid Kansas Auto Auction"
+  description="As a family-owned and operated business, it's important to us that our dealers and our team members get to know who we are and understand how integral they are to our success. Learn more about our team members below."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Our Team
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        As a family-owned and operated business, it's important to us that our
+        dealers and our team members get to know who we are and understand how
+        integral they are to our success. Learn more about our team members
+        below.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="MKSAA team member driving a car on the lot"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Team Members -->
+  <section class="bg-brand-gray py-12">
+    <div class="text-white container max-w-4xl mx-auto">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        Meet the Team
+      </h2>
+      <p class="font-cursive text-white text-4xl text-center mb-4 mt-6">
+        How can we best serve you?
+      </p>
+      <p class="font-thin text-white text-center leading-loose text-sm mb-12">
+        Our goal is to best serve you, and make your life as easy as possible.
+        Not sure you who need to talk to? Find out more about our professional
+        auction team by clicking below!
+      </p>
+      <h3
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white mb-4"
+      >
+        MKSAA Sales Team
+      </h3>
+      <div class="mb-36">
+        <ModalGallery
+          client:load
+          data={teamMembersWithOptimizedImages.filter(
+            (i) => i.tag === "SALES_TEAM",
+          )}
+        />
+      </div>
+      <h3
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white mb-4"
+      >
+        MKSAA Team Members
+      </h3>
+      <div>
+        <TeamMembers />
+      </div>
+    </div>
+  </section>
+
+  <!-- Employee of the month -->
+  <!-- Header -->
+  <section class="bg-brand-gray py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h2
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Employee of the Month Award Winners
+      </h2>
+      <p class="font-cursive text-white text-4xl text-center mb-4 mt-6">
+        Thank You for All You Do!
+      </p>
+      <p class="font-thin text-white text-center mb-8 text-sm">
+        Our team works so hard, and each month we try to recognize at least one
+        person who has gone above and beyond to serve our dealers or their
+        colleagues.
+      </p>
+      <p class="text-center">
+        <span class="uppercase font-bold">Recent Winners</span><br />
+        <ul class="text-center">
+          <li>November 2025 - Tim Miller</li>
+          <li>October 2025 - Dustin Baughn</li>
+          <li>September 2025 - Robert Shepard</li>
+          <li>August 2025 - Eric Atkins</li>
+          <li>July 2025 - Shane Fitzhugh</li>
+          <li>June 2025 - Jim Baker</li>
+          <li>May 2025 - Nicole Garcia</li>
+          <li>April 2025 - Wendy Lynch</li>
+          <li>March 2025 - Joseph Cruz</li>
+          <li>February 2025 - Jossy Cabrera-Aceytuno</li>
+          <li>January 2025 - Karissa Smith</li>
+          <li>Employee of the Year 2024 - Samuel Jones</li>
+          <li>December 2024 - Samuel Jones</li>
+          <li>November 2024 - Brandi Barnes</li>
+          <li>October 2024 - Michelle Goff-Shepard</li>
+          <li>September 2024 - Lori Schrier</li>
+          <li>August 2024 - Tommy Lamm</li>
+          <li>July 2024 - Elise Wartick</li>
+          <li>June 2024 - Jessica Kelley</li>
+          <li>May 2024 - Robert Shepard</li>
+          <li>April 2024 - Dan Leach</li>
+          <li>March 2024 - Patti Kane</li>
+          <li>February 2024 - Kyle Smith</li>
+          <li>January 2024 - Jennifer Jones</li>
+        </ul>
+      </p>
+    </div>
+    <Image
+      src={RoadPavement}
+      alt="Road pavement background"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+</Base>

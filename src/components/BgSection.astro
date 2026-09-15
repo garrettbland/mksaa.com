@@ -1,0 +1,37 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  /** Background image (import as ImageMetadata) */
+  image: ImageMetadata;
+  /** Tailwind classes for the section element (e.g. padding) */
+  class?: string;
+  /** Tailwind classes for the inner content wrapper div */
+  childrenClass?: string;
+  /**
+   * Overlay color as a Tailwind bg-* class.
+   * @default "bg-brand-primary/90"
+   */
+  overlay?: string;
+}
+
+const {
+  image,
+  class: extraClass = "",
+  childrenClass = "",
+  overlay = "bg-brand-primary/90",
+} = Astro.props;
+---
+
+<section
+  class={`relative text-white bg-cover bg-center bg-no-repeat overflow-hidden ${extraClass}`}
+  style={`background-image: url('${image.src}');`}
+>
+  <!-- Overlay -->
+  <div class={`absolute inset-0 z-0 ${overlay}`}></div>
+
+  <!-- Content -->
+  <div class={`relative z-10 ${childrenClass}`}>
+    <slot />
+  </div>
+</section>

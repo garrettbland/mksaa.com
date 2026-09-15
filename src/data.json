@@ -6,11 +6,135 @@
     },
     {
       "name": "About",
-      "href": "/about"
+      "href": "/about",
+      "children": [
+        {
+          "name": "Careers",
+          "href": "/about/careers"
+        },
+        {
+          "name": "Causes we care about",
+          "href": "/about/causes-we-care-about"
+        }
+      ]
     },
     {
       "name": "Our Team",
-      "href": "/team"
+      "href": "/about/team"
+    },
+    {
+      "name": "Services",
+      "href": "/services"
+    },
+    {
+      "name": "Auction Standards",
+      "href": "/auction-standards"
+    },
+    {
+      "name": "Experience",
+      "href": "/experience"
+    },
+    {
+      "name": "Events",
+      "href": "/events"
+    },
+    {
+      "name": "News",
+      "href": "/news"
+    },
+    {
+      "name": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "team": [
+    {
+      "name": "Kevin House",
+      "position": "Transportation Coordinator",
+      "bio": "House is located in the back building at the entrance of our gate. He is responsible for scheduling our drivers to pick up and drop off cars at our client dealerships before and after sale day.",
+      "email": "kevinh@mksaa.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Steven Akers",
+      "position": "Automotive Claims Specialist",
+      "bio": "Steven works directly with our dealers to solve arbitration cases that are opened. He is constantly on the move researching details about the cases in an effort to create a win-win-win scenario for buyers, sellers and the auction alike.",
+      "email": "stevena@mksaa.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Lisa Talbott",
+      "position": "Title Clerk",
+      "bio": "Lisa is our longest-employed title clerk at our front desk processing paperwork and titles for our dealers daily. She can name almost every dealer from the time they walk in the door and greets everyone with a smile. ",
+      "email": "",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Brittany Mannie",
+      "position": "Frontier Financial Title Clerk",
+      "bio": "Brittany serves as the title clerk at Frontier Financial, where she handles everyday paperwork and titles for our dealers at the front desk. What excites her most about working at MKSAA is the opportunity for new adventures and the chance to learn new things.",
+      "email": "brittanym@frontierfinancialusa.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Elise Wartick",
+      "position": "Title Clerk",
+      "bio": "Elise Wartick, Title Clerk, and a friendly face, helps process paperwork and titles for our dealers. You can also find her at the front counter entering in requested PSI's for dealers on Wednesday sale day.",
+      "email": "elisew@mksaa.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Trina Latham",
+      "position": "Fastback Title Clerk",
+      "bio": "Trina became a part of the MKSAA team in early 2025, taking on the role of Title Clerk. Her primary responsibilities involve securing repossession titles. Trina eagerly anticipates new experiences and is excited about the opportunity to develop her career within the company.",
+      "email": "titles@fastbacktitlesks.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Wendy Lynch",
+      "position": "Accounts Payable Coordinator",
+      "bio": "Wendy is our resident \"keep stuff moving\" person in the accounting office. She does a little bit of a lot of things behind the scenes so that everyone else is freed up to keep chugging in their respective areas. She always has a smile on her face and is located upstairs behind the organized piles of receipts, bills of sales and whatever else comes her way that day.",
+      "email": "wendyl@mksaa.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Ann Colling",
+      "position": "Accounting Clerk",
+      "bio": "Ann is located in the back building where she helps manage invoices, payroll and monthly transactions as needed.",
+      "email": "annc@mksaa.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Patti Kane",
+      "position": "Accounting Clerk",
+      "bio": "Patti’s main focus is to help accounting get through paperwork in a timely and efficient manner by assisting with filing, entering and scanning documents. ",
+      "email": "",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Abbey Garnett",
+      "position": "Accounting Clerk",
+      "bio": "Abbey will support the accounting department by preparing monthly reports, managing overall financials, and handling tasks such as reconciliation, data entry, filing, and tracking departmental budgets.",
+      "email": "abbeyg@mksaa.com",
+      "image_url": "",
+      "tag": "TEAM"
+    },
+    {
+      "name": "Samuel Jones",
+      "position": "Maintenance",
+      "bio": "Samuel is our favorite man in the main building for always keeping it spick and span. He is in charge of the upkeep of the main building and all of the lanes, which after a sale day around here is quite the job! If you need to find him you better be quick because he is always on the move making something better than he found it.",
+      "email": "",
+      "image_url": "",
+      "tag": "TEAM"
     }
   ]
 }

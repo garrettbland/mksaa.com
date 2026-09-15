@@ -1,11 +1,13 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Image } from "astro:assets";
 import Logo from "../assets/images/mid-kansas-auto-auction-logo.png";
 import FooterLogos from "../assets/images/footer-logos.png";
+import ButtonBanner from "../components/ButtonBanner.astro";
 
 const year = new Date().getFullYear();
 ---
 
+<ButtonBanner />
 <footer class="bg-brand-primary relative overflow-hidden flex justify-center">
   <div
     class="relative z-[2] my-24 container max-w-5xl flex flex-col items-center justify-center gap-4"
@@ -51,16 +53,6 @@ const year = new Date().getFullYear();
           <li>Fri: 8:00 AM - 3:00 PM</li>
         </ul>
       </div>
-    </div>
-
-    <!-- buttons -->
-    <div class="flex flex-row gap-8 mt-8">
-      <a
-        href="https://login.mksaa.com/components/login"
-        class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
-      >
-        Dealer Login
-      </a>
     </div>
 
     <!-- Logos -->

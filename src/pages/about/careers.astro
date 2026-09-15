@@ -1,0 +1,118 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/employees-at-computers.jpg";
+import WomanInCar from "../../assets/images/woman-sitting-in-car.jpg";
+---
+
+<Base
+  title="Careers | Mid Kansas Auto Auction"
+  description="At MKSAA, we strive to provide a great work environment for our employees. With competitive benefits and opportunities for advancement, we know you'll love working here. Learn more below, and click the button to see our open positions!"
+>
+  <!-- Header -->
+
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Careers
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        At MKSAA, we strive to provide a great work environment for our
+        employees. With competitive benefits and opportunities for advancement,
+        we know you'll love working here. Learn more below, and click the button
+        to see our open positions!
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Employees at computers"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Want to work with us -->
+  <section class="bg-brand-gray">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div class="flex flex-col justify-center items-center p-24">
+        <h2
+          class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+        >
+          Want to Work With Us?
+        </h2>
+        <p class="font-thin text-white text-center leading-loose text-sm">
+          Mid Kansas Auto Auction (MKSAA) is a family-owned and operated
+          business. It is no secret that business feels different when it is not
+          a corporate chain, but we believe that the pros outweigh the cons when
+          it comes to working in a family-owned company that's growing and
+          evolving quickly. The owners of our business are boots-on-the-ground,
+          working shoulder-to-shoulder in the everyday hustle that is the
+          dealers-only auto auction industry. That commitment extends to our
+          team - we always say "You work with us, not for us."
+        </p>
+        <p class="font-thin text-white text-center leading-loose mt-4 text-sm">
+          Current employees and vendors that work with MKSAA have used words
+          such as trust, care, and long-term vision when talking about Mid
+          Kansas Auto Auction. We aren’t perfect, but we are always striving to
+          be better. If you are a team player and enjoy taking on unique
+          challenges with a can-do attitude, click below to check out the
+          careers we have available!
+        </p>
+        <a
+          href="https://midkansasautoauction.bamboohr.com/careers"
+          class="rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold my-12"
+        >
+          View Open Positions
+        </a>
+        <p class="text-white text-xs italic font-thin">
+          Full time employees receive competitive benefits such health benefits
+          after 60 days with part of the premiums paid by Mid Kansas Auto
+          Auction, ﻿and a 401(k) plan after 6 months of employment. Our part
+          time positions allow for flexibility in schedule and a chance to try
+          different roles and find the work that most appeals to you.
+        </p>
+      </div>
+      <div>
+        <Image
+          src={WomanInCar}
+          alt="Woman in Car"
+          class="h-full w-full object-cover"
+          quality="medium"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Core Values -->
+  <section class="bg-brand-primary py-36">
+    <div class="text-white container max-w-xl mx-auto">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        Our Core Values
+      </h2>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        As a family-run business, it's important to us that our dealers and our
+        team members get to know who we are and understand how integral they are
+        to our success. We have developed a set of Core Values that stem from
+        our larger, more detailed Guiding Principles. These non-negotiable
+        values embody the experience we strive to create for our staff and our
+        customers.
+      </p>
+      <p class="font-cursive text-white text-2xl text-center mt-12">Culture</p>
+      <p class="font-cursive text-white text-2xl text-center">Ownership</p>
+      <p class="font-cursive text-white text-2xl text-center">Relationships</p>
+      <p class="font-cursive text-white text-2xl text-center">Excellence</p>
+      <div class="flex items-center justify-center">
+        <a
+          href="https://midkansasautoauction.bamboohr.com/careers"
+          class="mt-12 rounded-lg text-brand-primary bg-white px-12 py-4 text-lg hover:bg-brand-primary hover:text-white transition font-semibold"
+        >
+          Join Our Team
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

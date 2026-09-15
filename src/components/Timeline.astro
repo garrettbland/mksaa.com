@@ -1,0 +1,212 @@
+---
+import { Image } from "astro:assets";
+import Timeline1 from "../assets/images/timeline-1.jpeg";
+import Timeline2 from "../assets/images/timeline-2.png";
+import Timeline3 from "../assets/images/timeline-3.jpg";
+import Timeline4 from "../assets/images/timeline-4.jpg";
+import Timeline5 from "../assets/images/timeline-5.jpg";
+---
+
+<style>
+  .timeline-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: white;
+    transform: translateY(-50%);
+  }
+
+  .mobile-track {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: white;
+  }
+
+  .timeline-img {
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid white;
+    flex-shrink: 0;
+  }
+
+  .mobile-img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border: 2px solid white;
+    flex-shrink: 0;
+  }
+</style>
+
+<!-- DESKTOP TIMELINE (md+) -->
+<div class="hidden md:block relative py-16">
+  <div class="timeline-track"></div>
+  <div class="relative flex justify-between items-center gap-4">
+    <!-- 2005 — above -->
+    <div class="flex flex-col items-center flex-1">
+      <div class="mb-3 text-center">
+        <div class="year text-2xl font-bold text-white mb-1">2005</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Original auction location was opened in Hays, Kansas by founder Mark
+          Ottley.
+        </p>
+      </div>
+      <div class="w-px h-6 bg-white"></div>
+      <Image
+        quality={"low"}
+        src={Timeline1}
+        alt="2005 - Original Hays location"
+        class="timeline-img"
+      />
+      <div class="w-px h-6 bg-white"></div>
+    </div>
+
+    <!-- 2016 — below -->
+    <div class="flex flex-col items-center flex-1">
+      <div class="w-px h-6 bg-white"></div>
+      <Image
+        quality={"low"}
+        src={Timeline2}
+        alt="2016 - Fire at Hays location"
+        class="timeline-img"
+      />
+      <div class="w-px h-6 bg-white"></div>
+      <div class="mt-1 text-center">
+        <div class="year text-2xl font-bold text-white mb-1">2016</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Hays location burned down in a tragic fire, was rebuilt the following
+          year.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2018 — above -->
+    <div class="flex flex-col items-center flex-1">
+      <div class="mb-3 text-center">
+        <div class="year text-2xl font-bold text-white mb-1">2018</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Purchased Wichita auction and renovated it to be a state-of-the-art
+          facility.
+        </p>
+      </div>
+      <div class="w-px h-6 bg-white"></div>
+      <Image
+        quality={"low"}
+        src={Timeline3}
+        alt="2018 - Wichita auction"
+        class="timeline-img"
+      />
+      <div class="w-px h-6 bg-white"></div>
+    </div>
+
+    <!-- 2019 — below -->
+    <div class="flex flex-col items-center flex-1">
+      <div class="w-px h-6 bg-white"></div>
+      <Image
+        quality={"low"}
+        src={Timeline4}
+        alt="2019 - Locations merged"
+        class="timeline-img"
+      />
+      <div class="w-px h-6 bg-white"></div>
+      <div class="mt-1 text-center">
+        <div class="year text-2xl font-bold text-white mb-1">2019</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Both locations merged in Wichita bringing great success to the Mid
+          Kansas Auto Auction.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2022 — above -->
+    <div class="flex flex-col items-center flex-1">
+      <div class="mb-3 text-center">
+        <div class="year text-2xl font-bold text-white mb-1">2022</div>
+        <p class="text-white/80 text-sm leading-snug">
+          We are committed to continued growth and development to best serve our
+          dealers!
+        </p>
+      </div>
+      <div class="w-px h-6 bg-white"></div>
+      <Image
+        quality={"low"}
+        src={Timeline5}
+        alt="2022 - Continued growth"
+        class="timeline-img"
+      />
+      <div class="w-px h-6 bg-white"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE TIMELINE (< md) -->
+<div class="md:hidden relative py-8 pl-10">
+  <div class="mobile-track"></div>
+  <div class="flex flex-col gap-10 relative mr-10">
+    <!-- 2005 -->
+    <div class="flex items-start gap-4">
+      <Image quality={"low"} src={Timeline1} alt="2005" class="mobile-img" />
+      <div>
+        <div class="year text-xl font-bold text-white mb-1">2005</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Original auction location was opened in Hays, Kansas by founder Mark
+          Ottley.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2016 -->
+    <div class="flex items-start gap-4">
+      <Image quality={"low"} src={Timeline2} alt="2016" class="mobile-img" />
+      <div>
+        <div class="year text-xl font-bold text-white mb-1">2016</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Hays location burned down in a tragic fire, was rebuilt the following
+          year.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="flex items-start gap-4">
+      <Image quality={"low"} src={Timeline3} alt="2018" class="mobile-img" />
+      <div>
+        <div class="year text-xl font-bold text-white mb-1">2018</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Purchased Wichita auction and renovated it to be a state-of-the-art
+          facility.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="flex items-start gap-4">
+      <Image quality={"low"} src={Timeline4} alt="2019" class="mobile-img" />
+      <div>
+        <div class="year text-xl font-bold text-white mb-1">2019</div>
+        <p class="text-white/80 text-sm leading-snug">
+          Both locations merged in Wichita bringing great success to the Mid
+          Kansas Auto Auction.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2022 -->
+    <div class="flex items-start gap-4">
+      <Image quality={"low"} src={Timeline5} alt="2022" class="mobile-img" />
+      <div>
+        <div class="year text-xl font-bold text-white mb-1">2022</div>
+        <p class="text-white/80 text-sm leading-snug">
+          We are committed to continued growth and development to best serve our
+          dealers!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
