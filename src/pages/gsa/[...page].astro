@@ -1,0 +1,158 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import HeaderBGPhoto from "../../assets/images/car-lot.avif";
+import GsaContractHolderLogo from "../../assets/images/gsa-contract-holder-logo.jpg";
+import {
+  gsaSale,
+  isGsaSaleLive,
+  formatSaleDate,
+  formatSaleDatePadded,
+  GSA_MARKETPLACE_URL,
+} from "../../data/gsa-sale";
+
+/**
+ * This page only exists while a GSA sale is live.
+ *
+ * When `isGsaSaleLive()` is false, getStaticPaths returns no paths, so Astro
+ * never generates the page: /gsa returns a 404 and it stays out of the
+ * sitemap. The navbar link is driven by the same function in Base.astro, so
+ * the two can't disagree.
+ *
+ * Everything on this page is edited in ONE place: src/data/gsa-sale.ts
+ */
+export function getStaticPaths() {
+  return isGsaSaleLive() ? [{ params: { page: undefined } }] : [];
+}
+
+const { sale, documents } = gsaSale;
+
+const dateRange = `${formatSaleDate(sale.opensDate)} to ${formatSaleDate(sale.closesDate)}`;
+const biddingWindow = `${formatSaleDatePadded(sale.opensDate)} ${sale.opensTime} through ${formatSaleDatePadded(sale.closesDate)} ${sale.closesTime}`;
+---
+
+<Base
+  title={`GSA Fleet Sales | Mid Kansas Auto Auction`}
+  description={`Mid Kansas Auto Auction is a GSA Fleet Vehicles Contract Holder. Internet-only sale #${sale.number} runs ${dateRange}. View the block sheet, sale packet, and terms and conditions.`}
+>
+  <PageHeader
+    title="GSA Fleet Vehicles"
+    subtitle={`Internet Sale Only | ${dateRange}`}
+    bgImage={HeaderBGPhoto}
+  />
+
+  <!-- Sale notice -->
+  <section class="bg-brand-gray py-16">
+    <div class="container max-w-3xl mx-auto px-5 text-center">
+      <Image
+        src={GsaContractHolderLogo}
+        alt="GSA Contract Holder"
+        class="h-20 w-auto object-contain mx-auto mb-10"
+        quality="medium"
+      />
+
+      <h2
+        class="text-center leading-tight text-2xl md:text-3xl font-bold text-white"
+      >
+        Auction Notice: Live Internet Sale
+      </h2>
+
+      <p class="text-white font-semibold leading-loose text-sm mt-4">
+        Sale #{sale.number}<br />
+        {biddingWindow}
+      </p>
+
+      <p class="font-thin text-white leading-loose text-sm mt-8">
+        Mid Kansas Auto Auction is proud to be a GSA Fleet Vehicles Contract
+        Holder, partnering to host special events for GSA Fleet Vehicles on a
+        routine basis.
+      </p>
+
+      {
+        sale.inspectionDate && (
+          <p class="font-thin text-white leading-loose text-sm mt-6">
+            <span class="font-semibold">Inspection Date for the Sale:</span>{" "}
+            {formatSaleDatePadded(sale.inspectionDate)} {sale.inspectionHours}
+          </p>
+        )
+      }
+
+      <address class="font-thin text-white leading-loose text-sm mt-8 not-italic">
+        Mid Kansas Auto Auction<br />
+        4716 S. Santa Fe Street<br />
+        Wichita, KS 67216<br />
+        <a href="tel:3165007700" class="underline hover:text-gray-300 transition"
+          >316-500-7700</a
+        >
+      </address>
+    </div>
+  </section>
+
+  <!-- Sale documents -->
+  <section class="bg-brand-primary py-16">
+    <div class="container max-w-3xl mx-auto px-5">
+      <h2
+        class="text-center leading-tight text-2xl md:text-3xl font-bold text-white mb-10"
+      >
+        Sale Documents
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {
+          documents.map((document) => (
+            <a
+              href={document.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-lg text-brand-primary bg-white px-6 py-4 text-center hover:bg-brand-gray hover:text-white transition font-semibold"
+            >
+              {document.label}
+            </a>
+          ))
+        }
+
+        <a
+          href={sale.saleDetailsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-lg text-brand-primary bg-white px-6 py-4 text-center hover:bg-brand-gray hover:text-white transition font-semibold sm:col-span-2"
+        >
+          View Sale Details Online
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to bid -->
+  <section class="bg-brand-gray py-16">
+    <div class="container max-w-3xl mx-auto px-5 text-center">
+      <h2
+        class="text-center leading-tight text-2xl md:text-3xl font-bold text-white mb-6"
+      >
+        How to Bid
+      </h2>
+
+      <p class="font-thin text-white leading-loose text-sm">
+        You can view and bid on the GSA Fleet Vehicles directly through <a
+          href={GSA_MARKETPLACE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-gray-300 transition">the GSA Marketplace</a
+        >. From there, you can access the New Sales Terms and Conditions that
+        provide guidance on participation and payment processes.
+      </p>
+
+      <p class="font-thin text-white leading-loose text-sm mt-6">
+        All bidders must register and create an account, either through
+        GSAFleet.gov or <a
+          href={GSA_MARKETPLACE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline hover:text-gray-300 transition"
+          >the GSA Marketplace</a
+        >, in order to participate in GSA auction sales.
+      </p>
+    </div>
+  </section>
+</Base>

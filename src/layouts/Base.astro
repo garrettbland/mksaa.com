@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer.astro";
 import { getImage } from "astro:assets";
 import defaultOgSource from "../assets/images/carlot-arial.jpg";
+import data from "../data.json";
+import { GSA_NAV_LINK, isGsaSaleLive } from "../data/gsa-sale";
 
 interface Props {
   title: string;
@@ -11,6 +13,26 @@ interface Props {
 }
 
 const { title = "", description = "" } = Astro.props;
+
+/**
+ * Navbar links. The "GSA Fleet Sales" link is added only while a GSA sale is
+ * live — same check the /gsa page itself uses, so the link and the page can
+ * never disagree. Turn it on/off in src/data/gsa-sale.ts.
+ */
+const navlinks: {
+  name: string;
+  href: string;
+  children?: { name: string; href: string }[];
+}[] = [...data.navlinks];
+
+if (isGsaSaleLive()) {
+  const eventsIndex = navlinks.findIndex((link) => link.href === "/events");
+  navlinks.splice(
+    eventsIndex === -1 ? navlinks.length : eventsIndex,
+    0,
+    { ...GSA_NAV_LINK },
+  );
+}
 
 const optimizedOgImage = await getImage({
   src: defaultOgSource,
@@ -92,7 +114,7 @@ const businessSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
   </head>
   <body>
-    <Navbar client:load />
+    <Navbar client:load navlinks={navlinks} />
     <main>
       <slot />
     </main>

@@ -3,7 +3,18 @@ import { ARBITRATION_REQUEST_URL, DEALER_LOGIN_URL } from "../constants";
 import data from "../data.json";
 import logo from "../assets/images/mid-kansas-auto-auction-logo.png";
 
-const Navbar = () => {
+interface NavLink {
+  name: string;
+  href: string;
+  children?: { name: string; href: string }[];
+}
+
+/**
+ * `navlinks` is passed in from Base.astro so build-time links (like the
+ * GSA Fleet Sales link) can be added or removed. Falls back to data.json.
+ */
+const Navbar = ({ navlinks }: { navlinks?: NavLink[] }) => {
+  const links: NavLink[] = navlinks ?? data.navlinks;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
 
@@ -68,7 +79,7 @@ const Navbar = () => {
           <div
             className={`hidden md:flex flex-row items-center divide-x divide-brand-primary ${!isMobileMenuOpen ? "mt-6" : ""}`}
           >
-            {data.navlinks.map((link, index) => (
+            {links.map((link, index) => (
               <div key={index} className="relative group px-2">
                 <a
                   href={link.href}
@@ -119,7 +130,7 @@ const Navbar = () => {
           }`}
         >
           <div className="px-5 pb-6 flex flex-col">
-            {data.navlinks.map((link, index) => (
+            {links.map((link, index) => (
               <div key={index} className="border-b border-white/10">
                 <div className="flex items-center justify-between">
                   <a
