@@ -1,22 +1,15 @@
 ---
+import { getCollection } from "astro:content";
+
 export interface Props {
   currentPostId: string;
 }
 
 const { currentPostId } = Astro.props;
 
-const rawFiles = import.meta.glob("../../content/news/*.md", { eager: true });
-const allNews = Object.entries(rawFiles).map(([path, file]: [string, any]) => {
-  const slug = path.split('/').pop()?.replace('.md', '');
-  return {
-    id: slug,
-    data: file.frontmatter,
-  };
-});
-
-// Filter out current post and take top 3
-const recentPosts = allNews
-  .filter(post => post.id !== currentPostId)
+const recentPosts = (await getCollection("news"))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .filter((post) => post.id !== currentPostId)
   .slice(0, 3);
 ---
 
@@ -25,8 +18,8 @@ const recentPosts = allNews
     <a href={`/news/${post.id}`} class="bg-white flex flex-col group hover:shadow-lg transition-shadow">
       <div class="relative w-full h-48 overflow-hidden bg-gray-100">
         {post.data.image && (
-          <img 
-            src={`/images/news/${post.data.image}`} 
+          <img
+            src={`/images/news/${post.data.image}`}
             alt={post.data.title}
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />

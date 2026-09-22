@@ -1,37 +1,26 @@
 ---
-import { render } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import NewsSlider from "../../components/news/NewsSlider.astro";
 import RecentPosts from "../../components/news/RecentPosts.astro";
-import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
-  const rawFiles = import.meta.glob("../../content/news/*.md", { eager: true });
-  console.log(`[slug].astro getStaticPaths: Found ${Object.keys(rawFiles).length} raw files`);
-  const newsEntries = Object.entries(rawFiles).map(([path, file]: [string, any]) => {
-    const slug = path.split('/').pop()?.replace('.md', '') || '';
-    return {
-      id: slug,
-      data: file.frontmatter,
-      Content: file.default
-    };
-  });
-  
-  return newsEntries.map((entry) => {
-    return {
-      params: { slug: entry.id },
-      props: { entry },
-    };
-  });
+  const newsEntries = await getCollection("news");
+
+  return newsEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"news">;
 }
 
 const { entry } = Astro.props;
-const { Content } = entry;
+const { Content } = await render(entry);
 
-// Format date nicely if possible, or just use string
-const dateString = entry.data.date;
-
-const currentUrl = new URL(Astro.url.pathname, Astro.site || 'https://www.mksaa.com').href;
+const currentUrl = new URL(Astro.url.pathname, Astro.site || "https://www.mksaa.com").href;
 ---
 
 <Base
@@ -64,9 +53,9 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site || 'https://www.mksaa.
           </div>
 
           <!-- Image Slider -->
-          {entry.data.gallery && entry.data.gallery.length > 0 && (
+          {entry.data.galleryImages && entry.data.galleryImages.length > 0 && (
             <div class="mt-12">
-              <NewsSlider images={entry.data.gallery} />
+              <NewsSlider images={entry.data.galleryImages} />
             </div>
           )}
 
