@@ -107,7 +107,15 @@ export default function ModalGallery({ data }: { data: Member[] }) {
                   {selected.name}
                 </h2>
                 <p className="text-lg text-gray-700">{selected.position}</p>
-                <p className="text-gray-600">{selected.bio}</p>
+                <div className="text-gray-600 flex flex-col gap-3">
+                  {selected.bio
+                    .split(/\n+/)
+                    .map((paragraph) => paragraph.trim())
+                    .filter(Boolean)
+                    .map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                </div>
 
                 {selected.email && (
                   <a
