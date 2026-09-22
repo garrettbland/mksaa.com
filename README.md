@@ -44,18 +44,7 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 ## GSA Fleet Sales page (quarterly)
 
-The `/gsa` page and its navbar link are controlled entirely by
-**`src/data/gsa-sale.ts`** — that file has the full checklist at the top.
+The `/gsa` page goes up and comes down a few times a year. It is controlled
+entirely by `src/data/gsa-sale.ts`.
 
-Short version, each quarter:
-
-1. Overwrite the PDFs in `public/uploads/gsa/` (keep the same filenames):
-   `block-sheet.pdf`, `sale-packet.pdf`, `terms-and-conditions.pdf`,
-   `remarketing-brochure.pdf`
-2. Update the sale number, dates, inspection info and `saleDetailsUrl`
-3. Set `takeDownAfter` to the last day the page should be visible
-4. Make sure `enabled: true`, then commit and push
-
-When `enabled` is `false` **or** `takeDownAfter` has passed, the next build
-skips the page entirely: `/gsa` 404s, the navbar link disappears, and it drops
-out of the sitemap. No other files need editing.
+**See [GSA-PAGE.md](./GSA-PAGE.md) for the full instructions.**

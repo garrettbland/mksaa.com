@@ -6,6 +6,9 @@
  * This one file controls the /gsa page AND the "GSA Fleet Sales" navbar link.
  * Nothing else needs to be touched.
  *
+ * Full instructions, including troubleshooting: see GSA-PAGE.md in the project
+ * root. The short version is below.
+ *
  * TO PUT A NEW SALE UP:
  *   1. Drop the new PDFs into `public/uploads/gsa/`, keeping these exact names
  *      (just overwrite the old ones):
