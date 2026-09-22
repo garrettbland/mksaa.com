@@ -1,0 +1,51 @@
+---
+interface Props {
+  /** If provided, renders as an <a> tag; otherwise renders as <button> */
+  href?: string;
+  /** button type attribute (only used when no href is provided) */
+  type?: "button" | "submit" | "reset";
+  /**
+   * "white"   → white bg, brand-primary text (default – used on dark/colored backgrounds)
+   * "primary" → brand-primary bg, white text (used on light backgrounds)
+   */
+  variant?: "white" | "primary";
+  /** Opens link in new tab */
+  external?: boolean;
+  /** Extra classes to merge */
+  class?: string;
+}
+
+const {
+  href,
+  type = "button",
+  variant = "white",
+  external = false,
+  class: extraClass = "",
+} = Astro.props;
+
+const baseClass =
+  "rounded-lg font-semibold text-sm lg:text-lg px-14 py-3 shadow-lg transition inline-block cursor-pointer";
+
+const variantClass =
+  variant === "primary"
+    ? "bg-brand-primary text-white hover:brightness-110"
+    : "bg-white text-brand-primary hover:bg-brand-primary hover:text-white";
+
+const finalClass = [baseClass, variantClass, extraClass].join(" ");
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class={finalClass}
+      {...(external ? { target: "_blank", rel: "noreferrer noopener" } : {})}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={finalClass}>
+      <slot />
+    </button>
+  )
+}

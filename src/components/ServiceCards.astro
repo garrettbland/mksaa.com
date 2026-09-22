@@ -1,0 +1,109 @@
+---
+import ModalGallery from "../components/ModalGallery.tsx";
+import { getImage } from "astro:assets";
+
+import PreSaleInspection from "../assets/images/pre-sale-inspection.jpg";
+import PostSaleInspections from "../assets/images/post-sale-inspection.jpg";
+import WashDetail from "../assets/images/wash-and-detail.jpg";
+import Transportation from "../assets/images/transportation.jpg";
+import TitlesTagsReports from "../assets/images/titles-tags.jpg";
+import AdditionalServices from "../assets/images/additional-services.jpg";
+
+const services = [
+  {
+    image: PreSaleInspection,
+    title: "Pre-Sale Inspections",
+    description:
+      "Purchase this feature to reassure your buyers that you are selling a sound product.",
+    url: "/services/pre-sale-inspections",
+  },
+  {
+    image: PostSaleInspections,
+    title: "Post-Sale Inspections",
+    description:
+      "Buyers can feel comfortable with their purchase knowing it has been inspected by one of our in-house mechanics.",
+    url: "/services/post-sale-inspections",
+  },
+  {
+    image: WashDetail,
+    title: "Wash & Detail Services",
+    description:
+      "Make sure that your unit is in the best condition possible so it will be sure to bring top dollar.",
+    url: "/services/wash-and-detail-services",
+  },
+  {
+    image: Transportation,
+    title: "Transportation Services",
+    description: "We can transport your car to or from anywhere you request.",
+    url: "/services/transportation-services",
+  },
+  {
+    image: TitlesTagsReports,
+    title: "Titles, Tags & Reports",
+    description:
+      "We make the paperwork for each unit just as easy as buying and selling.",
+    url: "/services/titles-tags-and-reports",
+  },
+  {
+    image: AdditionalServices,
+    title: "Additional Services",
+    description:
+      "Let us be your one-stop shop for all of your buying and selling needs.",
+    url: "/services/additional-services",
+  },
+];
+
+let optimizedServices = [];
+
+// Optimize all images at build time
+await Promise.all(
+  services.map(async (service) => {
+    console.log("optimizing image for", service.title);
+    const optimized = await getImage({
+      src: service.image,
+      width: 800,
+      format: "webp",
+    });
+
+    optimizedServices.push({
+      ...service,
+      image: optimized.src,
+    });
+  }),
+);
+---
+
+<div class="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+  {
+    optimizedServices.map((service) => (
+      <div class="rounded-lg shadow-md text-white border border-solid border-gray-400 border-2px">
+        <img
+          src={service.image}
+          alt={service.title}
+          class="w-full h-48 object-cover mb-4"
+        />
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">{service.title}</h3>
+          <p class="font-thin text-white leading-loose text-sm">
+            {service.description}
+          </p>
+          <a
+            href={service.url}
+            aria-label={`Learn more about ${service.title}`}
+            class="text-center mt-4 block rounded-lg text-brand-primary bg-white px-12 py-2 hover:bg-brand-primary hover:text-white transition font-semibold"
+          >
+            Learn More
+          </a>
+          {service.url_additional && (
+            <a
+              href={service.url_additional}
+              class="text-center text-xs mt-4 block rounded-lg py-2 hover:bg-brand-primary hover:text-white transition font-semibold"
+            >
+              {service.url_additioanl_title}
+            </a>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>

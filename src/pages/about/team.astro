@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import HeaderBGPhoto from "../../assets/images/driver-in-car.jpg";
+import { getImage } from "astro:assets";
+import ModalGallery from "../../components/ModalGallery.tsx";
+import { team } from "../../data/team";
+
+/**
+ * The roster lives in src/data/team.ts — add, remove or reorder people there.
+ * Everyone shows in one gallery, in that file's order (sales first).
+ */
+const teamWithOptimizedImages = await Promise.all(
+  team.map(async (member) => {
+    const optimized = await getImage({
+      src: member.image_url,
+      width: 800,
+      format: "webp",
+    });
+
+    return { ...member, image_url: optimized.src };
+  }),
+);
+---
+
+<Base
+  title="Our Team | Mid Kansas Auto Auction"
+  description="As a family-owned and operated business, it's important to us that our dealers and our team members get to know who we are and understand how integral they are to our success. Learn more about our team members below."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Our Team
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        As a family-owned and operated business, it's important to us that our
+        dealers and our team members get to know who we are and understand how
+        integral they are to our success. Learn more about our team members
+        below.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="MKSAA team member driving a car on the lot"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Team Members -->
+  <section class="bg-brand-gray py-12">
+    <div class="text-white container max-w-4xl mx-auto">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        Meet the Team
+      </h2>
+      <p class="font-cursive text-white text-4xl text-center mb-4 mt-6">
+        How can we best serve you?
+      </p>
+      <p class="font-thin text-white text-center leading-loose text-sm mb-12">
+        Our goal is to best serve you, and make your life as easy as possible.
+        Not sure you who need to talk to? Find out more about our professional
+        auction team by clicking below!
+      </p>
+
+      <ModalGallery client:load data={teamWithOptimizedImages} />
+    </div>
+  </section>
+</Base>

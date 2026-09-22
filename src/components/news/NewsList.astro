@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import NewsItem from "./NewsItem.astro";
+
+/**
+ * Posts come from the `news` content collection — the markdown files in
+ * src/content/news/. To add a post, add a .md file there; nothing else needs
+ * to change. Newest first, by the `date` in each file's frontmatter.
+ */
+const posts = (await getCollection("news")).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+---
+
+<section class="bg-brand-gray py-20">
+  <div class="container mx-auto px-4 w-full max-w-[980px]">
+    <div class="flex flex-col gap-6">
+      {
+        posts.map((post) => (
+          <NewsItem
+            title={post.data.title}
+            date={post.data.date}
+            description={post.data.description}
+            imagePath={post.data.image || ""}
+            detailsLink={`/news/${post.id}`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

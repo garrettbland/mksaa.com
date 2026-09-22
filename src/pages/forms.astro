@@ -1,0 +1,131 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import HeaderBGPhoto from "../assets/images/auction-standards.avif";
+---
+
+<Base
+  title="Forms & Documents | Mid Kansas Auto Auction"
+  description="Internal forms and documents for MKSAA staff, including accounting & finance, HR & personnel, and IT & maintenance request forms."
+>
+  <!-- Header -->
+  <section class="bg-brand-primary py-36 relative overflow-hidden">
+    <div class="text-white container max-w-xl mx-auto relative z-10">
+      <h1
+        class="text-center leading-tight text-4xl font-bold leading-loose text-white"
+      >
+        Forms & Documents
+      </h1>
+      <p class="font-thin text-white text-center leading-loose text-sm">
+        Internal forms and documents for MKSAA staff use. Select a form below
+        to open it.
+      </p>
+    </div>
+    <Image
+      src={HeaderBGPhoto}
+      alt="Employees at computers"
+      class="w-full h-full object-cover absolute top-0 left-0 opacity-20 z-1"
+      quality="low"
+    />
+  </section>
+
+  <!-- Internal Forms & Documents -->
+  <section class="bg-brand-gray">
+    <div class="container max-w-xl mx-auto py-24">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        Accounting & Finance
+      </h2>
+      <ul
+        class="font-thin text-white text-center leading-loose text-sm underline"
+      >
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/policy-adjustment/index"
+            target="_blank"
+            rel="noopener noreferrer">Policy Adjustment Form</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/checkrequestform/index"
+            target="_blank"
+            rel="noopener noreferrer">Check Request Form</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/dealer-reimbursement/index"
+            target="_blank"
+            rel="noopener noreferrer">Dealer Reimbursement Form</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/MKSAAWaivedFeeForm/index"
+            target="_blank"
+            rel="noopener noreferrer">Waived Fee Form</a
+          >
+        </li>
+        <li>
+          <a href="/uploads/deal-sheet.pdf" target="_blank" rel="noopener noreferrer"
+            >Deal Sheet</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/employeepurchaseauth/index"
+            target="_blank"
+            rel="noopener noreferrer">Employee Purchase Authorization</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="container max-w-xl mx-auto py-24">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        HR & Personnel
+      </h2>
+      <ul
+        class="font-thin text-white text-center leading-loose text-sm underline"
+      >
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/MKSAAEmployeeofMonth/index"
+            target="_blank"
+            rel="noopener noreferrer">Employee of the Month Nomination</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="container max-w-xl mx-auto py-24">
+      <h2
+        class="text-center leading-tight text-3xl font-bold leading-loose text-white"
+      >
+        IT & Maintenance
+      </h2>
+      <ul
+        class="font-thin text-white text-center leading-loose text-sm underline"
+      >
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/it/index"
+            target="_blank"
+            rel="noopener noreferrer">IT Support Request Form</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://fs3.formsite.com/yKCdxg/maintenance/index"
+            target="_blank"
+            rel="noopener noreferrer">Maintenance Request Form</a
+          >
+        </li>
+      </ul>
+    </div>
+  </section>
+</Base>

@@ -41,3 +41,10 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## GSA Fleet Sales page (quarterly)
+
+The `/gsa` page goes up and comes down a few times a year. It is controlled
+entirely by `src/data/gsa-sale.ts`.
+
+**See [GSA-PAGE.md](./GSA-PAGE.md) for the full instructions.**
