@@ -18,12 +18,12 @@ galleryImages:
 
 ### Oktoberfest Sale Event Details
 
-Get ready to raise a stein and celebrate - the Oktoberfest Sale returns on Wednesday, October 8th, 2025 at Mid Kansas Auto Auction in Wichita!
+Get ready to raise a stein and celebrate - the Oktoberfest Sale returns on Wednesday, October 7th, 2026, at Mid Kansas Auto Auction in Wichita!
 
 Doors open at 7:00 AM with free hot coffee and pastries for registered dealers. Arrive early to walk the lot, preview the run list, and get set for a big day in the lanes. The sale kicks off at 9:00 AM sharp.
 
-When the lanes wrap up, the fun is just getting started. Join us for a catered bierock lunch - warm, hearty, and the perfect fuel after a day of bidding. Then stick around for a Stein Hoisting Competition, where 30 contenders (including a few brave employees) will go head-to-head to see who can hold their stein the longest. The last competitor standing will take home a custom Oktoberfest stein and serious bragging rights.
+When the lanes wrap up, the fun is just getting started. Join us for a bierock lunch - warm, hearty, and the perfect fuel after a day of bidding. Then stick around for any Oktoberfest filled fun and more!
 
-We host sales every Wednesday in Wichita, but special promotional events like the Oktoberfest Sale bring extra excitement, food, and dealer perks. If you’re not registered yet, be sure to reach out beforehand so we can get you in the system and ready to join the celebration. We’d love to earn your business: 316-500-7700.
+We host sales every Wednesday in Wichita, but special promotional events like the Oktoberfest Sale bring extra excitement, food, and dealer perks. If you’re not registered yet, be sure to reach out beforehand so we can get you in the system and ready to join the celebration. We’d love to earn your business: [316-500-7700](tel:+13165007700).
 
 *These events are not open to the public -- registered auto dealers only.
